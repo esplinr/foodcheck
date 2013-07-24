@@ -13,3 +13,5 @@ except:
 
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
+
+# vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4 filetype=python
