@@ -35,6 +35,9 @@ git push github
 
 # Push to the live openshift
 
+# View logs
+rhc tail foodcheck
+
 # Log into production
 rhc account logout
 rhc setup -l foodcheck@esplins.org
