@@ -57,3 +57,7 @@ Other Documentation
 -------------------
 The OpenShift `python` cartridge documentation can be found at:
 https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-python/README.md
+
+The documentation for the OpenShift Django Example can be found at:
+https://github.com/openshift/django-example/blob/master/README.md
+https://github.com/openshift/django-example/blob/master/README

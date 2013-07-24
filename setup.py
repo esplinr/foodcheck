@@ -1,15 +1,17 @@
+#!/usr/bin/env python
+
 from setuptools import setup
 
-setup(name='YourAppName', version='1.0',
-      description='OpenShift Python-2.7 Community Cartridge based application',
-      author='Your Name', author_email='ramr@example.org',
-      url='http://www.python.org/sigs/distutils-sig/',
-
-      #  Uncomment one or more lines below in the install_requires section
-      #  for the specific client drivers/modules your application needs.
-      install_requires=['greenlet', 'gevent',
-                        #  'MySQL-python',
-                        #  'pymongo',
-                        #  'psycopg2',
-      ],
-     )
+setup(
+    name='Foodcheck',
+    version='1.0',
+    description='OpenShift Python 2.7 Django',
+    author='Tim Austen, Eileen Lin, Richard Esplin',
+    author_email='richard-oss@esplins.org',
+    url='http://www.python.org/sigs/distutils-sig/',
+    install_requires=['Django<=1.4',
+                      #  'MySQL-python',
+                      #  'pymongo',
+                      #  'psycopg2',
+    ],
+ )

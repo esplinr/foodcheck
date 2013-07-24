@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 *.py[cod]
+*.bak
+*.orig
+*~
 
 # C extensions
 *.so
