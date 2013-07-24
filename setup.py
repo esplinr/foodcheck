@@ -9,7 +9,7 @@ setup(
     author='Tim Austen, Eileen Lin, Richard Esplin',
     author_email='richard-oss@esplins.org',
     url='http://www.python.org/sigs/distutils-sig/',
-    install_requires=['Django<=1.6',
+    install_requires=['Django>=1.5',
                       #  'MySQL-python',
                       #  'pymongo',
                       #  'psycopg2',
