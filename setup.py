@@ -5,7 +5,7 @@ from setuptools import setup
 setup(
     name='Foodcheck',
     version='1.0',
-    description='OpenShift Python 2.7 Django',
+    description='OpenShift Python 2.6 Django',
     author='Tim Austen, Eileen Lin, Richard Esplin',
     author_email='richard-oss@esplins.org',
     url='http://www.python.org/sigs/distutils-sig/',

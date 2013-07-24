@@ -4,7 +4,7 @@ sudo gem install rhc
 rhc setup -l openshift-dev@esplins.org
 
 # Create a local git repository that is connected to the dev openshift env
-rhc app create -a foodcheck -t python-2.7
+rhc app create -a foodcheck -t python-2.6
 cd foodcheck
 git remote rename origin openshift-dev
 
