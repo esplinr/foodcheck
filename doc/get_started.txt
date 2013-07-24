@@ -1,0 +1,33 @@
+# Setup rhc
+## Install ruby
+sudo gem install rhc
+rhc setup -l openshift-dev@esplins.org
+
+# Create a local git repository that is connected to the dev openshift env
+rhc app create -a foodcheck -t python-2.7
+cd foodcheck
+git remote rename origin openshift-dev
+
+# Connect to the master github repo, and merge
+git remote add github https://github.com/esplinr/foodcheck.git
+git fetch github
+git merge github/master
+git status
+## Edit and fix files
+git commit
+git branch --set-upstream master remotes/github/master
+git push
+
+# Push to openshift
+git push openshift-dev
+
+# Merge in from the django-example repo
+
+# Connect to the live openshift
+
+# Push to the live openshift
+
+# Log into production
+rhc account logout
+rhc setup -l foodcheck@esplins.org
+rhc ssh live
