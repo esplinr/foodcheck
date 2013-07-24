@@ -3,42 +3,58 @@
 sudo gem install rhc
 rhc setup -l openshift-dev@esplins.org
 
-# Create a local git repository that is connected to the dev openshift env
+# *Setup Local Env from Existing Repo*
+# Clone official github repo
+git clone https://github.com/esplinr/foodcheck.git
+cd foodcheck
+# Create dev openshift env based on official github repo
+rhc app create -a foodcheck -t python-2.6 --from-code https://github.com/esplinr/foodcheck.git
+## Note the "Git remote" URL in the output
+git remote add openshift-dev ssh://<Git remote URL>
+rm -r foodcheck
+git branch --set-upstream master remotes/openshift-dev/master
+git push
+
+# Work with dev openshift
+rhc tail foodcheck
+rhc ssh foodcheck
+
+# Connect dev repo to the live openshift
+git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
+
+# Push changes to official repository
+git push github
+# Push changes to live
+git push openshift-live
+
+# Work with production
+rhc account logout
+rhc setup -l foodcheck@esplins.org
+rhc ssh live
+exit
+rhc tail live
+
+
+# *First Repo--Only Needed Once*
+# Create local git repository that is connected to the dev openshift env
 rhc app create -a foodcheck -t python-2.6
 cd foodcheck
 git remote rename origin openshift-dev
-
-# Connect to the master github repo, and merge
+# Connect to the official github repo, and merge
 git remote add github https://github.com/esplinr/foodcheck.git
 git fetch github
 git merge github/master
 git status
 ## Edit and fix files
 git commit
-git branch --set-upstream master remotes/github/master
-git push
-
-# Push to openshift
-git push openshift-dev
-
+git push github
 # Merge in from the django-example repo
 git remote add django-example https://github.com/openshift/django-example.git
 git fetch django-example
 git merge django-example/master
 ## Edit and fix files
 git commit
-git push openshift-dev
+git push
 ## Test
 git push github
-
-# Connect to the live openshift
-
-# Push to the live openshift
-
-# View logs
-rhc tail foodcheck
-
-# Log into production
-rhc account logout
-rhc setup -l foodcheck@esplins.org
-rhc ssh live
+## Rename app from openshift to foodcheck (grep every occurrence)
