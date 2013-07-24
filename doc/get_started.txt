@@ -22,6 +22,14 @@ git push
 git push openshift-dev
 
 # Merge in from the django-example repo
+git remote add django-example https://github.com/openshift/django-example.git
+git fetch django-example
+git merge django-example/master
+## Edit and fix files
+git commit
+git push openshift-dev
+## Test
+git push github
 
 # Connect to the live openshift
 
