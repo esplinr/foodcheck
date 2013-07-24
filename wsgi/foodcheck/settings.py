@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Django settings for openshift project.
+# Django settings for foodcheck project.
 import imp, os
 
 # a setting to determine whether we are running on OpenShift
@@ -134,7 +134,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'openshift.urls'
+ROOT_URLCONF = 'foodcheck.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

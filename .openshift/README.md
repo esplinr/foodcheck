@@ -15,7 +15,7 @@ automatically reapply these changes.
 
 Here are the steps involved:
 
-1. Under the 'wsgi' directory, apply any patches required to update the 'openshift' Django app.
+1. Under the 'wsgi' directory, apply any patches required to update the 'foodcheck' Django app.
 2. From the template root directory, run 'git apply --check .openshift/template.patch' to test for patching problems.
 3. Next run 'git am --signoff < .openshift/template.patch' to apply the patch to the template.
 
