@@ -1,0 +1,8 @@
+* 2013-07-24: OpenShift does not support pulling from a github repository.
+  It must be pushed to from a checked out copy.
+
+* 2013-07-24: Django is buggy with Python 2.7 on OpenShift. Static files
+  don't deploy.
+  https://github.com/nistur/DjangoShift/blob/master/README.md
+
+* 2013-07-24: Some changes need to be made to get Django 1.5 to work.
