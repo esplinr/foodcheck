@@ -1,19 +1,36 @@
-Rename django app from openshift to foodcheck
+Clean up Mongo gear (I don't think Mongo gains us anything)
+-- it doesn't go through the ORM, so we need Postgres anyway for admin stuff
+-- not storing large amounts of mapping data. Health data is a relational export
 
-Connect the live repository
+Install Postgres with GIS
+http://stackoverflow.com/questions/16868823/geolocation-queries-on-postgresql
+-- put on own gear
+-- how to persist data?
 
-Delete on live
+Build a table / class diagram for the data
 
-Deploy on live and test
-
-Connect to Mongo DB
+Basic site skeleton templates
 
 DNS: https://www.openshift.com/blogs/custom-url-names-for-your-paas-applications-host-forwarding-and-cnames-the-openshift-way
 
 Import food data from San Fransisco into datastore
+* Need to be inserted as python objects using Django calls so that it goes 
+  through the ORM?
+
+Data import as a cron job:
+* Poor man's cron? (at the end of a request, see if it is time to import new
+  data to be ready for next request
+* Does django have a cron? (Drupal does)
+* OpenShift scheduled jobs cartridge?
 
 Display food data as a list on the site
 
-Include leaflet in UI
+Include leaflet in UI pulling from OpenStreetMap
 
 Allow user to select a restaurant and see data
+
+Use mongo for recording history of queries / what people search?
+
+Allow ratings and comments?
+
+Allow extra django gear to spin up for load?

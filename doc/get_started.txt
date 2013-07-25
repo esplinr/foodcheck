@@ -22,6 +22,10 @@ rhc ssh foodcheck
 # Connect dev repo to the live openshift
 git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
 
+# Update with latest changes from the official repository
+## git pull doesn't like pulling from the non-master upstream
+git fetch github
+git merge
 # Push changes to official repository
 git push github
 # Push changes to live
