@@ -27,6 +27,8 @@ Display food data as a list on the site
 
 Include leaflet in UI pulling from OpenStreetMap
 
+South for migrating the database
+
 Allow user to select a restaurant and see data
 
 Use mongo for recording history of queries / what people search?
