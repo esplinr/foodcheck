@@ -12,3 +12,6 @@
   make a change and push again.
 
 * 2013-07-24: The Django admin credentials are in ~/app-root/data/CREDENTIALS
+
+* 2013-07-25: The PaaS needs to be able to change your IP address, so you need
+  to use an "apex CNAME" to point to the domain.
