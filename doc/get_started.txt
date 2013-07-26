@@ -7,11 +7,13 @@ rhc setup -l openshift-dev@esplins.org
 # Clone official github repo
 git clone https://github.com/esplinr/foodcheck.git
 cd foodcheck
+git remote rename origin github
 # Create dev openshift env based on official github repo
 rhc app create -a foodcheck -t python-2.6 --from-code https://github.com/esplinr/foodcheck.git
 ## Note the "Git remote" URL in the output
-git remote add openshift-dev ssh://<Git remote URL>
 rm -r foodcheck
+git remote add openshift-dev ssh://<Git remote URL>
+git fetch openshift-dev
 git branch --set-upstream master remotes/openshift-dev/master
 git push
 
