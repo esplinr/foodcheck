@@ -1,3 +1,5 @@
+GIT TIMMY's ENV WORKING! Good Job Richard!
+
 # Setup rhc
 ## Install ruby
 sudo gem install rhc
