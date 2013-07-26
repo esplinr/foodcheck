@@ -36,3 +36,6 @@ Use mongo for recording history of queries / what people search?
 Allow ratings and comments?
 
 Allow extra django gear to spin up for load?
+-- How to have uploaded files be persistent?
+-- How to have uploaded files be available across all nodes?
+-- Setup load balancer?

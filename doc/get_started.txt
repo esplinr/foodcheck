@@ -65,3 +65,7 @@ git push
 ## Test
 git push github
 ## Rename app from openshift to foodcheck (grep every occurrence)
+
+# Add a DNS alias to the vhost
+rhc alias add live foodcheck.us
+rhc alias add live www.foodcheck.us
