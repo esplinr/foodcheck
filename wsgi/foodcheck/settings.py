@@ -24,7 +24,7 @@ if ON_OPENSHIFT:
     # with rhc cartridge add (see /README in this git repo)
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': 'live',  # Or path to database file if using sqlite3.
             'USER': 'admingtayl7h',                      # Not used with sqlite3.
             'PASSWORD': ' Vhi6E4p2qELM',                  # Not used with sqlite3.
