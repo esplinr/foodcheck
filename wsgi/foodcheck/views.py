@@ -3,3 +3,5 @@ from django.shortcuts import render_to_response
 
 def home(request):
     return render_to_response('foodcheck/home.html')
+
+# vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
