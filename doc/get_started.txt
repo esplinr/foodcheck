@@ -1,5 +1,3 @@
-GIT TIMMY's ENV WORKING! Good Job Richard!
-
 # Setup rhc
 ## Install ruby
 sudo gem install rhc
@@ -42,6 +40,7 @@ rhc ssh live
 exit
 rhc tail live
 
+# Git 
 
 # *First Repo--Only Needed Once*
 # Create local git repository that is connected to the dev openshift env
@@ -66,3 +65,7 @@ git push
 ## Test
 git push github
 ## Rename app from openshift to foodcheck (grep every occurrence)
+
+# Add a DNS alias to the vhost
+rhc alias add live foodcheck.us
+rhc alias add live www.foodcheck.us
