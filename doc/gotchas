@@ -1,6 +1,10 @@
 * 2013-07-24: OpenShift does not support pulling from a github repository.
   It must be pushed to from a checked out copy.
 
+* 2013-07-24: Unless we run our own development environments, we need to do a
+  git check-in before testing each change. That means many commits in our
+  history won't be stable cuts of the code.
+
 * 2013-07-24: Django is buggy with Python 2.7 on OpenShift. Static files
   don't deploy.
   https://github.com/nistur/DjangoShift/blob/master/README.md
