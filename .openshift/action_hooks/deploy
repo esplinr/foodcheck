@@ -6,13 +6,18 @@
 
 source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
 
+if [ -e ${OPENSHIFT_DATA_DIR}/CLEAN_DB ]
+then
+  echo "Found data/CLEAN_DB. Wipe the database."
+  python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py sqlflush
+  python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py createsuperuser --noinput --username=admin --email richard-oss@esplins.org
+  # manage.py changepassword won't accept password on the commandline
+  admin_pass=`cat ${OPENSHIFT_DATA_DIR}/CREDENTIALS`
+  echo "from django.contrib.auth.models import User; u=User.objects.get(username__exact='admin'); u.set_password('${admin_pass}'); u.save()" | python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py shell
+fi
+
 echo "Executing 'manage.py syncdb --noinput'"
 python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py syncdb --noinput
-
-#python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py createsuperuser --noinput --username=admin --email richard-oss@esplins.org
-# manage.py changepassword won't accept password on the commandline
-admin_pass=`cat ${OPENSHIFT_DATA_DIR}/CREDENTIALS`
-#echo "from django.contrib.auth.models import User; u=User.objects.get(username__exact='admin'); u.set_password('${admin_pass}'); u.save()" | python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py shell
 
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py collectstatic --noinput'"
 python "$OPENSHIFT_REPO_DIR"wsgi/foodcheck_proj/manage.py collectstatic --noinput
