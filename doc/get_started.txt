@@ -99,9 +99,9 @@ rm ~/app-root/data/CLEANDB
 exit
 
 # Setup the live openshift env
-# * Use the instructions for changing accounts to live *
-# * Then use the instructions for the Dev Env from existing repo *
-# * but substitute account details and git branch openshift-live for dev *
+# * Use the instructions for connecting rhc to the live account *
+# * Then use the instructions for building a Dev Env from existing repo *
+# * app name = live, git branch = openshift-live *
 
 # Add a DNS alias to the vhost on live
 rhc alias add live foodcheck.us
