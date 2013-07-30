@@ -24,3 +24,6 @@
 
 * 2013-07-29: There is currently no shared-storage when scaling (i.e. for user
   uploades)--everything must go into a database or blob store (MongoDB)
+
+* 2013-07-30: Just a note. Performance between postgresql and postgis modules:
+              http://stackoverflow.com/questions/7252372/django-contrib-gis-db-backends-postgis-vs-django-db-backends-postgresql-psycopg2

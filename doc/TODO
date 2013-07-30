@@ -1,28 +1,13 @@
-Install django-leaflet from pypi
+Install PostGIS:
+https://www.openshift.com/blogs/time-for-a-spatial-power-up-openshift-postgis
 
-Fix static css and image file refernces in the template.
+Fix django-leaflet
+* Install the module so it doesn't break django
+* Uncomment the variables in the template
 
-Data download into openshift perstent data folder
--- mv data_dumps into that folder
-
-Script to recreate the postgres database
--- if data directory contains file "CLEAN_DB"
-
-Recreate the apps with -s (scalable)
--- update documentation
-Test auto-scaling (apache benchmark tool)
-
-Install Postgres with GIS
-http://stackoverflow.com/questions/16868823/geolocation-queries-on-postgresql
--- put on own gear
--- how to persist data?
-
-Build a table / class diagram for the data
-
-DNS: https://www.openshift.com/blogs/custom-url-names-for-your-paas-applications-host-forwarding-and-cnames-the-openshift-way
--- keeps redirecting back to live-foodcheck.rhcloud.com
-
-Import food data from San Fransisco into datastore
+Data Download:
+* Update script to download into openshift perstent data folder
+* Load into DB
 * Need to be inserted as python objects using Django calls so that it goes 
   through the ORM?
 
@@ -32,8 +17,6 @@ Data import as a cron job:
   (so need just one cron job)
 
 Display food data as a list on the site
-
-Include leaflet in UI pulling from OpenStreetMap
 
 Allow user to select a restaurant and see data
 
