@@ -45,27 +45,23 @@ git clone https://github.com/esplinr/foodcheck.git
 cd foodcheck
 git remote rename origin github
 # Create dev openshift env based on official github repo
-rhc app create -a foodcheck -t python-2.6 --from-code https://github.com/esplinr/foodcheck.git -s
+rhc app create foodcheck python-2.6 postgresql-9.2 --from-code https://github.com/esplinr/foodcheck.git --no-git -s
+rhc ssh foodcheck
+## Put the django admin password into ~/app-root/data/CREDENTIALS
+touch ~/app-root/data/CLEAN_DB
+exit
 ## Note the "Git remote" URL in the output
-rm -r foodcheck
 git remote add openshift-dev ssh://<Git remote URL>
 git fetch openshift-dev
 git branch --set-upstream master remotes/openshift-dev/master
-git push
-
-# Connect dev repo to the live openshift
-git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
-
-# Add PostgreSQL to Dev
-rhc add-cartridge -c postgresql-9.2
-## Put the django admin password into ~/app-root/data/CREDENTIALS
-rhc ssh foodcheck
-touch ~/app-root/data/CLEAN_DB
-exit
 git push openshift-dev
+# Clean up
 rhc ssh foodcheck
 rm ~/app-root/data/CLEANDB
 exit
+
+# Connect dev repo to the live openshift
+git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
 
 
 # *First Repo--Only Needed Once*
@@ -90,8 +86,6 @@ git commit
 git push
 ## Rename django project from openshift to foodcheck_proj (grep every occurrence)
 ## Test
-# Connect dev repo to the live openshift
-git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
 
 # Add PostgreSQL to Dev
 rhc add-cartridge -c postgresql-9.2
@@ -104,23 +98,14 @@ rhc ssh foodcheck
 rm ~/app-root/data/CLEANDB
 exit
 
-
-# Switch to Live
-rhc account logout
-rhc setup -l foodcheck@esplins.org
-rhc ssh live
-
-# Add PostgreSQL to live
-rhc add-cartridge -c postgresql-9.2
-## Put the django admin password into ~/app-root/data/CREDENTIALS
-rhc ssh live
-touch ~/app-root/data/CLEAN_DB
-exit
-git push openshift-live
-rhc ssh live
-rm ~/app-root/data/CLEANDB
-exit
+# Setup the live openshift env
+# * Use the instructions for changing accounts to live *
+# * Then use the instructions for the Dev Env from existing repo *
+# * but substitute account details and git branch openshift-live for dev *
 
 # Add a DNS alias to the vhost on live
 rhc alias add live foodcheck.us
 rhc alias add live www.foodcheck.us
+
+# # Connect dev repo to the live openshift
+git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
