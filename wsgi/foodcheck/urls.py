@@ -15,3 +15,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )
+
+# vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4

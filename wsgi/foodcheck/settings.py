@@ -16,6 +16,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+    ('Richard Esplin', 'richard-oss@esplins.org'),
 )
 MANAGERS = ADMINS
 
@@ -23,6 +24,17 @@ if ON_OPENSHIFT:
     # os.environ['OPENSHIFT_MYSQL_DB_*'] variables can be used with databases created
     # with rhc cartridge add (see /README in this git repo)
     DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['OPENSHIFT_APP_NAME'],
+            'USER': os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'],
+            'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
+            'HOST': os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
+            'PORT': os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
+        }
+    }    
+else:
+   DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': os.path.join(os.environ['OPENSHIFT_DATA_DIR'], 'sqlite3.db'),  # Or path to database file if using sqlite3.
@@ -32,18 +44,6 @@ if ON_OPENSHIFT:
             'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': os.path.join(PROJECT_DIR, 'sqlite3.db'),  # Or path to database file if using sqlite3.
-            'USER': '',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        }
-    }
-
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -86,16 +86,13 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, '..', 'static')
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
-# URL prefix for admin static files -- CSS, JavaScript and images.
-# Make sure to use a trailing slash.
-# Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
-
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+# Listing the project dir here avoids having to collect static files in a 
+# subdirectory i.e. /static/css instead of /static/foodcheck/css
+    os.path.join(PROJECT_DIR, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -179,3 +176,5 @@ LOGGING = {
         },
     }
 }
+
+# vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4

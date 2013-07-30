@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/  DTD/xhtml11.dtd">
 <html xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}" version="-//W3C// DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>{% block title %}Foodcheck{% endblock %}</title>
+    <title>SIWI &raquo; {% block title %}main{% endblock %}</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="cache-control" content="public" />
     <meta name="robots" content="follow, all" />
@@ -12,8 +12,8 @@
     <meta name="author" content="Foodcheck" />
     {% block meta %}{% endblock %}
     <link rel="pingback" href="/xmlrpc/" />
-    <link rel="shortcut icon" href="{{ STATIC_URL }}/img/EU_food_symbol.ico" />
-    <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}/css/main.css" />
+    <link rel="shortcut icon" href="/static/img/EU_food_symbol.ico" />
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="/static/css/main.css" />
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
   </head>
@@ -24,7 +24,10 @@
       </header>
       <main>
       {% block content %}
-      <p>This is where we expect the main content for this page to be.</p>
+      <h2>Server error</h2>
+      <p>There has been an error.</p>
+      <p>Hopefully the server administrator got notified, and will log in shortly to figure out what went wrong.</p>
+      <p>We apologize for any inconvenience.</p>
       {% endblock %}
       </main>
       <footer id="footer">

@@ -1,12 +1,23 @@
+Install django-leaflet from pypi
+
+Fix static css and image file refernces in the template.
+
+Data download into openshift perstent data folder
+-- mv data_dumps into that folder
+
+Script to recreate the postgres database
+-- if data directory contains file "CLEAN_DB"
+
+Recreate the apps with -s (scalable)
+-- update documentation
+Test auto-scaling (apache benchmark tool)
+
 Install Postgres with GIS
 http://stackoverflow.com/questions/16868823/geolocation-queries-on-postgresql
 -- put on own gear
 -- how to persist data?
--- clean up sqlite stuff
 
 Build a table / class diagram for the data
-
-Basic site skeleton templates
 
 DNS: https://www.openshift.com/blogs/custom-url-names-for-your-paas-applications-host-forwarding-and-cnames-the-openshift-way
 -- keeps redirecting back to live-foodcheck.rhcloud.com
@@ -16,24 +27,21 @@ Import food data from San Fransisco into datastore
   through the ORM?
 
 Data import as a cron job:
-* Poor man's cron? (at the end of a request, see if it is time to import new
-  data to be ready for next request
-* Does django have a cron? (Drupal does)
-* OpenShift scheduled jobs cartridge?
+* OpenShift cron cartridge for scheduled jobs
+* For multiple jobs might be easier to use django-chronograph
+  (so need just one cron job)
 
 Display food data as a list on the site
 
 Include leaflet in UI pulling from OpenStreetMap
 
-South for migrating the database
-
 Allow user to select a restaurant and see data
-
-Use mongo for recording history of queries / what people search?
 
 Allow ratings and comments?
 
-Allow extra django gear to spin up for load?
--- How to have uploaded files be persistent?
--- How to have uploaded files be available across all nodes?
--- Setup load balancer?
+Long term:
+* Set admin email and debug email to a team mailing list
+* South for migrating the database
+* Backup the database (psql dump over SSH)
+* Blob store or shared storage for uploaded files
+* Use mongo for recording history of queries / what people search?

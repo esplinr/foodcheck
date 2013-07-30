@@ -1,6 +1,10 @@
 * 2013-07-24: OpenShift does not support pulling from a github repository.
   It must be pushed to from a checked out copy.
 
+* 2013-07-24: Unless we run our own development environments, we need to do a
+  git check-in before testing each change. That means many commits in our
+  history won't be stable cuts of the code.
+
 * 2013-07-24: Django is buggy with Python 2.7 on OpenShift. Static files
   don't deploy.
   https://github.com/nistur/DjangoShift/blob/master/README.md
@@ -11,7 +15,12 @@
   not all of the hooks execute. So the Django app isn't found. You need to
   make a change and push again.
 
-* 2013-07-24: The Django admin credentials are in ~/app-root/data/CREDENTIALS
+* 2013-07-24: The Django admin pass is in ~/app-root/data/CREDENTIALS
 
 * 2013-07-25: The PaaS needs to be able to change your IP address, so you need
   to use an "apex CNAME" to point to the domain.
+
+* 2013-07-29: Rules on scaling: https://www.openshift.com/developers/scaling
+
+* 2013-07-29: There is currently no shared-storage when scaling (i.e. for user
+  uploades)--everything must go into a database or blob store (MongoDB)
