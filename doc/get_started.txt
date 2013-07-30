@@ -53,12 +53,15 @@ git fetch openshift-dev
 git branch --set-upstream master remotes/openshift-dev/master
 git push
 
-# Add Postgres
-rhc add-cartridge -c postgresql-9.2
-## Put the django admin password into ~/app-root/data/CREDENTIALS
-
 # Connect dev repo to the live openshift
 git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
+
+# Add PostgreSQL to Dev
+rhc add-cartridge -c postgresql-9.2
+## Put the django admin password into ~/app-root/data/CREDENTIALS
+rhc ssh foodcheck
+touch ~/app-root/data/CLEAN_DB
+git push openshift-dev
 
 
 # *First Repo--Only Needed Once*
@@ -81,13 +84,30 @@ git merge django-example/master
 ## Edit and fix files
 git commit
 git push
-## Test
-git push github
 ## Rename django project from openshift to foodcheck_proj (grep every occurrence)
-# Add Postgres
+## Test
+# Connect dev repo to the live openshift
+git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
+
+# Add PostgreSQL to Dev
 rhc add-cartridge -c postgresql-9.2
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
+rhc ssh foodcheck
+touch ~/app-root/data/CLEAN_DB
+git push openshift-dev
 
-# Add a DNS alias to the vhost
+# Switch to Live
+rhc account logout
+rhc setup -l foodcheck@esplins.org
+rhc ssh live
+
+# Add PostgreSQL to live
+rhc add-cartridge -c postgresql-9.2
+## Put the django admin password into ~/app-root/data/CREDENTIALS
+rhc ssh foodcheck
+touch ~/app-root/data/CLEAN_DB
+git push openshift-live
+
+# Add a DNS alias to the vhost on live
 rhc alias add live foodcheck.us
 rhc alias add live www.foodcheck.us
