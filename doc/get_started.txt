@@ -83,7 +83,7 @@ git commit
 git push
 ## Test
 git push github
-## Rename app from openshift to foodcheck (grep every occurrence)
+## Rename django project from openshift to foodcheck_proj (grep every occurrence)
 # Add Postgres
 rhc add-cartridge -c postgresql-9.2
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
