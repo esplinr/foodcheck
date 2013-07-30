@@ -7,13 +7,12 @@
 source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
 
 echo "Executing 'manage.py syncdb --noinput'"
-python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py syncdb --noinput
+python $OPENSHIFT_REPO_DIR/wsgi/foodcheck/manage.py syncdb --noinput
 
-python manage.py createsuperuser --noinput --username=admin --email richard-oss@esplins.org
+python $OPENSHIFT_REPO_DIR/wsgi/foodcheck/manage.py createsuperuser --noinput --username=admin --email richard-oss@esplins.org
 # manage.py changepassword won't accept password on the commandline
 admin_pass=`cat ${OPENSHIFT_DATA_DIR}/CREDENTIALS`
-echo "from django.contrib.auth.models import User; u=User.objects.get(username__exact='admin'); u.set_password('${admin_pass}'); u.save()" |
-python manage.py shell
+echo "from django.contrib.auth.models import User; u=User.objects.get(username__exact='admin'); u.set_password('${admin_pass}'); u.save()" | python $OPENSHIFT_REPO_DIR/wsgi/foodcheck/manage.py shell
 
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/foodcheck/manage.py collectstatic --noinput'"
 python "$OPENSHIFT_REPO_DIR"wsgi/foodcheck/manage.py collectstatic --noinput
