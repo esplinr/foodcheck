@@ -2,11 +2,8 @@ Install Postgres with GIS
 http://stackoverflow.com/questions/16868823/geolocation-queries-on-postgresql
 -- put on own gear
 -- how to persist data?
--- clean up sqlite stuff
 
 Build a table / class diagram for the data
-
-Basic site skeleton templates
 
 DNS: https://www.openshift.com/blogs/custom-url-names-for-your-paas-applications-host-forwarding-and-cnames-the-openshift-way
 -- keeps redirecting back to live-foodcheck.rhcloud.com
@@ -25,8 +22,6 @@ Display food data as a list on the site
 
 Include leaflet in UI pulling from OpenStreetMap
 
-South for migrating the database
-
 Allow user to select a restaurant and see data
 
 Use mongo for recording history of queries / what people search?
@@ -37,3 +32,8 @@ Allow extra django gear to spin up for load?
 -- How to have uploaded files be persistent?
 -- How to have uploaded files be available across all nodes?
 -- Setup load balancer?
+
+Long term:
+* Set admin email and debug email to a team mailing list
+* South for migrating the database
+* Backup the database (psql dump over SSH)
