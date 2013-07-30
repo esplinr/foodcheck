@@ -1,3 +1,8 @@
+Fix static css and image file refernces in the template.
+
+Data download into openshift perstent data folder
+-- mv data_dumps into that folder
+
 Script to recreate the postgres database
 -- if data directory contains file "CLEAN_DB"
 

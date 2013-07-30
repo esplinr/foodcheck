@@ -1,33 +1,16 @@
-# Setup rhc
-## Install ruby
-sudo gem install rhc
-rhc setup -l openshift-dev@esplins.org
-
-# *Setup Local Env from Existing Repo*
-# Clone official github repo
-git clone https://github.com/esplinr/foodcheck.git
-cd foodcheck
-git remote rename origin github
-# Create dev openshift env based on official github repo
-rhc app create -a foodcheck -t python-2.6 --from-code https://github.com/esplinr/foodcheck.git
-## Note the "Git remote" URL in the output
-rm -r foodcheck
-git remote add openshift-dev ssh://<Git remote URL>
-git fetch openshift-dev
-git branch --set-upstream master remotes/openshift-dev/master
-git push
-
+# Getting Stuff Done #
 # Work with dev openshift
 rhc tail foodcheck
 rhc ssh foodcheck
 
-# Connect dev repo to the live openshift
-git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
-
 # Update with latest changes from the official repository
 ## git pull doesn't like pulling from the non-master upstream
 git fetch github
-git merge github
+git merge github/master
+
+# Push changes to development environment
+git push openshift-dev
+
 # Push changes to official repository
 git push github
 # Push changes to live
@@ -40,11 +23,38 @@ rhc ssh live
 exit
 rhc tail live
 
-# Git 
+
+# Setup Dev Environment #
+# Setup rhc
+## Install ruby
+sudo gem install rhc
+rhc setup -l openshift-dev@esplins.org
+
+# *Setup Dev Env from Existing Repo*
+# Clone official github repo
+git clone https://github.com/esplinr/foodcheck.git
+cd foodcheck
+git remote rename origin github
+# Create dev openshift env based on official github repo
+rhc app create -a foodcheck -t python-2.6 --from-code https://github.com/esplinr/foodcheck.git -s
+## Note the "Git remote" URL in the output
+rm -r foodcheck
+git remote add openshift-dev ssh://<Git remote URL>
+git fetch openshift-dev
+git branch --set-upstream master remotes/openshift-dev/master
+git push
+
+# Add Postgres
+rhc add-cartridge -c postgresql-9.2
+## Put the django admin password into ~/app-root/data/CREDENTIALS
+
+# Connect dev repo to the live openshift
+git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
+
 
 # *First Repo--Only Needed Once*
 # Create local git repository that is connected to the dev openshift env
-rhc app create -a foodcheck -t python-2.6
+rhc app create -a foodcheck -t python-2.6 -s
 cd foodcheck
 git remote rename origin openshift-dev
 # Connect to the official github repo, and merge
@@ -67,7 +77,6 @@ git push github
 ## Rename app from openshift to foodcheck (grep every occurrence)
 # Add Postgres
 rhc add-cartridge -c postgresql-9.2
-## Put connection information into settings.py
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
 
 # Add a DNS alias to the vhost
