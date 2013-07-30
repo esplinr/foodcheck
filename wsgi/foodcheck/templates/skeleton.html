@@ -1,5 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/  DTD/xhtml11.dtd">
-{% load leaflet_tags %}
 <html xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}" version="-//W3C// DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
   
   <head>
@@ -16,6 +15,9 @@
     <link rel="pingback" href="/xmlrpc/" />
     <link rel="shortcut icon" href="{{ STATIC_URL }}foodcheck/img/EU_food_symbol.ico" />
     <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}foodcheck/css/main.css" />
+    <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.ie.css" /><![endif]-->
+    <script>L_PREFER_CANVAS = true;</script>
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
     {% leaflet_js plugins="ALL" %}
@@ -39,6 +41,12 @@
       </footer>
     </div>
 
+    <div id="map" style="height:300px"/>
+    <script src="http://leafletjs.com/dist/leaflet.js"></script>
+    <script src="https://raw.github.com/imbcmdth/RTree/master/src/rtree.js"></script>
+    <script src="https://raw.github.com/makinacorpus/Leaflet.LayerIndex/master/leaflet.layerindex.js"></script>
+    <script src="infocontrol.js"></script>
+    <script src="demo.js"></script>
   </body>
 </html>
 
