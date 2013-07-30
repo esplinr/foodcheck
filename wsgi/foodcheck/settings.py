@@ -140,7 +140,6 @@ TEMPLATE_DIRS = (
 )
 
 
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,6 +151,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'leaflet',
     'foodcheck', 
 )
 

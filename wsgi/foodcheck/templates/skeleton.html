@@ -1,5 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/  DTD/xhtml11.dtd">
+{% load leaflet_tags %}
 <html xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}" version="-//W3C// DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
+  
   <head>
     <title>{% block title %}Foodcheck{% endblock %}</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -16,6 +18,8 @@
     <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}foodcheck/css/main.css" />
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
+    {% leaflet_js plugins="ALL" %}
+    {% leaflet_css plugins="ALL" %}
   </head>
   <body class="{% block body-class %}{% endblock %}">
     <div class="container">
@@ -26,12 +30,15 @@
       {% block content %}
       <p>This is where we expect the main content for this page to be.</p>
       {% endblock %}
+      <h1>Django-Leaflet</h1>
+      {% leaflet_map "main" %}
       </main>
       <footer id="footer">
       <hr>
       <p>Copyright 2013<br />Available under the terms of the AGPL</p>
       </footer>
     </div>
+
   </body>
 </html>
 
