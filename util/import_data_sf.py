@@ -36,7 +36,7 @@ for line in reader:
 
 
 ## read the score
-cvsfile=open("business_id.csv","r")
+cvsfile=open("inspection_plus.csv","r")
 cvsfile.seek
 reader=csv.reader(csvfile,dialect='excel', delimiter=",")
 
@@ -45,6 +45,8 @@ reader=csv.reader(csvfile,dialect='excel', delimiter=",")
 for line in reader:
    if business_id in line:
       score=line[2]
+      time=line[3]
+      vilation=line[4]
 
 
 csvfile.close()
