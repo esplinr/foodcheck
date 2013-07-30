@@ -1,4 +1,0 @@
-include README.rst CHANGES LICENSE
-recursive-include leaflet/static *.js
-recursive-include leaflet/static *.css
-recursive-include leaflet/static *.png
