@@ -61,7 +61,11 @@ rhc add-cartridge -c postgresql-9.2
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
 rhc ssh foodcheck
 touch ~/app-root/data/CLEAN_DB
+exit
 git push openshift-dev
+rhc ssh foodcheck
+rm ~/app-root/data/CLEANDB
+exit
 
 
 # *First Repo--Only Needed Once*
@@ -94,7 +98,12 @@ rhc add-cartridge -c postgresql-9.2
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
 rhc ssh foodcheck
 touch ~/app-root/data/CLEAN_DB
+exit
 git push openshift-dev
+rhc ssh foodcheck
+rm ~/app-root/data/CLEANDB
+exit
+
 
 # Switch to Live
 rhc account logout
@@ -104,9 +113,13 @@ rhc ssh live
 # Add PostgreSQL to live
 rhc add-cartridge -c postgresql-9.2
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
-rhc ssh foodcheck
+rhc ssh live
 touch ~/app-root/data/CLEAN_DB
+exit
 git push openshift-live
+rhc ssh live
+rm ~/app-root/data/CLEANDB
+exit
 
 # Add a DNS alias to the vhost on live
 rhc alias add live foodcheck.us
