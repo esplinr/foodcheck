@@ -15,13 +15,8 @@
     <link rel="pingback" href="/xmlrpc/" />
     <link rel="shortcut icon" href="{{ STATIC_URL }}foodcheck/img/EU_food_symbol.ico" />
     <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}foodcheck/css/main.css" />
-    <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.ie.css" /><![endif]-->
-    <script>L_PREFER_CANVAS = true;</script>
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
-    {% leaflet_js plugins="ALL" %}
-    {% leaflet_css plugins="ALL" %}
   </head>
   <body class="{% block body-class %}{% endblock %}">
     <div class="container">
@@ -32,21 +27,12 @@
       {% block content %}
       <p>This is where we expect the main content for this page to be.</p>
       {% endblock %}
-      <h1>Django-Leaflet</h1>
-      {% leaflet_map "main" %}
       </main>
       <footer id="footer">
       <hr>
       <p>Copyright 2013<br />Available under the terms of the AGPL</p>
       </footer>
     </div>
-
-    <div id="map" style="height:300px"/>
-    <script src="http://leafletjs.com/dist/leaflet.js"></script>
-    <script src="https://raw.github.com/imbcmdth/RTree/master/src/rtree.js"></script>
-    <script src="https://raw.github.com/makinacorpus/Leaflet.LayerIndex/master/leaflet.layerindex.js"></script>
-    <script src="infocontrol.js"></script>
-    <script src="demo.js"></script>
   </body>
 </html>
 
