@@ -1,4 +1,5 @@
 {% extends "skeleton.html" %}
+{#
 {% load leaflet_tags %}
 {% block link %}
     <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
@@ -7,11 +8,14 @@
 {% block script %}
     <script>L_PREFER_CANVAS = true;</script>
 {% endblock %}
+#}
 {% block content %}
 <p>Search box</p>
 <p>Map</p>
     <h1>Django-Leaflet</h1>
+{#
     {% leaflet_js plugins="ALL" %}
     {% leaflet_css plugins="ALL" %}
     {% leaflet_map "main" %}
+#}
 {% endblock %}
