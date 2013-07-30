@@ -139,6 +139,8 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -175,5 +177,15 @@ LOGGING = {
         },
     }
 }
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+  'django.contrib.auth.context_processors.auth',
+  'django.core.context_processors.i18n',
+  'django.core.context_processors.request',
+  'django.core.context_processors.media',
+  'django.core.context_processors.static',
+)
+
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
