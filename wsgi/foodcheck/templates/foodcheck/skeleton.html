@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/  DTD/xhtml11.dtd">
+{% load leaflet_tags %}
 <html xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}" version="-//W3C// DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
   
   <head>
@@ -17,8 +18,8 @@
     <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}/css/main.css" />
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
-    {% leaflet_js %}
-    {% leaflet_css %}
+    {% leaflet_js plugins="ALL" %}
+    {% leaflet_css plugins="ALL" %}
   </head>
   <body class="{% block body-class %}{% endblock %}">
     <div class="container">
