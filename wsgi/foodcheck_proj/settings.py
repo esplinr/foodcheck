@@ -91,7 +91,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 # Listing the project dir here avoids having to collect static files in a 
-# subdirectory i.e. /static/css instead of /static/foodcheck/css
+# subdirectory i.e. /static/css instead of /static/foodcheck_proj/css
     os.path.join(PROJECT_DIR, 'static'),
 )
 
@@ -131,7 +131,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'foodcheck.urls'
+ROOT_URLCONF = 'foodcheck_proj.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -152,7 +152,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'leaflet',
-    'foodcheck', 
+    'foodcheck_app', 
 )
 
 # A sample logging configuration. The only tangible logging
