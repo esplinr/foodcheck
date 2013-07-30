@@ -53,6 +53,12 @@ Relevant Technologies:
 * Mapping Data: OpenStreetMap, exposed through Leaflet
 
 
+Dependency Libraries
+--------------------
+Django apps:
+* django-leaflet
+
+
 Other Documentation
 -------------------
 The OpenShift `python` cartridge documentation can be found at:
