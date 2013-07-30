@@ -1,3 +1,5 @@
+Install django-leaflet from pypi
+
 Fix static css and image file refernces in the template.
 
 Data download into openshift perstent data folder
