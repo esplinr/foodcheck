@@ -15,3 +15,8 @@
 
 * 2013-07-25: The PaaS needs to be able to change your IP address, so you need
   to use an "apex CNAME" to point to the domain.
+
+* 2013-07-29: Rules on scaling: https://www.openshift.com/developers/scaling
+
+* 2013-07-29: There is currently no shared-storage when scaling (i.e. for user
+  uploades)--everything must go into a database or blob store (MongoDB)
