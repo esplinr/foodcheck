@@ -1,7 +1,16 @@
 # Getting Stuff Done #
 # Work with dev openshift
+# Tail logs
 rhc tail foodcheck
+# SSH to the dev server
 rhc ssh foodcheck
+# Source virtenv so that it uses the correct python
+source ~/python/virtenv/bin/activate
+# Django management tools
+cd app-root/repo/wsgi/foodcheck/
+./manage.py help
+# Manage the DB
+psql
 
 # Update with latest changes from the official repository
 ## git pull doesn't like pulling from the non-master upstream
