@@ -1,16 +1,16 @@
 {% extends "skeleton.html" %}
-{% load leaflet_tags %}
+{#% load leaflet_tags %}
 {% block link %}
     {% leaflet_css plugins="ALL" %}
 {% endblock %}
 {% block script %}
     {% leaflet_js plugins="ALL" %}
-{% endblock %}
+{% endblock #}
 {% block content %}
 <p>Search box</p>
 <p>Map</p>
     <h1>Django-Leaflet</h1>
 
-    {% leaflet_map "main" %}
+    {# leaflet_map "main" #}
 
 {% endblock %}
