@@ -21,4 +21,3 @@ L.Control.Information = L.Control.extend({
         map.off('moveend');
     },
 });
-March 8, 2013
