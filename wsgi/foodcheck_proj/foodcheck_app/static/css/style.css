@@ -1,7 +1,7 @@
 /**/
-@import "{{ STATIC_URL }}css/reset.css";
-@import "{{ STATIC_URL }}css/grid.css";
-@import "{{ STATIC_URL }}css/superfish.css";
+@import "../css/reset.css";
+@import "../STATIC_URL }}css/grid.css";
+@import "../STATIC_URL }}css/superfish.css";
 @import url(//fonts.googleapis.com/css?family=Noto+Sans);
 @import url(//fonts.googleapis.com/css?family=Lobster);
 
