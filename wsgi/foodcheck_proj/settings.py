@@ -190,8 +190,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # Leaflet settings
 LEAFLET_CONFIG = {
-'DEFAULT_CENTER': (37.7, -122.4),
-'DEFAULT_ZOOM': 16,
+'DEFAULT_CENTER': (37.7750, -122.4183),
+'DEFAULT_ZOOM': 10,
 'PLUGINS': {
     'main': {
         'js': STATIC_URL + 'js/demo.js',
