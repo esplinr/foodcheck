@@ -1,73 +1,83 @@
-import os, json
+import json
 
 from django import template
 from django.template import Context
 from django.conf import settings
 
 from leaflet import app_settings, SPATIAL_EXTENT, SRID
+from leaflet import PLUGINS
 
 
 register = template.Library()
 
+@register.inclusion_tag('leaflet/css.html')
+def leaflet_css(plugins=None):
+    """
 
-def base_url():
-    version = app_settings.get('LEAFLET_VERSION')
-    paths = (settings.STATIC_URL, "leaflet")
-    if version:
-        paths += (version,)
-    return os.path.join(*paths)
-
-
-@register.simple_tag
-def leaflet_css():
-    return """<link rel="stylesheet" type="text/css" href="%(static)s/leaflet.css">
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" type="text/css" href="%(static)s/leaflet.ie.css" />
-    <![endif]-->
-    """ % {'static': base_url()}
+    :param only_plugins:
+    :param exclude_plugins:
+    :return:
+    """
+    plugin_names = _get_plugin_names(plugins)
+    return {
+        "MINIMAP": app_settings.get('MINIMAP'),
+        "PLUGINS_CSS": _get_all_resources_for_plugins(plugin_names, 'css'),
+    }
 
 
-@register.simple_tag
-def leaflet_js():
-    leafletjs = 'leaflet.js'
-    if settings.TEMPLATE_DEBUG:
-        leafletjs = 'leaflet-src.js'
-    scripts = """<script src="%(base)s/%(lf)s" type="text/javascript"></script>
-              <script src="%(base)s/leaflet.extras.js" type="text/javascript"></script>"""
-    if SRID:
-        scripts += """<script src="%(staticurl)sleaflet/proj4js.js" type="text/javascript"></script>
-                      <script src="%(staticurl)sleaflet/proj4leaflet.js" type="text/javascript"></script>
-                      <script src="http://spatialreference.org/ref/epsg/%(srid)s/proj4js/" type="text/javascript"></script>"""
+@register.inclusion_tag('leaflet/js.html')
+def leaflet_js(plugins=None):
+    """
 
-    return scripts % {
-            'base': base_url(),
-            'staticurl': settings.STATIC_URL,
-            'lf': leafletjs,
-            'srid': SRID
-        }
-    
+    :param only_plugins:
+    :param exclude_plugins:
+    :return:
+    """
+    plugin_names = _get_plugin_names(plugins)
+    return {
+        "DEBUG": settings.TEMPLATE_DEBUG,
+        "SRID": SRID,
+        "MINIMAP": app_settings.get('MINIMAP'),
+        "PLUGINS_JS":  _get_all_resources_for_plugins(plugin_names, 'js'),
+    }
+
 
 @register.simple_tag
-def leaflet_map(name, callback=None, fitextent=True):
+def leaflet_map(name, callback=None, fitextent=True, creatediv=True):
+    """
+
+    :param name:
+    :param callback:
+    :param fitextent:
+    :param creatediv:
+    :return:
+    """
     if callback is None:
         callback = "%sInit" % name
+
     tilesurl = app_settings.get('TILES_URL')
     if tilesurl and isinstance(tilesurl, basestring):
         tilesurl = (('background', tilesurl),)
+
     extent = None
     if SPATIAL_EXTENT is not None:
         xmin, ymin, xmax, ymax = SPATIAL_EXTENT
         extent = (ymin, xmin, ymax, xmax)
+
     t = template.loader.get_template("leaflet/map_fragment.html")
     return t.render(Context(dict(name=name,
+                                 creatediv=creatediv,
                                  srid=SRID,
                                  extent=list(extent),
+                                 center=app_settings['DEFAULT_CENTER'],
+                                 zoom=app_settings['DEFAULT_ZOOM'],
                                  fitextent=fitextent,
                                  tilesurl=[list(url) for url in tilesurl],
                                  callback=callback,
                                  scale=app_settings.get('SCALE'),
+                                 minimap=app_settings.get('MINIMAP'),
                                  tilesextent=list(app_settings.get('TILES_EXTENT', [])),
-                                 maxresolution=app_settings.get('MAX_RESOLUTION', 0))))
+                                )))
 
 @register.simple_tag
 def leaflet_json_config():
@@ -78,3 +88,36 @@ def leaflet_json_config():
         settings_as_json['SPATIAL_EXTENT'] = { 'xmin': xmin, 'ymin': ymin, 'xmax': xmax, 'ymax': ymax }
 
     return json.dumps(settings_as_json)
+
+
+
+
+def _get_plugin_names(plugin_names_from_tag_parameter):
+    """
+    Returns a list of plugin names, specified in the parameter.
+    Used by tags to determine which plugins to include
+    :param pluging_names_parameter:
+    :return:
+    """
+    if isinstance(plugin_names_from_tag_parameter, (str,unicode)):
+        names = plugin_names_from_tag_parameter.split(',')
+        return map(lambda n: n.strip(), names)
+    else:
+        return []
+
+
+
+def _get_all_resources_for_plugins(plugin_names, resource_type):
+    """
+    Returns a list of URLs for the plugins with the specified resource type (js, css, ...)
+    :param plugin_names:
+    :param resource_type:
+    :return:
+    """
+    result = []
+    for plugin_name in plugin_names:
+        if plugin_name in PLUGINS:
+            result.extend(PLUGINS[plugin_name].get(resource_type, []))
+
+    return result
+
