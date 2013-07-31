@@ -188,5 +188,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
   'django.core.context_processors.static',
 )
 
+# Leaflet settings
+LEAFLET_CONFIG = {
+'PLUGINS': {
+    'main': {
+        'js': STATIC_URL + 'js/demo.js',
+    },
+}
+
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4

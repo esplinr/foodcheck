@@ -1,27 +1,16 @@
 {% extends "skeleton.html" %}
-{# load leaflet_tags %}
+{% load leaflet_tags %}
 {% block link %}
-    <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.ie.css" /><![endif]-->
+    {% leaflet_css plugins="ALL" %}
 {% endblock %}
 {% block script %}
-    <script>L_PREFER_CANVAS = true;</script>
+    {% leaflet_js plugins="ALL" %}
 {% endblock %}
-#}
 {% block content %}
 <p>Search box</p>
 <p>Map</p>
     <h1>Django-Leaflet</h1>
 
-    {# leaflet_js plugins="ALL" %}
-    {# leaflet_css plugins="ALL" %}
-    {# leaflet_map "main" %}
-  <div id="map" style="height:300px"/>
+    {% leaflet_map "main" %}
 
-  <script src="http://leafletjs.com/dist/leaflet.js"></script>
-  <script src="https://raw.github.com/imbcmdth/RTree/master/src/rtree.js"></script>
-  <script src="https://raw.github.com/makinacorpus/Leaflet.LayerIndex/master/leaflet.layerindex.js"></script>
-  <script src="infocontrol.js"></script>
-  <script src="demo.js"> </script>
-#}
 {% endblock %}
