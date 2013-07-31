@@ -72,8 +72,8 @@ nav{ position:relative;padding: 0px 0 0 0;}
 .sf-menu li ul li a{
 	font-size: 18px;
 	font-family: 'Noto Sans', sans-serif;
-	background: #e9afac;
-	color: #916564;
+	background: #ffc77d;
+	color: #8c4d4c;
 	text-transform: uppercase;
 	line-height: 20px;
 	position: relative;
@@ -86,7 +86,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 .sf-menu li li a:hover, 
 .sf-menu li.sfHover li.sfHover>a {  
 	color: #fff;
-	background: #e2827e;
+	background: #fa9b1e;
 
 }
 
