@@ -33,7 +33,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	text-transform: uppercase;
 	line-height: 20px;
 	z-index: 999;
-	background: url(../images/spacer.png) 0 0 repeat;
+	background: url(../img/spacer.png) 0 0 repeat;
 	border-radius: 5px;
 	position: relative;
 	display: block;
@@ -43,7 +43,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 
 .sf-menu>li.sfHover>a, .sf-menu>li.current>a, .sf-menu>li:hover>a:hover {
 	color: #fff;
-	background: #e2827e;
+	background: #fa9b1e;
 	padding: 6px 14px 7px;
 }
 
