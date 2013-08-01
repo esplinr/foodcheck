@@ -27,3 +27,7 @@
 
 * 2013-07-30: Just a note. Performance between postgresql and postgis modules:
               http://stackoverflow.com/questions/7252372/django-contrib-gis-db-backends-postgis-vs-django-db-backends-postgresql-psycopg2
+
+* 2013-07-31: PostGIS 1.5 is what OpenShift offerts, but it doesn't support
+              PostgreSQL 9.2. Must use Postgresql 8.4 which is only supported
+              through July of 2014.
