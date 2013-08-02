@@ -49,9 +49,9 @@ rhc app create foodcheck python-2.6 postgresql-8.4 --from-code https://github.co
 rhc ssh foodcheck
 ## Add PostGIS
 rhc ssh foodcheck
-psql -d foodcheck --command=\"create language plpgsql\;\"
-psql -d foodcheck -f /usr/share/pgsql/contrib/postgis-64.sql
-psql -d foodcheck -f /usr/share/pgsql/contrib/spatial_ref_sys.sql
+psql --command=\"create language plpgsql\;\"
+psql -f /usr/share/pgsql/contrib/postgis-64.sql
+psql -f /usr/share/pgsql/contrib/spatial_ref_sys.sql
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
 touch ~/app-root/data/CLEAN_DB
 exit
@@ -96,9 +96,9 @@ git push
 rhc add-cartridge -c postgresql-8.4
 ## Add PostGIS
 rhc ssh foodcheck
-psql -d foodcheck --command=\"create language plpgsql\;\"
-psql -d foodcheck -f /usr/share/pgsql/contrib/postgis-64.sql
-psql -d foodcheck -f /usr/share/pgsql/contrib/spatial_ref_sys.sql
+psql --command=\"create language plpgsql\;\"
+psql -f /usr/share/pgsql/contrib/postgis-64.sql
+psql -f /usr/share/pgsql/contrib/spatial_ref_sys.sql
 ## Put the django admin password into ~/app-root/data/CREDENTIALS
 rhc ssh foodcheck
 touch ~/app-root/data/CLEAN_DB

@@ -1,10 +1,7 @@
-Downgrade PostgreSQL to 8.4
-Install PostGIS:
-https://www.openshift.com/blogs/time-for-a-spatial-power-up-openshift-postgis
-
 Data Download:
 * Update script to download into openshift perstent data folder
 -- Use the os.env['OPENSHIFT_DATA'](?) environment variable to find the data folder
+-- This is repo/../data not repo/data/data_dumps
 * Build the models.py to match the CSV
 * Load into DB
 -- Need to be inserted as python objects using Django calls so that it goes 
@@ -30,6 +27,8 @@ Long term:
 * Add other cities: Chicago, DC
 * Notification if a specific restaurante fails an inspection
 * Foursquare checkin to alert on violation
+* Make CLEAN_DB actually clean the DB (remove unnecessary tables)
+-- Probably need it to relead a DB schema with GIS stuff
 * South for migrating the database
 * Backup the database (psql dump over SSH)
 * Set admin email and debug email to a team mailing list
