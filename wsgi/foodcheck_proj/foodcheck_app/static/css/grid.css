@@ -40,7 +40,8 @@ body {
 .grid_9,
 .grid_10,
 .grid_11,
-.grid_12 {
+.grid_12,
+.grid_13 {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -57,7 +58,8 @@ body {
 .push_8, .pull_8,
 .push_9, .pull_9,
 .push_10, .pull_10,
-.push_11, .pull_11 {
+.push_11, .pull_11,
+.push_13, .pull_13 {
   position: relative;
 }
 
@@ -174,6 +176,10 @@ body {
   padding-left: 880px;
 }
 
+.container_12 .prefix_13 {
+  padding-left: 480px;
+}
+
 /* `Suffix Extra Space >> 12 Columns
 ----------------------------------------------------------------------------------------------------*/
 
@@ -221,6 +227,9 @@ body {
   padding-right: 880px;
 }
 
+.container_12 .suffix_13 {
+  padding-right: 480px;
+}
 /* `Push Space >> 12 Columns
 ----------------------------------------------------------------------------------------------------*/
 
@@ -268,6 +277,10 @@ body {
   left: 880px;
 }
 
+.container_12 .push_13 {
+  left: 480px;
+}
+
 /* `Pull Space >> 12 Columns
 ----------------------------------------------------------------------------------------------------*/
 
@@ -313,6 +326,10 @@ body {
 
 .container_12 .pull_11 {
   left: -880px;
+}
+
+.container_12 .pull_13 {
+  left: -480px;
 }
 
 /* `Clear Floated Elements
