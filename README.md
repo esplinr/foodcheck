@@ -67,3 +67,9 @@ https://github.com/openshift/origin-server/tree/master/cartridges/openshift-orig
 The documentation for the OpenShift Django Example can be found at:
 https://github.com/openshift/django-example/blob/master/README.md
 https://github.com/openshift/django-example/blob/master/README
+
+Documentation for PostGIS is here:
+http://postgis.net/docs/manual-1.5/
+
+Documentation for Leaflet is here:
+http://leafletjs.com/reference.html

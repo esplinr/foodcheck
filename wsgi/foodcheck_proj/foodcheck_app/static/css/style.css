@@ -28,7 +28,7 @@ body {
 	position:relative;
 	min-width:960px;
 	padding-top: 27px;
-	background: #5fa022;
+	background: #66ba18;
 
 }
 .ic {
@@ -153,6 +153,7 @@ a.btn.m1 {
 
 .img_inner {
 	max-width: 100%;
+	max-height: 100%;
 	padding: 7px;
 	background: #fff ;
 	 -moz-box-sizing: border-box;
@@ -211,7 +212,7 @@ header {
 	padding-top: 16px;
 	position: relative;
 	z-index: 999;
-	background: #f2f0f0 ;
+	background: #f2fff2 ;
 	padding-bottom: 31px;
 	border-bottom: 1px solid #dddbdb;
 	box-shadow: 0 1px 5px #ccc;
@@ -243,7 +244,7 @@ header h1 a img {
 
 
 .main {
-	background: #f2f0f0;
+	background: #ffffff;
 }
 
 /*Content*/

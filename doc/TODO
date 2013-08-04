@@ -1,15 +1,13 @@
-Install PostGIS:
-https://www.openshift.com/blogs/time-for-a-spatial-power-up-openshift-postgis
-
-Fix django-leaflet
-* Install the module so it doesn't break django
-* Uncomment the variables in the template
-
 Data Download:
 * Update script to download into openshift perstent data folder
+-- Use the os.env['OPENSHIFT_DATA'](?) environment variable to find the data folder
+-- This is repo/../data not repo/data/data_dumps
+* Build the models.py to match the CSV
 * Load into DB
-* Need to be inserted as python objects using Django calls so that it goes 
-  through the ORM?
+-- Need to be inserted as python objects using Django calls so that it goes 
+   through the ORM?
+-- Build a python script, import django, build django obects, and save through
+   ORM
 
 Data import as a cron job:
 * OpenShift cron cartridge for scheduled jobs
@@ -20,11 +18,20 @@ Display food data as a list on the site
 
 Allow user to select a restaurant and see data
 
-Allow ratings and comments?
+Allow searching for a restaurant
+
 
 Long term:
-* Set admin email and debug email to a team mailing list
+* Mobile friendly
+* Initial location based on user location (browser or IP)
+* Add other cities: Chicago, DC
+* Notification if a specific restaurante fails an inspection
+* Foursquare checkin to alert on violation
+* Make CLEAN_DB actually clean the DB (remove unnecessary tables)
+-- Probably need it to relead a DB schema with GIS stuff
 * South for migrating the database
 * Backup the database (psql dump over SSH)
+* Set admin email and debug email to a team mailing list
 * Blob store or shared storage for uploaded files
 * Use mongo for recording history of queries / what people search?
+* Allow ratings and comments?
