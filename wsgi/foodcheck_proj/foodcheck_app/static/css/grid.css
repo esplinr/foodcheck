@@ -92,11 +92,13 @@ body {
 }
 
 .container_12 .grid_5 {
-  width: 225px;
+  width: 240px;
+  height: 500px;
 }
 
 .container_12 .grid_6 {
   width: 600px;
+  height: 500px;
 }
 
 .container_12 .grid_7 {
