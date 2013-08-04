@@ -95,10 +95,12 @@ body {
 
 .container_12 .grid_5 {
   width: 240px;
+  height: 100%;
 }
 
 .container_12 .grid_6 {
-  width: 500px;
+  width: 600px;
+  height: 100%;
 }
 
 .container_12 .grid_7 {
