@@ -123,11 +123,6 @@ body {
   width: 940px;
 }
 
-.container_12 .grid_13 {
-  width: 600px;
-  height: 500px;
-}
-
 /* `Prefix Extra Space >> 12 Columns
 ----------------------------------------------------------------------------------------------------*/
 
@@ -148,7 +143,7 @@ body {
 }
 
 .container_12 .prefix_5 {
-  padding-left: 40px;
+  padding-left: 400px;
 }
 
 .container_12 .prefix_6 {
