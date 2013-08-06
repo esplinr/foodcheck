@@ -10,7 +10,7 @@ class Restaurant(models.Model):
   postal_code=models.IntegerField()
   latitude=models.FloatField()
   longitude=models.FloatField()
-  phone_no=models.IntegerField()
+  phone_no=models.CharField()
 
 class Score(models.Model):
   business_id=models.IntegerField()
