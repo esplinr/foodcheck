@@ -32,7 +32,7 @@ dbname_1= 'business'
 dbname_2 ='inspection'
 dbname_3='violation'
 
-con1=psycopg2_connect(database=dbname_1 user='food' host='localhost' password='check')
+con1=psycopg2_connect(database=dbname_1, user='food', host='localhost', password='check')
 cur1=con1.cursor()
 
 ## search for the restaurant
@@ -45,7 +45,7 @@ longitude=rows[8]
 
 
 ## read the score
-con2=psycopg2_connect(database=dbname_2 user='food' host='localhost' password='check')
+con2=psycopg2_connect(database=dbname_2, user='food', host='localhost', password='check')
 cur2=con2.cursor()
 cur2.execute("SELECT "+id+" FROM Score")
 rows=cur2.fetchall()
