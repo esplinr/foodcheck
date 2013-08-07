@@ -1,24 +1,33 @@
-Data Download:
+Load into DB
+* Need to be inserted as python objects using Django calls so that it goes 
+   through the ORM
+-- Build a python script, import django, build django obects, and save through
+   ORM
+-- Replace data_import.py, and add to import_data_sf.py?
+
+Display data:
+* Display every restaurant in the DB on the map
+* Allow user to select one, and display the inspection data
+
+Search UI:
+* Django Form for letting the user search the database by restaurant name
+* Display returned restaurants by address on map
+
+Location Search:
+* Allow searching within a specific radius
+
+
+Clean-up Items:
+* Skeleton should only contain items which appear on every page in site
+-- other items should be in base
+* remove main.css since Tim's template uses style.css
 * Update script to download into openshift perstent data folder
 -- Use the os.env['OPENSHIFT_DATA'](?) environment variable to find the data folder
 -- This is repo/../data not repo/data/data_dumps
-* Build the models.py to match the CSV
-* Load into DB
--- Need to be inserted as python objects using Django calls so that it goes 
-   through the ORM?
--- Build a python script, import django, build django obects, and save through
-   ORM
-
 Data import as a cron job:
 * OpenShift cron cartridge for scheduled jobs
 * For multiple jobs might be easier to use django-chronograph
   (so need just one cron job)
-
-Display food data as a list on the site
-
-Allow user to select a restaurant and see data
-
-Allow searching for a restaurant
 
 
 Long term:
