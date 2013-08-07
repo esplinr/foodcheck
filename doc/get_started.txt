@@ -13,9 +13,7 @@ cd app-root/repo/wsgi/foodcheck_proj/
 psql
 
 # Update with latest changes from the official repository
-## git pull doesn't like pulling from the non-master upstream
-git fetch github
-git merge github/master
+git pull github master
 
 # Push changes to development environment
 git push openshift-dev
