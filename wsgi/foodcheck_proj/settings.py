@@ -154,7 +154,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'leaflet',
     'foodcheck_app',
-    'restaurants', 
 )
 
 # A sample logging configuration. The only tangible logging
