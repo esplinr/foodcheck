@@ -31,3 +31,6 @@
 * 2013-07-31: PostGIS 1.5 is what OpenShift offerts, but it doesn't support
               PostgreSQL 9.2. Must use Postgresql 8.4 which is only supported
               through July of 2014.
+
+* 2013-08-07: Cannot use OpenShift cron on a scalable app.
+              https://www.openshift.com/content/ability-to-run-cron-jobs-on-scalable-apps
