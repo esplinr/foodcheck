@@ -7,14 +7,19 @@
     {% leaflet_js plugins="ALL" %}
 {% endblock %}
 {% block content %}
-    <form action="/search/" method="get">
-        <input type="text" name="q">
-        <input type="submit" value="Search">
-    </form>
-    {% leaflet_map "main" %}
+
+<form action="/search/" method="get">
+	<input type="text" name="q">
+    <input type="submit" value="Search">
+</form>
+
+{% leaflet_map "main" %}
+
+<br>
 <script type="text/javascript">
     function mainInit(map, bounds) {
         L.marker([37.7750, -122.4183]).addTo(map);
-    }
+}
 </script>
+
 {% endblock %}

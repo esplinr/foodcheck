@@ -1,5 +1,6 @@
 import os
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Load home page into skeleton
 def home(request):
