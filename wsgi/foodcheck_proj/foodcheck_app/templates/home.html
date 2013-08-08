@@ -10,7 +10,7 @@
 <div class="content"><div class="ic"></div>
   <div class="container_12">
     <div class="grid_6">
-      <h2>Find Us</h2>
+      <h2>Foodcheck Locator</h2>
             <div class="map">
             <figure class="img_inner">
                 	{% leaflet_map "main" %}
@@ -22,14 +22,14 @@
           </div>
     </div>
     <div class="grid_5 prefix_1">
-      <h2>Contact Us</h2>
-      <form id="form">
+      <h2>Search Restaurant</h2>
+      <form id="form" action="/search/" method="get">
       <div class="success_wrapper">
       <div class="success">Contact form submitted!<br>
       <strong>We will be in touch soon.</strong> </div></div>
       <fieldset>
       <label class="name">
-      <input type="text" value="Name:">
+      <input type="text" name='q' value="Name:">
       <br class="clear">
       <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
       <label class="email">
@@ -40,12 +40,8 @@
       <input type="tel" value="Phone:">
       <br class="clear">
       <span class="error error-empty">*This is not a valid phone number.</span><span class="empty error-empty">*This field is required.</span> </label>
-      <label class="message">
-      <textarea>Message:</textarea>
-      <br class="clear">
-      <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span> </label>
       <div class="clear"></div>
-      <div class="btns"><a data-type="reset" class="btn">clear</a><a data-type="submit" class="btn">send</a>
+      <div class="btns"><input type="reset" value="Clear"><input type="submit" value="Search">
       <div class="clear"></div>
       </div></fieldset></form>
     </div>
@@ -66,19 +62,6 @@
                    <li><a href="index-4.html">News </a></li>
                    <li class="current"><a href="index-5.html">Contacts</a></li>
                  </ul></nav>
-      </div>
-      <div class="grid_6">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
       </div>
       <div class="clear"></div>
     </div>
