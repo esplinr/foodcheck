@@ -25,22 +25,21 @@
     </div>
     <div class="grid_5 prefix_1">
       <form id="form" action="/search/" method="get">
-	  <div class="success_wrapper">
-      <div class="success">Search form submitted!<br>
-      <strong>Searching restaurant now.</strong></div></div>
       <fieldset>
+      <label class="name">
       <input type="text" name='q' value="Name:">
       <br class="clear">
-      <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
+ 	  </label>
       <!--<label class="address">
       <input type="text" value="Address:">
       <br class="clear">
-      <span class="error error-empty">*This is not a valid address.</span><span class="empty error-empty">*This field is required.</span> </label>-->
-      <div class="btns"><input type="reset" value="Clear"><input type="submit" value="Search">
+ 	  </label>-->
+      <div class="btns"><input type="reset" value="Clear"><input type="submit" value="Search"></div>
       <div class="clear"></div>
-      </div></fieldset></form>
-	<div class="clear"></div>
-  </div>
+	  </fieldset>
+	  </form>
+	  <div class="clear"></div>
+  	</div>
 {% endblock %}
 
 <!----Sample search 2---->
