@@ -7,12 +7,11 @@
     {% leaflet_js plugins="ALL" %}
 {% endblock %}
 {% block content %}
-<!--<p>Search box</p>
-<p>Map</p>
-    <h1>Django-Leaflet</h1>-->
-
+    <form action="/search/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
     {% leaflet_map "main" %}
-     
 <script type="text/javascript">
     function mainInit(map, bounds) {
         L.marker([37.7750, -122.4183]).addTo(map);
