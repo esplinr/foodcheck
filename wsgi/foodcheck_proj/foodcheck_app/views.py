@@ -10,7 +10,7 @@ def home(request):
     
 def search(request):
     if 'q' in request.GET:
-        message = 'You searched for: %r' % request.GET['q']
+        message = 'You searched for: %s' % request.GET['q']
     else:
         message = 'You submitted an empty form.'
     return HttpResponse(message)
