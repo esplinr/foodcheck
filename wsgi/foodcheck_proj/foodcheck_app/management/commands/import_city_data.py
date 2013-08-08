@@ -1,6 +1,7 @@
+import os
+import csv
 from django.core.management.base import BaseCommand
 from foodcheck_app.models import Restaurant, Score, Violation
-import os
 
 class Command(BaseCommand):
 #    args = '<city_name city_name ...>' #Don't know what this does yet
@@ -15,7 +16,6 @@ class Command(BaseCommand):
  
 
     def __load_sf_dict_to_db(self):
-        import csv
         # Read in Restaurant data
         # TODO Find the latest data dump instead of hardcoding the name
         self.__load_csv_to_dict(os.path.join(os.environ['OPENSHIFT_REPO_DIR'],
