@@ -7,20 +7,20 @@ class Command(BaseCommand):
     help = 'Imports the city data from a CSV into the database'
 
     
-    def __load_csv_to_dict(csv_filepath):
+    def __load_csv_to_dict(self, csv_filepath):
         csvfile = open(csv_filepath)
         dialect = csv.Sniffer().sniff(csvfile.read(4098))
         csvfile.seek(0)
         return csv.DictReader(csvfile, dialect=dialect)
  
 
-    def __load_sf_dict_to_db():
+    def __load_sf_dict_to_db(self):
         import csv
         # Read in Restaurant data
         # TODO Find the latest data dump instead of hardcoding the name
-        __load_csv_to_dict(os.path.join(os.environ['OPENSHIFT_REPO_DIR'],
-                                        "data", "data_dumps",
-                                        "20130805_business_plus.csv"))
+        self.__load_csv_to_dict(os.path.join(os.environ['OPENSHIFT_REPO_DIR'],
+                                             "data", "data_dumps",
+                                             "20130805_business_plus.csv"))
         for row in csv_dict_array:
             self.stdout.write(row)
 #            restaurant_object = Restaurant(name=row['name'], address=row['address'] . . . )
@@ -32,7 +32,7 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        __load_sf_dict_to_db()
+        self.__load_sf_dict_to_db()
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
