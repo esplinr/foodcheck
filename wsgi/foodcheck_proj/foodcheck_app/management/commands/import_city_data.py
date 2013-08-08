@@ -17,7 +17,6 @@ class Command(BaseCommand):
     def __load_sf_dict_to_db():
         import csv
         # Read in Restaurant data
-        csv_dict_array =
         # TODO Find the latest data dump instead of hardcoding the name
         __load_csv_to_dict(os.path.join(os.environ['OPENSHIFT_REPO_DIR'],
                                         "data", "data_dumps",
