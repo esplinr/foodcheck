@@ -18,10 +18,11 @@ class Command(BaseCommand):
     def __load_sf_dict_to_db(self):
         # Read in Restaurant data
         # TODO Find the latest data dump instead of hardcoding the name
-        self.__load_csv_to_dict(os.path.join(os.environ['OPENSHIFT_REPO_DIR'],
+        restaurant_dict_array = self.__load_csv_to_dict(os.path.join(
+                                             os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dumps",
                                              "20130805_businesses_plus.csv"))
-        for row in csv_dict_array:
+        for row in restaurant_dict_array:
             self.stdout.write(row)
 #            restaurant_object = Restaurant(name=row['name'], address=row['address'] . . . )
 #            restaurant_object.save()
