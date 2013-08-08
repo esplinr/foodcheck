@@ -20,7 +20,7 @@ class Command(BaseCommand):
         # TODO Find the latest data dump instead of hardcoding the name
         self.__load_csv_to_dict(os.path.join(os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dumps",
-                                             "20130805_business_plus.csv"))
+                                             "20130805_businesses_plus.csv"))
         for row in csv_dict_array:
             self.stdout.write(row)
 #            restaurant_object = Restaurant(name=row['name'], address=row['address'] . . . )
