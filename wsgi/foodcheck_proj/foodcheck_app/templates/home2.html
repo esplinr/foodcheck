@@ -1,0 +1,100 @@
+{% extends "skeleton.html" %}
+{% load leaflet_tags %}
+{% block link %}
+    {% leaflet_css plugins="ALL" %}
+{% endblock %}
+{% block script %}
+    {% leaflet_js plugins="ALL" %}
+{% endblock %}
+{% block content %}
+<!--Content-->
+<div class="content"><div class="ic"></div>
+  <div class="container_12">    
+    <div class="grid_6">
+      <h2>Foodcheck Locator</h2>
+            <div class="map">
+				<figure class="img_inner">
+       
+				<!--Map functionality-->                   
+				<main>
+					{% leaflet_map "main" %}
+						<script type="text/javascript">
+    						function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
+					}
+						</script>
+        		</main>
+            </div>
+    </div>
+    <div class="grid_5 prefix_1">
+      <form id="form" action="/search/" method="get">
+      <fieldset>
+      <label class="name">
+      <input type="text" name='q' value="Name:">
+      <br class="clear">
+ 	  </label>
+      <!--<label class="address">
+      <input type="text" value="Address:">
+      <br class="clear">
+ 	  </label>-->
+      <div class="btns"><input type="reset" value="Clear"><input type="submit" value="Search"></div>
+      <div class="clear"></div>
+	  </fieldset>
+	  </form>
+	  <div class="clear"></div>
+  	</div>
+<!--Bottom block-->
+ 	<div class="bottom_block">
+      <div class="grid_13">
+        <h3>Follow Us</h3>
+        <div class="socials">
+          <a href="#"></a>
+          <a href="#"></a>
+          <a href="#"></a>
+        </div>
+        <nav><ul>
+                   <li><a href="#">Home</a></li>
+                   <li ><a href="#">About Us</a></li>
+                   <li><a href="#">Menu</a></li>
+                   <li><a href="#">Portfolio</a></li>
+                   <li><a href="#">News </a></li>
+                   <li class="current"><a href="#">Map</a></li>
+                 </ul></nav>
+      </div>
+      <div class="grid_13">
+        <h3>Email Updates</h3>
+        <p class="col1">Join our digital mailing list to stay in the loop!</p>
+        <form id="newsletter">
+                  <div class="success">Your subscribe request has been sent!</div>
+                  <label class="email">
+                       <input type="email" value="Enter e-mail address" >
+                       <a href="#" class="btn" data-type="submit">subscribe</a> 
+                        <span class="error">*This is not a valid email address.</span>
+                  </label> 
+              </form> 
+          </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!----Sample search 2---->
+<!--<br>
+<form action="/search/" method="get">
+	<input type="text" name="q">
+    <input type="submit" value="Search">
+</form>
+<br>-->
+<!--Original Map--->
+<!--{# leaflet_map "main" %}-->
+
+<!--<script type="text/javascript">
+    function mainInit(map, bounds) {
+        L.marker([37.7750, -122.4183]).addTo(map);
+}
+</script>-->
+
+<!--{# endblock %}-->
+<!---------------------->
