@@ -29,17 +29,16 @@
 				<!--Map functionality-->                   
 				<main>
 					{% leaflet_map "main" %}
-					<script type="text/javascript">
-    				function mainInit(map, bounds) {
-        			L.marker([37.7750, -122.4183]).addTo(map);
+						<script type="text/javascript">
+    						function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
 					}
-					</script>
+						</script>
 					{% endblock %}
         		</main>
             </div>
     </div>
     <div class="grid_5 prefix_1">
-      <form id="form">
+      <form id="form" action="/search/" method="get">
 	  <div class="success_wrapper">
       <div class="success">Search form submitted!<br>
       <strong>Searching restaurant now.</strong></div></div>
