@@ -1,7 +1,7 @@
 import os
 import csv
 from django.core.management.base import BaseCommand
-from foodcheck_app.models import Restaurant, Score, Violation
+from foodcheck_app.models import Restaurant, Inspection, Violation
 
 class Command(BaseCommand):
 #    args = '<city_name city_name ...>' #Don't know what this does yet
@@ -23,7 +23,7 @@ class Command(BaseCommand):
                                              "data", "data_dumps",
                                              "20130805_businesses_plus.csv"))
         for row in restaurant_dict_array:
-            restaurant_object = Restaurant(business_id=row['business_id'],
+            restaurant_object = Restaurant(city_business_id=row['business_id'],
                                            name=row['name'],
                                            address=row['address'] ,
                                            city=row['city'],
@@ -35,27 +35,27 @@ class Command(BaseCommand):
             restaurant_object.save()
             self.stdout.write('Successfully loaded row')
             
-        # Read the Score data   
-        score_dict_array = self.__load_csv_to_dict(os.path.join(
+        # Read the Inspection data   
+        inspection_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dumps",
                                              "20130805_inspections_plus.csv"))
-        for row in score_dict_array:
-            score_object =Score(business_id=row['business_id'],
+        for row in inspection_dict_array:
+            inspection_object = Inspection(city_business_id=row['business_id'],
                                 score=row['Score'],
                                 date=row['data'],
-                                type=row['type'])
-            score_object.save()
+                                reason=row['type'])
+            inspection_object.save()
             self.stdout.write('Successfully loaded row')    
             
-        # Read the Score data   
+        # Read the Violation data   
         violation_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dumps",
                                              "20130805_violations_plus.csv"))
         for row in violation_dict_array:
             
-            violation_object =Violation(business_id=row['business_id'], 
+            violation_object =Violation(city_business_id=row['business_id'], 
                                         date=row['date'],
                                         vi_type=row['violation_type'],
                                         vi_severe=row['ViolationSeverity'],

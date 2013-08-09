@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Restaurant(models.Model):
-  business_id=models.IntegerField()
+  city_business_id=models.IntegerField()
   name=models.CharField(max_length=40)
   address=models.CharField(max_length=50)
   city=models.CharField(max_length=50)
@@ -12,16 +12,16 @@ class Restaurant(models.Model):
   longitude=models.FloatField()
   phone_no=models.CharField(max_length=15)
 
-class Score(models.Model):
-  business_id=models.IntegerField()
+class Inspection(models.Model):
+  city_business_id=models.IntegerField()
   date=models.DateField()
   score=models.IntegerField()
-  type=models.CharField(max_length=50)
+  reason=models.CharField(max_length=50)
 
 
 class Violation(models.Model):
-   business_id=models.IntegerField()
+   city_business_id=models.IntegerField()
    date=models.DateField()
    vi_type=models.CharField(max_length=20)
-   vi_severe=models.CharField(max_length=20)
-   vi_description=models.CharField(max_length=50)
+   severity=models.CharField(max_length=20)
+   description=models.CharField(max_length=50)

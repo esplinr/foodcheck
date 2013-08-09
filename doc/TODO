@@ -1,11 +1,5 @@
 Load into DB
-* Write custom management command to do data import
-  https://docs.djangoproject.com/en/1.4/howto/custom-management-commands/
--- Need to be inserted as python objects using Django calls so that it goes 
-   through the ORM
--- Build a python script, import django, build django obects, and save through
-   ORM
--- Replace data_import.py
+-- Match business_id to actual id foreign key on import
 
 Display data:
 * Display every restaurant in the DB on the map
@@ -20,6 +14,7 @@ Location Search:
 
 
 Clean-up Items:
+* Add help text to model
 * settings.py DEBUG=True, unless text file ~/data/LIVE_ENV
 -- getting_started touch ~/data/LIVE_ENV
 * Skeleton should only contain items which appear on every page in site
