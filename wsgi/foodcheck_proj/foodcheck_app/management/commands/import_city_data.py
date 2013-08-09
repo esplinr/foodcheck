@@ -28,7 +28,7 @@ class Command(BaseCommand):
                                            address=row['address'] ,
                                            city=row['city'],
                                            state=row['state'],
-                                           post_code=row['post_code'],
+                                           post_code=row['postal_code'],
                                            latitude=row['latitude'],
                                            longitude=row['longitude'],
                                            phone_no=row['phone_no'])
