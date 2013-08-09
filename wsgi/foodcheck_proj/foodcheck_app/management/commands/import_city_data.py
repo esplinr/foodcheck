@@ -16,49 +16,52 @@ class Command(BaseCommand):
  
 
     def __load_sf_dict_to_db(self):
+        # TODO Find the latest data dumps instead of hardcoding the name
         # Read in Restaurant data
-        # TODO Find the latest data dump instead of hardcoding the name
-        restaurant_dict_array = self.__load_csv_to_dict(os.path.join(os.environ['OPENSHIFT_REPO_DIR'],
+        restaurant_dict_array = self.__load_csv_to_dict(os.path.join(
+                                             os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dumps",
                                              "20130805_businesses_plus.csv"))
         for row in restaurant_dict_array:
-            
-            restaurant_object = Restaurant(business_id=row['business_id'],name=row['name'], 
-                                            address=row['address'] ,city=row['city'],
-                                             state=row['state'], post_code=row['post_code'] ,
-                                              latitude=row['latitude'], longitude=row['longitude'],
-                                              phone_no=row['phone_no'])
+            restaurant_object = Restaurant(business_id=row['business_id'],
+                                           name=row['name'],
+                                           address=row['address'] ,
+                                           city=row['city'],
+                                           state=row['state'],
+                                           post_code=row['post_code'],
+                                           latitude=row['latitude'],
+                                           longitude=row['longitude'],
+                                           phone_no=row['phone_no'])
             restaurant_object.save()
             self.stdout.write('Successfully loaded row')
             
-         ##Read the Score data   
+        # Read the Score data   
         score_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dumps",
                                              "20130805_inspections_plus.csv"))
         for row in score_dict_array:
-            
-            score_object =Score(business_id=row['business_id'], score=row['Score'],
-                                date=row['data'], type=row['type'])                       
+            score_object =Score(business_id=row['business_id'],
+                                score=row['Score'],
+                                date=row['data'],
+                                type=row['type'])
             score_object.save()
             self.stdout.write('Successfully loaded row')    
             
-        ##Read the Score data   
+        # Read the Score data   
         violation_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dumps",
                                              "20130805_violations_plus.csv"))
         for row in violation_dict_array:
             
-            violation_object =Violation(business_id=row['business_id'], date=row['date'],
-                                vi_type=row['violation_type'], vi_severe=row['ViolationSeverity'],
-                                vi_description=row['description'])                       
+            violation_object =Violation(business_id=row['business_id'], 
+                                        date=row['date'],
+                                        vi_type=row['violation_type'],
+                                        vi_severe=row['ViolationSeverity'],
+                                        vi_description=row['description'])
             violation_object.save()
             self.stdout.write('Successfully loaded row')        
-            
-            
-        pass
-        
 
 
     def handle(self, *args, **options):
