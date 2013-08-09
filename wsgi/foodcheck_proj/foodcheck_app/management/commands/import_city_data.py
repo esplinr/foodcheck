@@ -9,8 +9,7 @@ class Command(BaseCommand):
 
     
     def __load_csv_to_dict(self, csv_filepath):
-        # TODO Current error: new-line character seen in unquoted field - do you need to open the file in universal-newline mode?
-        csvfile = open(csv_filepath)
+        csvfile = open(csv_filepath, 'rU')
         dialect = csv.Sniffer().sniff(csvfile.read(4098))
         csvfile.seek(0)
         return csv.DictReader(csvfile, dialect=dialect)
