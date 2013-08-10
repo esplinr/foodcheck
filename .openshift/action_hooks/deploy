@@ -9,7 +9,7 @@ source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
 if [ -e ${OPENSHIFT_DATA_DIR}/CLEAN_DB ]
 then
   echo "Found data/CLEAN_DB. Wipe the database."
-  python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py sqlflush foodcheck_app | python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py dbshell
+  python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py sqlflush | python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py dbshell
   # create admin user
   python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py createsuperuser --noinput --username=admin --email richard-oss@esplins.org
   # manage.py changepassword won't accept password on the commandline
