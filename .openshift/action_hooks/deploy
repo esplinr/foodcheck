@@ -21,5 +21,8 @@ fi
 echo "Executing 'manage.py syncdb --noinput'"
 python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py syncdb --noinput
 
+echo "Executing 'manage.py migrate foodcheck_app"
+python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py migrate foodcheck_app
+
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/foodcheck_proj/manage.py collectstatic --noinput'"
 python "$OPENSHIFT_REPO_DIR"wsgi/foodcheck_proj/manage.py collectstatic --noinput
