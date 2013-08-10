@@ -44,7 +44,10 @@ class Inspection(models.Model):
     date=models.DateField()
     score=models.IntegerField(null=True,
         help_text="<70=Poor, 71-85=Needs Improvement, 86-90=Adequate, >91=Good")
-    reason=models.CharField(verbose_name="Reason for Inspection",
+    score_description=models.CharField(verbose_name="description of score",
+        help_text="A description to help people interprete the score.",
+        max_length=50, null=True)
+    reason=models.CharField(verbose_name="reason for Inspection",
         max_length=50,
         help_text="The reason for the inspection is given in the inspection type")
 
