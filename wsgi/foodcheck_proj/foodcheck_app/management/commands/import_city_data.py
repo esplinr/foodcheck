@@ -57,6 +57,16 @@ class Command(BaseCommand):
         return self.__unicode_csv_reader(csvfile, dialect)
 
 
+    def __empty_to_none(self, value):
+        ''' The DB does not like getting an empty string where it expects null,
+            So we detect empty strings, and return None.
+        '''
+        if value == '':
+            return None
+        else:
+            return value
+
+
     def __load_sf_dict_to_db(self):
         # TODO Find the latest data dumps instead of hardcoding the name
         # Read in Business data
@@ -67,14 +77,15 @@ class Command(BaseCommand):
         for row in business_dict_array:
             print row
             business_object = Business(city_business_id=row['business_id'],
-                                           name=row['name'],
-                                           address=row['address'] ,
-                                           city=row['city'],
-                                           state=row['state'],
-                                           postal_code=row['postal_code'],
-                                           latitude=row['latitude'],
-                                           longitude=row['longitude'],
-                                           phone=row['phone_no'])
+                                       name=row['name'],
+                                       address=row['address'] ,
+                                       city=row['city'],
+                                       state=row['state'],
+                                       postal_code=row['postal_code'],
+                                       latitude=self.__empty_to_none(row['latitude']),
+                                       longitude=self.__empty_to_none(row['longitude']),
+                                       phone=self.__empty_to_none(row['phone_no'])
+                                      )
             business_object.save()
             self.stdout.write('Successfully loaded row')
             
