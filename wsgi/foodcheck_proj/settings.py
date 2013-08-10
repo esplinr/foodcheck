@@ -8,7 +8,10 @@ if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
 
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
-if ON_OPENSHIFT:
+
+# turn off debug when on production
+if (os.environ['OPENSHIFT_NAMESPACE'] = 'foodcheck' and
+        os.environ['OPENSHIFT_APP_NAME'] = 'live'):
     DEBUG = False
 else:
     DEBUG = True
