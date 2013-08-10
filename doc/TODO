@@ -29,6 +29,11 @@ Long term
 
 * Setup local development environments
 
+* Add GUI attribution for dataset (San Francisco is licensed CC BY SA)
+
+* Import data from both businesses.csv and businesses_plus.csv, or figure out why
+  they are different.
+
 * Make access to Restaurant data more pythonic with facade pattern
 -- Create a foodcheck_classes module
 -- Create a Restaurant class with methods that know how to access all

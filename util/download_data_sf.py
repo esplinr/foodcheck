@@ -1,5 +1,25 @@
 '''
 Dowload San Francisco health inspector data.
+Relevant web sites:
+  https://data.sfgov.org/Public-Health/Restaurant-Scores/stya-26eb
+  https://204.68.210.15/food/File%20Specifications.pdf
+
+There are two zip packages:
+  SFBusinesses.zip: contains businesses, inspections, violations
+  SFFoodProgram_Complete_Data.zip: contains _plus.csv files
+The _plus files contain business owner data and inspections without scores, but
+has fewer businesses.
+
+Violations can fall into:
+* high risk: records specific violations that directly relate to the transmission of food borne illnesses, the adulteration of food products and the contamination of food-contact surfaces.
+* moderate risk: records specific violations that are of a moderate risk to the public health and safety.
+* low risk: records violations that are low risk or have no immediate risk to the public health and safety.
+
+Scores:
+* 0-70   "Poor"
+* 71-85  "Needs Improvement"
+* 86-90  "Adequate"
+* 91-100 "Good"
 '''
 #    Copyright (C) 2013 Timothy James Austen, Eileen Qiuhua Lin,
 #                       Richard Esplin <richard-oss@esplins.org>
@@ -21,6 +41,7 @@ import sys
 import csv
 import os.path, time
 import urllib2
+
 
 #TODO Detect most recent previous downloaded file
 #TODO Fix file layout: if __name__ == "__main__":
