@@ -25,27 +25,44 @@ Clean-up Items:
 * Skeleton should only contain items which appear on every page in site
 -- other items should be in base
 * remove main.css since Tim's template uses style.css
-* Update script to download into openshift perstent data folder
+
+
+Long term
+----------
+* Mobile friendly
+-- Twitter Bootstrap?
+
+* Initial location based on user location (browser or IP)
+
+* Add other cities: Chicago, DC
+
+* Setup local development environments
+
+* Data import as a cron job:
+-- Install django-chronograph (https://bitbucket.org/wnielson/django-chronograph/)
+-- Configure django-chronograph to kick-off admin management command to import
+-- OpenShift cron cartridge for scheduled jobs--can't use on scalable app
+++++ Kick off job from a different server using `rhc ssh "manage.py cron"`
+* Update script to download into openshift perstent data folder?
 -- Use the os.env['OPENSHIFT_DATA'](?) environment variable to find the data folder
 -- This is repo/../data not repo/data/data_dumps
-Data import as a cron job:
-* Install django-chronograph (https://bitbucket.org/wnielson/django-chronograph/)
-* Configure django-chronograph to kick-off admin management command to import
-* OpenShift cron cartridge for scheduled jobs--can't use on scalable app
--- Kick off job from a different server using `rhc ssh "manage.py cron"`
+* Or keep doing on dev machine and checking into source control?
+-- Dumps are data not code, should have a different backup strategy
 
 
-Long term:
-* Mobile friendly
-* Initial location based on user location (browser or IP)
-* Add other cities: Chicago, DC
 * Notification if a specific restaurante fails an inspection
+
 * Foursquare checkin to alert on violation
+
 * Make CLEAN_DB actually clean the DB (remove unnecessary tables)
 -- Probably need it to relead a DB schema with GIS stuff
-* South for migrating the database
+
 * Backup the database (psql dump over SSH)
+
 * Set admin email and debug email to a team mailing list
+
 * Blob store or shared storage for uploaded files
+
 * Use mongo for recording history of queries / what people search?
+
 * Allow ratings and comments?
