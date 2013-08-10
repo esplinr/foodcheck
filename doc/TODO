@@ -1,6 +1,3 @@
-Load into DB
--- Match business_id to actual id foreign key on import
-
 Display data:
 * Display every restaurant in the DB on the map
 * Allow user to select one, and display the inspection data
