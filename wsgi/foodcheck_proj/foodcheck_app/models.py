@@ -10,9 +10,10 @@ class Restaurant(models.Model):
     city=models.CharField(max_length=50)
     state=models.CharField(max_length=50)
     postal_code=models.IntegerField()
-    latitude=models.FloatField()
-    longitude=models.FloatField()
-    phone=models.CharField(verbose_name="phone number", max_length=15)
+    latitude=models.FloatField(null=True)
+    longitude=models.FloatField(null=True)
+    phone=models.CharField(verbose_name="phone number", max_length=15,
+                           null=True)
 
 
 class Inspection(models.Model):
