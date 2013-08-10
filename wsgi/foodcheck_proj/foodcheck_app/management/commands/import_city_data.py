@@ -31,7 +31,7 @@ class Command(BaseCommand):
                                            postal_code=row['postal_code'],
                                            latitude=row['latitude'],
                                            longitude=row['longitude'],
-                                           phone_no=row['phone_no'])
+                                           phone=row['phone_no'])
             restaurant_object.save()
             self.stdout.write('Successfully loaded row')
             
