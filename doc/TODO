@@ -34,6 +34,8 @@ Long term
 -- Create a Restaurant class with methods that know how to access all
 inspections and violations for that restaurant
 
+# Fix data download script
+
 * Data import as a cron job:
 -- Install django-chronograph (https://bitbucket.org/wnielson/django-chronograph/)
 -- Configure django-chronograph to kick-off admin management command to import
