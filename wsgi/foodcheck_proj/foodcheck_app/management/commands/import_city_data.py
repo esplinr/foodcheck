@@ -20,6 +20,7 @@ Custom django admin command to import data from CSV file into database
 import os
 import csv
 import codecs
+import datetime
 from django.core.management.base import BaseCommand
 from foodcheck_app.models import Business, Inspection, Violation
 
@@ -67,6 +68,16 @@ class Command(BaseCommand):
             return value
 
 
+    def __date_string_to_object(self, string_date):
+        ''' Convert from YYYYMMDD to a python object
+        '''
+        # There is probably a better way to do this with a constructor that 
+        # takes a string and a format specifier, but I didn't see it.
+        year = int(string_date[:4])
+        month = int(string_date[4:6])
+        day = int(string_date[6:8])
+        return datetime.date(year, month, day)
+ 
     def __load_sf_dict_to_db(self):
         # TODO Find the latest data dumps instead of hardcoding the name
         # Read in Business data
@@ -75,7 +86,6 @@ class Command(BaseCommand):
                                              "data", "data_dump_sf_20130810",
                                              "businesses_plus.csv"))
         for row in business_dict_array:
-            print row
             business_object = Business(city_business_id=row['business_id'],
                                        name=row['name'],
                                        address=row['address'] ,
@@ -87,7 +97,7 @@ class Command(BaseCommand):
                                        phone=self.__empty_to_none(row['phone_no'])
                                       )
             business_object.save()
-            self.stdout.write('Successfully loaded row')
+        #    self.stdout.write('Successfully loaded business\n')
             
         # Read the Inspection data   
         inspection_dict_array = self.__load_csv_to_dict(os.path.join(
@@ -95,12 +105,25 @@ class Command(BaseCommand):
                                              "data", "data_dump_sf_20130810",
                                              "inspections_plus.csv"))
         for row in inspection_dict_array:
-            inspection_object = Inspection(city_business_id=row['business_id'],
-                                score=row['Score'],
-                                date=row['data'],
-                                reason=row['type'])
+            print row
+            # Look up foreign key in Business table
+            business_match = Business.objects.filter(city_business_id=row['business_id'])
+            if len(business_match) == 0:
+                self.stdout.write("WARNING: No businesses match this inspection! Skipping\n")
+                self.stdout.write(str(row) + "\n")
+                continue
+            elif len(business_match) > 1:
+                self.stdout.write("Multiple businesses match this ID! Using first.\n")
+                self.stdout.write(str(row) + "\n")
+
+            date = self.__date_string_to_object(row['date'])
+            inspection_object = Inspection(business_id=business_match[0].id,
+                                    city_business_id=row['business_id'],
+                                    score=self.__empty_to_none(row['Score']),
+                                    date=date,
+                                    reason=row['type'])
             inspection_object.save()
-            self.stdout.write('Successfully loaded row')    
+            self.stdout.write('Successfully loaded inspection\n')    
             
         # Read the Violation data   
         violation_dict_array = self.__load_csv_to_dict(os.path.join(
@@ -115,7 +138,7 @@ class Command(BaseCommand):
                                         vi_severe=row['ViolationSeverity'],
                                         vi_description=row['description'])
             violation_object.save()
-            self.stdout.write('Successfully loaded row')        
+        #    self.stdout.write('Successfully loaded row')        
 
 
     def handle(self, *args, **options):
