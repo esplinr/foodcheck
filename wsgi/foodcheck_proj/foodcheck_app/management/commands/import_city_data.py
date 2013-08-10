@@ -20,7 +20,7 @@ Custom django admin command to import data from CSV file into database
 import os
 import csv
 from django.core.management.base import BaseCommand
-from foodcheck_app.models import Restaurant, Inspection, Violation
+from foodcheck_app.models import Business, Inspection, Violation
 
 
 class Command(BaseCommand):
@@ -55,13 +55,13 @@ class Command(BaseCommand):
 
     def __load_sf_dict_to_db(self):
         # TODO Find the latest data dumps instead of hardcoding the name
-        # Read in Restaurant data
-        restaurant_dict_array = self.__load_csv_to_dict(os.path.join(
+        # Read in Business data
+        business_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
                                              "data", "data_dump_sf_20130810",
                                              "businesses_plus.csv"))
-        for row in restaurant_dict_array:
-            restaurant_object = Restaurant(city_business_id=row['business_id'],
+        for row in business_dict_array:
+            business_object = Business(city_business_id=row['business_id'],
                                            name=row['name'],
                                            address=row['address'] ,
                                            city=row['city'],
@@ -70,7 +70,7 @@ class Command(BaseCommand):
                                            latitude=row['latitude'],
                                            longitude=row['longitude'],
                                            phone=row['phone_no'])
-            restaurant_object.save()
+            business_object.save()
             self.stdout.write('Successfully loaded row')
             
         # Read the Inspection data   
