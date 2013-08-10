@@ -40,8 +40,8 @@ class Command(BaseCommand):
         # Read in Restaurant data
         restaurant_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
-                                             "data", "data_dumps",
-                                             "20130805_businesses_plus.csv"))
+                                             "data", "data_dump_sf_20130810",
+                                             "businesses_plus.csv"))
         for row in restaurant_dict_array:
             restaurant_object = Restaurant(city_business_id=row['business_id'],
                                            name=row['name'],
@@ -58,8 +58,8 @@ class Command(BaseCommand):
         # Read the Inspection data   
         inspection_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
-                                             "data", "data_dumps",
-                                             "20130805_inspections_plus.csv"))
+                                             "data", "data_dump_sf_20130810",
+                                             "inspections_plus.csv"))
         for row in inspection_dict_array:
             inspection_object = Inspection(city_business_id=row['business_id'],
                                 score=row['Score'],
@@ -71,8 +71,8 @@ class Command(BaseCommand):
         # Read the Violation data   
         violation_dict_array = self.__load_csv_to_dict(os.path.join(
                                              os.environ['OPENSHIFT_REPO_DIR'],
-                                             "data", "data_dumps",
-                                             "20130805_violations_plus.csv"))
+                                             "data", "data_dump_sf_20130810",
+                                             "violations_plus.csv"))
         for row in violation_dict_array:
             
             violation_object =Violation(city_business_id=row['business_id'], 
