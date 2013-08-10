@@ -20,7 +20,7 @@ Django Model definition for foodcheck_app
 from django.db import models
 
 
-class Restaurant(models.Model):
+class Business(models.Model):
     city_business_id=models.IntegerField(
         verbose_name="business ID for city",
         help_text="The ID the city uses for this business")
@@ -36,11 +36,11 @@ class Restaurant(models.Model):
 
 
 class Inspection(models.Model):
-    restaurant = models.ForeignKey(Restaurant,
-        verbose_name="related restaurant", on_delete=models.CASCADE,
-        help_text="Connect to the restaurant by the city_business_id")
+    business = models.ForeignKey(Business,
+        verbose_name="related business", on_delete=models.CASCADE,
+        help_text="Connect to the business by the city_business_id")
     city_business_id=models.IntegerField(
-        help_text="City business ID, used to match to Restaurant")
+        help_text="City business ID, used to match to the business")
     date=models.DateField()
     score=models.IntegerField(null=True,
         help_text="<70=Poor, 71-85=Needs Improvement, 86-90=Adequate, >91=Good")
