@@ -122,7 +122,7 @@ class Command(BaseCommand):
                                     date=date,
                                     reason=row['type'])
             inspection_object.save()
-            self.stdout.write('Successfully loaded inspection\n')    
+        #    self.stdout.write('Successfully loaded inspection\n')    
             
         # Read the Violation data   
         violation_dict_array = self.__load_csv_to_dict(os.path.join(
@@ -150,7 +150,7 @@ class Command(BaseCommand):
                                         severity=row['ViolationSeverity'],
                                         description=row['description'])
             violation_object.save()
-            self.stdout.write('Successfully loaded violation')        
+         #   self.stdout.write('Successfully loaded violation')        
 
 
     def handle(self, *args, **options):
