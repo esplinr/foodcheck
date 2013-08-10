@@ -14,7 +14,6 @@ Location Search:
 
 
 Clean-up Items:
-* Add help text to model
 * Skeleton should only contain items which appear on every page in site
 -- other items should be in base
 
@@ -54,6 +53,7 @@ inspections and violations for that restaurant
 
 * Make CLEAN_DB actually clean the DB (remove unnecessary tables)
 -- Probably need it to relead a DB schema with GIS stuff
+-- And south stuff
 
 * Backup the database (psql dump over SSH)
 
@@ -64,3 +64,7 @@ inspections and violations for that restaurant
 * Use mongo for recording history of queries / what people search?
 
 * Allow ratings and comments?
+
+* Add foodcheck_app tables to admin interface for GUI management
+
+* redirect http//---/admin to https
