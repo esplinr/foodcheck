@@ -19,6 +19,7 @@ Custom django admin command to import data from CSV file into database
 
 import os
 import csv
+import codecs
 from django.core.management.base import BaseCommand
 from foodcheck_app.models import Business, Inspection, Violation
 
@@ -27,30 +28,33 @@ class Command(BaseCommand):
 #    args = '<city_name city_name ...>' #Don't know what this does yet
     help = 'Imports the city data from a CSV into the database'
 
-    # Need to explicitly handle UTF-8 data (adapted example from docs)
-    def __utf8_csv_reader(self, utf8_data, dialect=csv.excel, **kwargs):
-        csv_dictreader = csv.DictReader(utf8_data, dialect=dialect, **kwargs)
-        dict_array = []
-        for row in csv_dictreader:
-            data_dict = {}
-            print "New Row"
-            for key, value in row.iteritems():
-                print "%s, %s" %(key, value)
-                # TODO it isn't carrying the UTF-8 value through
-                data_dict[unicode(key, 'utf-8',errors='replace')]= \
-                    unicode(value, 'utf-8',errors='replace')
-            dict_array.append(data_dict)
-        return dict_array
 
+    # Need to explicitly handle UTF-8 data (adapted example from docs)
+    def __utf8_encoder(self, unicode_csv_data):
+        for line in unicode_csv_data:
+            yield line.encode('utf-8')
+
+    def __utf8_dict_decoder(self, utf8_dict):
+        unicode_dict = {}
+        for key, value in utf8_dict.iteritems():
+            unicode_dict[unicode(key,'utf-8')] = unicode(value,'utf-8')
+        return unicode_dict
+
+    def __unicode_csv_reader(self, unicode_csv_data, dialect=csv.excel, **kwargs):
+        # csv.py doesn't do Unicode; encode temporarily as UTF-8:
+        csv_dictreader = csv.DictReader(self.__utf8_encoder(unicode_csv_data),
+                                        dialect=dialect, **kwargs)
+        for row in csv_dictreader:
+            yield self.__utf8_dict_decoder(row)
 
     def __load_csv_to_dict(self, csv_filepath):
         # Warning: Reads entire file into memory!
+        # Sniff file as ascii, so we don't stop mid-utf-8 char
         csvfile = open(csv_filepath, 'rb')
         dialect = csv.Sniffer().sniff(csvfile.read(4098))
-        csvfile.seek(0)
-        data_dict_array = self.__utf8_csv_reader(csvfile, dialect)
         csvfile.close()
-        return data_dict_array
+        csvfile = codecs.open(csv_filepath, 'rb', 'iso-8859-15')
+        return self.__unicode_csv_reader(csvfile, dialect)
 
 
     def __load_sf_dict_to_db(self):
@@ -61,6 +65,7 @@ class Command(BaseCommand):
                                              "data", "data_dump_sf_20130810",
                                              "businesses_plus.csv"))
         for row in business_dict_array:
+            print row
             business_object = Business(city_business_id=row['business_id'],
                                            name=row['name'],
                                            address=row['address'] ,
