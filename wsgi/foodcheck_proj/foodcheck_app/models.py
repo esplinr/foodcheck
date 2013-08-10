@@ -24,14 +24,14 @@ class Restaurant(models.Model):
     city_business_id=models.IntegerField(
         verbose_name="business ID for city",
         help_text="The ID the city uses for this business")
-    name=models.CharField(max_length=40)
-    address=models.CharField(max_length=50)
+    name=models.CharField(max_length=100)
+    address=models.CharField(max_length=200)
     city=models.CharField(max_length=50)
-    state=models.CharField(max_length=50)
-    postal_code=models.IntegerField()
+    state=models.CharField(max_length=40)
+    postal_code=models.CharField(max_length=15)
     latitude=models.FloatField(null=True)
     longitude=models.FloatField(null=True)
-    phone=models.CharField(verbose_name="phone number", max_length=15,
+    phone=models.CharField(verbose_name="phone number", max_length=30,
                            null=True)
 
 
@@ -63,7 +63,7 @@ class Violation(models.Model):
     vi_type=models.CharField(verbose_name="violation type", max_length=20)
     severity=models.CharField(verbose_name="violation severity", max_length=20)
     description=models.CharField(verbose_name="description of violation",
-        max_length=50)
+        max_length=100)
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
