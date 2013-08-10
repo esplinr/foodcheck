@@ -10,6 +10,8 @@ There are two zip packages:
 The _plus files contain business owner data and inspections without scores, but
 has fewer businesses.
 
+Files are encoded as ISO-8859-15
+
 Violations can fall into:
 * high risk: records specific violations that directly relate to the transmission of food borne illnesses, the adulteration of food products and the contamination of food-contact surfaces.
 * moderate risk: records specific violations that are of a moderate risk to the public health and safety.
