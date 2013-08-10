@@ -15,11 +15,8 @@ Location Search:
 
 Clean-up Items:
 * Add help text to model
-* settings.py DEBUG=True, unless text file ~/data/LIVE_ENV
--- getting_started touch ~/data/LIVE_ENV
 * Skeleton should only contain items which appear on every page in site
 -- other items should be in base
-* remove main.css since Tim's template uses style.css
 
 
 Long term
