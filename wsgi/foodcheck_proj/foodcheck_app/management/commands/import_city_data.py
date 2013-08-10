@@ -105,7 +105,6 @@ class Command(BaseCommand):
                                              "data", "data_dump_sf_20130810",
                                              "inspections_plus.csv"))
         for row in inspection_dict_array:
-            print row
             # Look up foreign key in Business table
             business_match = Business.objects.filter(city_business_id=row['business_id'])
             if len(business_match) == 0:
@@ -131,14 +130,28 @@ class Command(BaseCommand):
                                              "data", "data_dump_sf_20130810",
                                              "violations_plus.csv"))
         for row in violation_dict_array:
-            
-            violation_object =Violation(city_business_id=row['business_id'], 
-                                        date=row['date'],
-                                        vi_type=row['violation_type'],
-                                        vi_severe=row['ViolationSeverity'],
-                                        vi_description=row['description'])
+            print row
+            date = self.__date_string_to_object(row['date'])
+            # Look up foreign key in Inspection table
+            inspection_match = Inspection.objects.filter(
+                                            city_business_id=row['business_id'],
+                                            date=date)
+            if len(inspection_match) == 0:
+                self.stdout.write("WARNING: No inspections match this violation! Skipping\n")
+                self.stdout.write(str(row) + "\n")
+                continue
+            elif len(inspection_match) > 1:
+                self.stdout.write("Multiple inspections match this violation! Using first.\n")
+                self.stdout.write(str(row) + "\n")
+
+            violation_object =Violation(inspection_id=inspection_match[0].id,
+                                        city_business_id=row['business_id'], 
+                                        date=date,
+                                        vi_type=row['violation_type_id'],
+                                        severity=row['ViolationSeverity'],
+                                        description=row['description'])
             violation_object.save()
-        #    self.stdout.write('Successfully loaded row')        
+            self.stdout.write('Successfully loaded violation')        
 
 
     def handle(self, *args, **options):
