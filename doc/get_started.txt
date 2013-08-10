@@ -30,6 +30,13 @@ rhc ssh live
 exit
 rhc tail live
 
+# Adding a new south migration
+rhc ssh openshift-dev
+source ~/python/virtenv/bin/activate
+cd app-root/repo/wsgi/foodcheck_proj/
+./manage.py schemamigration foodcheck_app --auto
+## SCP new migration script out of foodcheck_app/migrations and check into git
+
 
 # Setup Dev Environment #
 # Setup rhc
