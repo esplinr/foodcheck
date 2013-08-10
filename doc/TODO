@@ -58,10 +58,6 @@ inspections and violations for that restaurant
 
 * Foursquare checkin to alert on violation
 
-* Make CLEAN_DB actually clean the DB (remove unnecessary tables)
--- Probably need it to relead a DB schema with GIS stuff
--- And south stuff
-
 * Backup the database (psql dump over SSH)
 
 * Set admin email and debug email to a team mailing list
