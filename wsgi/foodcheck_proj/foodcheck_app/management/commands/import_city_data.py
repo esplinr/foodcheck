@@ -130,7 +130,6 @@ class Command(BaseCommand):
                                              "data", "data_dump_sf_20130810",
                                              "violations_plus.csv"))
         for row in violation_dict_array:
-            print row
             date = self.__date_string_to_object(row['date'])
             # Look up foreign key in Inspection table
             inspection_match = Inspection.objects.filter(
