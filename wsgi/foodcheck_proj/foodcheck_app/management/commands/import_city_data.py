@@ -33,8 +33,9 @@ class Command(BaseCommand):
         dict_array = []
         for row in csv_dictreader:
             data_dict = {}
+            print "New Row"
             for key, value in row.iteritems():
-                print "New Row: %s, %s" %(key, value)
+                print "%s, %s" %(key, value)
                 # TODO it isn't carrying the UTF-8 value through
                 data_dict[unicode(key, 'utf-8',errors='replace')]= \
                     unicode(value, 'utf-8',errors='replace')
