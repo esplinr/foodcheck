@@ -30,6 +30,11 @@ Long term
 
 * Setup local development environments
 
+* Make access to Restaurant data more pythonic with facade pattern
+-- Create a foodcheck_classes module
+-- Create a Restaurant class with methods that know how to access all
+inspections and violations for that restaurant
+
 * Data import as a cron job:
 -- Install django-chronograph (https://bitbucket.org/wnielson/django-chronograph/)
 -- Configure django-chronograph to kick-off admin management command to import
@@ -41,6 +46,7 @@ Long term
 * Or keep doing on dev machine and checking into source control?
 -- Dumps are data not code, should have a different backup strategy
 
+* Import into DB other fields from download (owner name and address)?
 
 * Notification if a specific restaurante fails an inspection
 
