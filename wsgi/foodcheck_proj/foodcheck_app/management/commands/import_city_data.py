@@ -27,13 +27,30 @@ class Command(BaseCommand):
 #    args = '<city_name city_name ...>' #Don't know what this does yet
     help = 'Imports the city data from a CSV into the database'
 
-    
+    # Need to explicitly handle UTF-8 data (adapted example from docs)
+    def __utf8_csv_reader(self, utf8_data, dialect=csv.excel, **kwargs):
+        csv_dictreader = csv.DictReader(utf8_data, dialect=dialect, **kwargs)
+        dict_array = []
+        for row in csv_dictreader:
+            data_dict = {}
+            for key, value in row.iteritems():
+                print "New Row: %s, %s" %(key, value)
+                # TODO it isn't carrying the UTF-8 value through
+                data_dict[unicode(key, 'utf-8',errors='replace')]= \
+                    unicode(value, 'utf-8',errors='replace')
+            dict_array.append(data_dict)
+        return dict_array
+
+
     def __load_csv_to_dict(self, csv_filepath):
-        csvfile = open(csv_filepath, 'rU')
+        # Warning: Reads entire file into memory!
+        csvfile = open(csv_filepath, 'rb')
         dialect = csv.Sniffer().sniff(csvfile.read(4098))
         csvfile.seek(0)
-        return csv.DictReader(csvfile, dialect=dialect)
- 
+        data_dict_array = self.__utf8_csv_reader(csvfile, dialect)
+        csvfile.close()
+        return data_dict_array
+
 
     def __load_sf_dict_to_db(self):
         # TODO Find the latest data dumps instead of hardcoding the name
