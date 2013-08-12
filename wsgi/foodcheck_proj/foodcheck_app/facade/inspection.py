@@ -92,7 +92,7 @@ class Inspection():
         self.date = orm_obj.date
         self.reason = orm_obj.reason
 
-        self.violations = violations.load_violations()
+#        self.violations = violations.load_violations()
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
