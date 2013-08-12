@@ -82,6 +82,7 @@ class Inspection():
             if len(inspection_match) != 1:
                 logger.error("Should be exactly one entry for this ID! %s" 
                              %(db_id))
+                return None
             orm_obj = inspection_match[0]
  
         logger.info('Initializing inspection with content from db_row %s'
