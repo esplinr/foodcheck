@@ -58,8 +58,8 @@ class Inspection():
 
 
     def __repr__(self):
-        return "Inspection associated with business ID: %s, Date: %s" \
-                %(self.business_id, self.date)
+        return "Inspection (business ID: %s), Date: %s" \
+                %(self.business.db_id, self.date)
 
 
     def __init__(self, business_obj, db_id=None, orm_obj=None):
