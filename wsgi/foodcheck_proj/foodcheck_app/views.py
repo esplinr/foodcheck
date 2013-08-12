@@ -21,6 +21,7 @@ Django View functions for foodcheck_app
 import os
 from django.shortcuts import render
 from django.http import HttpResponse
+from facade import Business
 
 # Load home page into skeleton
 def home(request):
@@ -31,6 +32,8 @@ def home(request):
 def search(request):
     if 'q' in request.GET:
         message = 'You searched for: %s' % request.GET['q']
+        # EXAMPLE: Won't work because it expects a DB ID
+#        business = Business(request.GET)
     else:
         message = 'You submitted an empty form.'
     return HttpResponse(message)
