@@ -81,6 +81,7 @@ class Business():
         self.phone = db_business.phone
 
         self.load_inspections()
+        self.load_violations_from_inspections()
 
 
     def load_inspections(self):
