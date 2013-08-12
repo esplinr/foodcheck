@@ -41,33 +41,40 @@ class Business():
     phone = ""
 
 
-    def __init__(self, business_id=None):
+    def __repr__(self):
+        return "Business object with City ID: %s, Name: %s, Address: %s" \
+                %(self.city_business_id, self.name, self.address)
+
+
+    def __init__(self, city_business_id=None):
         '''
         Populate the class with information about the business that matches
         the city_business_id.
         If none is provided, create an empty business.
         '''
-        if city_business_id <> None:
-            logger.info('Initializing business object from existing data. ID: %s'
-                        %(business_id))
-            business_match = models.Business.objects.filter(
-                                                    city_business_id=business_id)
-            if len(business_match) == 0:
-                logger.error("No businesses match this request! %s" 
-                               %(business_id))
-                return None
-            elif len(business_match) > 1:
-                logger.warning("Multiple businesses match request! Using first.")
-            db_business = business_match[0]
-            self.city_business_id = db_business.city_business_id
-            self.name = db_business.name
-            self.address = db_business.address
-            self.city = db_business.city
-            self.state = db_business.state
-            self.postal_code = db_business.postal_code
-            self.latitude = db_business.latitude
-            self.longitude = db_business.longitude
-            self.phone = db_business.phone
+        if city_business_id == None:
+            return
+
+        logger.info('Initializing business object from existing data. ID: %s'
+                    %(city_business_id))
+        business_match = models.Business.objects.filter(
+                                    city_business_id=city_business_id)
+        if len(business_match) == 0:
+            logger.error("No businesses match this request! %s" 
+                           %(city_business_id))
+            return None
+        elif len(business_match) > 1:
+            logger.warning("Multiple businesses match request! Using first.")
+        db_business = business_match[0]
+        self.city_business_id = db_business.city_business_id
+        self.name = db_business.name
+        self.address = db_business.address
+        self.city = db_business.city
+        self.state = db_business.state
+        self.postal_code = db_business.postal_code
+        self.latitude = db_business.latitude
+        self.longitude = db_business.longitude
+        self.phone = db_business.phone
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
