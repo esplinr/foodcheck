@@ -19,6 +19,8 @@ Facade class to expose Businesses in a more pythonic way
 
 import logging
 from foodcheck_app import models
+# Other facades
+from inspections import load_inspections
 
 logger = logging.getLogger('foodcheck_app.facade.Business')
 
@@ -27,9 +29,7 @@ class Business():
     A class for accessing information about a business, including inspection
     data and violations.
     '''
-
-
-    inspections = [] # A list of inspection objects
+    db_id = None
     city_business_id = ""
     name = ""
     address = ""
@@ -39,6 +39,11 @@ class Business():
     latitude = 0.0
     longitude = 0.0
     phone = ""
+    # TODO Might be less resource intensive to use a python property decorator
+    #      to define a getter that populates these if None at access time.
+    #      Then only need to take the hit when the data is needed
+    inspections = None # A list of inspection objects
+    violations = None # A list of violation objects
 
 
     def __repr__(self):
@@ -66,6 +71,7 @@ class Business():
         elif len(business_match) > 1:
             logger.warning("Multiple businesses match request! Using first.")
         db_business = business_match[0]
+        self.db_id = db_business.id
         self.city_business_id = db_business.city_business_id
         self.name = db_business.name
         self.address = db_business.address
@@ -75,6 +81,10 @@ class Business():
         self.latitude = db_business.latitude
         self.longitude = db_business.longitude
         self.phone = db_business.phone
+
+
+    def load_inspections(self):
+       self.inspections=load_inspections(self) 
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
