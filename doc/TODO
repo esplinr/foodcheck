@@ -35,10 +35,12 @@ Long term
 -- Import data from both businesses.csv and businesses_plus.csv, or figure out why
    they are different.
 -- Figure out why some inspections don't match to businesses:
-    2731, 2920, 3223, 3265, 3715, 5446, 5799, 5842, 5851, 5876, 5878, 5899, 5904,
+    2731 (in businesses.csv but not businesses_plus.csv)
+    2920, 3223, 3265, 3715, 5446, 5799, 5842, 5851, 5876, 5878, 5899, 5904,
     13062, 17754, 33321, 36494, 38146, 38314, 39054, 39606, 61766, 62661, 63958,
     68991, 71683, 72127, 73962, 74602, 74975, 75230, 75464
 -- Figure out why some inspections match two businesses:
+    2920 (in file twice with different zip codes)
     3566, 3543, 3566, 5301, 5830, 9463, 33467, 62053, 62797, 68390,
 -- Multiple inspections match the violation:
     date:20130130,biz_id:37,
