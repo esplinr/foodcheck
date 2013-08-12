@@ -34,10 +34,11 @@ def load_inspections(business):
     logger.info('Creating a list of inspections related to business. DB ID: %s'
                 %(biz_db_id))
     inspections_match = models.Inspection.objects.filter(business_id=biz_db_id)
+    # New businesses won't have any inspections, so return an empty list
     if len(inspections_match) == 0:
         logger.info("No inspections exist for this business! DB ID: %s" 
                      %(biz_db_id))
-        return None
+        return []
     inspections_list = []
     for i in inspections_match:
         inspections_list.append(Inspection(business_obj=business, orm_obj=i))
@@ -93,7 +94,11 @@ class Inspection():
         self.date = orm_obj.date
         self.reason = orm_obj.reason
 
-        self.violations = load_violations(self)
+        self.violations = self.load_violations(self)
+
+
+    def load_violations(self):
+       self.violations=load_violations(self) 
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4

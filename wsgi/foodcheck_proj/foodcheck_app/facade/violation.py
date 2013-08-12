@@ -34,10 +34,11 @@ def load_violations(inspection):
                 %(inspection_db_id))
     violations_match = models.Violation.objects.filter(
                                                  inspection_id=inspection_db_id)
+    # Some businesses won't have any violations, so return an empty list
     if len(violations_match) == 0:
         logger.info("No violations exist for this inspection! DB ID: %s" 
                      %(inspection_db_id))
-        return None
+        return []
     violations_list = []
     for v in violations_match:
         violations_list.append(Violation(inspection_obj=inspection, orm_obj=v))

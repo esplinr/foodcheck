@@ -85,7 +85,7 @@ class Business():
 
 
     def load_inspections(self):
-       self.inspections=load_inspections(self) 
+        self.inspections=load_inspections(self) 
 
 
     def load_violations_from_inspections(self):
