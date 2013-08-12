@@ -87,4 +87,10 @@ class Business():
        self.inspections=load_inspections(self) 
 
 
+    def load_violations_from_inspections(self):
+        self.violations = []
+        for i in self.inspections:
+            self.violations.extend(i.violations)
+
+
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
