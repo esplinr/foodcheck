@@ -23,6 +23,9 @@ Long term
 * Initial location based on user location (browser or IP)
 
 * Add other cities: Chicago, DC
+-- Seperate column in business table with a city id?
+-- Seperate table for each city's information?
+-- Facade will need a city parameter when constructing
 
 * Setup local development environments
 
@@ -99,10 +102,9 @@ Long term
     u'date': u'20130710',u'business_id': u'75230'
     u'date': u'20130710',u'business_id': u'75230'
 
-* Make access to Restaurant data more pythonic with facade pattern
--- Create a foodcheck_classes module
--- Create a Restaurant class with methods that know how to access all
-inspections and violations for that restaurant
+# Configure logging
+-- Mail correct admin based on openshift namespace
+-- When in DEBUG, display info logging messages from facade
 
 # Fix data download script
 
