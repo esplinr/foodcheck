@@ -20,6 +20,7 @@ Will probably only be accessed as components of the Business class
 
 import logging
 from foodcheck_app import models
+from violation import load_violations
 
 
 logger = logging.getLogger('foodcheck_app.facade.Inspections')
@@ -92,7 +93,7 @@ class Inspection():
         self.date = orm_obj.date
         self.reason = orm_obj.reason
 
-        self.violations = violations.load_violations()
+        self.violations = load_violations()
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
