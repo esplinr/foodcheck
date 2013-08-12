@@ -57,13 +57,12 @@ class Business():
         the database id.
         If none is provided, create an empty business.
         '''
-        if db_id = None:
+        if db_id == None:
             return
 
         logger.info('Initializing business object from existing data. ID: %s'
                     %(db_id))
-        business_match = models.Business.objects.filter(
-                                    city_business_id=city_business_id)
+        business_match = models.Business.objects.filter(id=db_id)
         if len(business_match) <> 1:
             logger.error("Should be exactly one entry for this ID! %s" 
                            %(db_id))
@@ -80,6 +79,8 @@ class Business():
         self.latitude = db_business.latitude
         self.longitude = db_business.longitude
         self.phone = db_business.phone
+
+        self.load_inspections()
 
 
     def load_inspections(self):

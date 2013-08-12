@@ -31,15 +31,15 @@ def load_inspections(business):
     '''
     biz_db_id = business.db_id
     logger.info('Creating a list of inspections related to business. DB ID: %s'
-                %(self.business_db_id))
+                %(biz_db_id))
     inspection_match = models.Inspection.objects.filter(business_id=biz_db_id)
     if len(inspection_match) == 0:
         logger.warning("No inspections exist for this business! DB ID: %s" 
-                     %(self.business_db_id))
+                     %(biz_db_id))
         return None
     inspections_list = []
     for i in inspection_match:
-        inspections_list.append(Inspection(business=business, orm_obj=i))
+        inspections_list.append(Inspection(business_obj=business, orm_obj=i))
     return inspections_list
 
 
@@ -53,7 +53,7 @@ class Inspection():
     date = None # datetime object
     reason = None
     # References to associated classes, will normally be set at object creation
-    self.business = None # Parent object back-reference
+    business = None # Parent object back-reference
     violations = None # A list of violation objects
 
 
@@ -75,7 +75,7 @@ class Inspection():
         # If no existing inspection, return an empty object
         if db_id == None and orm_obj == None:
             return
-        else if orm_obj == None:
+        elif orm_obj == None:
             # Look up the inspection in the DB
             self.db_id = db_id
             inspection_match = models.Inspection.objects.filter(id=db_id)
