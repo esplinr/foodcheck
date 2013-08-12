@@ -35,7 +35,7 @@ def load_violations(inspection):
     violations_match = models.Violation.objects.filter(
                                                  inspection_id=inspection_db_id)
     if len(violations_match) == 0:
-        logger.warning("No violations exist for this inspection! DB ID: %s" 
+        logger.info("No violations exist for this inspection! DB ID: %s" 
                      %(inspection_db_id))
         return None
     violations_list = []

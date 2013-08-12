@@ -35,7 +35,7 @@ def load_inspections(business):
                 %(biz_db_id))
     inspections_match = models.Inspection.objects.filter(business_id=biz_db_id)
     if len(inspections_match) == 0:
-        logger.warning("No inspections exist for this business! DB ID: %s" 
+        logger.info("No inspections exist for this business! DB ID: %s" 
                      %(biz_db_id))
         return None
     inspections_list = []
