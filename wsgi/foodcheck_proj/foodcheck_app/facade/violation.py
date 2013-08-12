@@ -41,7 +41,7 @@ def load_violations(inspection):
     violations_list = []
     for v in violations_match:
         violations_list.append(Violation(inspection_obj=inspection, orm_obj=v))
-    return inspections_list
+    return violations_list
 
 
 class Violation():
