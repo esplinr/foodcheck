@@ -32,13 +32,13 @@ def load_inspections(business):
     biz_db_id = business.db_id
     logger.info('Creating a list of inspections related to business. DB ID: %s'
                 %(biz_db_id))
-    inspection_match = models.Inspection.objects.filter(business_id=biz_db_id)
-    if len(inspection_match) == 0:
+    inspections_match = models.Inspection.objects.filter(business_id=biz_db_id)
+    if len(inspections_match) == 0:
         logger.warning("No inspections exist for this business! DB ID: %s" 
                      %(biz_db_id))
         return None
     inspections_list = []
-    for i in inspection_match:
+    for i in inspections_match:
         inspections_list.append(Inspection(business_obj=business, orm_obj=i))
     return inspections_list
 
@@ -78,12 +78,12 @@ class Inspection():
         elif orm_obj == None:
             # Look up the inspection in the DB
             self.db_id = db_id
-            inspection_match = models.Inspection.objects.filter(id=db_id)
-            if len(inspection_match) != 1:
+            inspections_match = models.Inspection.objects.filter(id=db_id)
+            if len(inspections_match) != 1:
                 logger.error("Should be exactly one entry for this ID! %s" 
                              %(db_id))
                 return None
-            orm_obj = inspection_match[0]
+            orm_obj = inspections_match[0]
  
         logger.info('Initializing inspection with content from db_row %s'
                     %(self.db_id))
