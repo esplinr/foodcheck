@@ -73,7 +73,7 @@ rm ~/app-root/data/CLEANDB
 exit
 
 # Connect dev repo to the live openshift
-git remote add openshift-live ssh://51ef90015973ca501f0002ec@live-foodcheck.rhcloud.com/~/git/live.git/
+git remote add openshift-live ssh://51fb4697e0b8cd138100014b@live-foodcheck.rhcloud.com/~/git/live.git/
 
 
 # *First Repo--Only Needed Once*

@@ -33,7 +33,7 @@ def search(request):
     if 'q' in request.GET:
         message = 'You searched for: %s' % request.GET['q']
         # EXAMPLE: Won't work because it expects a DB ID
-#        business = Business(request.GET)
+        business = Business(request.GET)
     else:
         message = 'You submitted an empty form.'
     return render(request, 'home.html', {'error': True})
