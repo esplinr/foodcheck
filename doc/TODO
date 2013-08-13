@@ -1,6 +1,3 @@
-Load into DB
--- Match business_id to actual id foreign key on import
-
 Display data:
 * Display every restaurant in the DB on the map
 * Allow user to select one, and display the inspection data
@@ -14,33 +11,132 @@ Location Search:
 
 
 Clean-up Items:
-* Add help text to model
-* settings.py DEBUG=True, unless text file ~/data/LIVE_ENV
--- getting_started touch ~/data/LIVE_ENV
 * Skeleton should only contain items which appear on every page in site
 -- other items should be in base
-* remove main.css since Tim's template uses style.css
-* Update script to download into openshift perstent data folder
+
+
+Long term
+----------
+* Mobile friendly
+-- Twitter Bootstrap?
+
+* Initial location based on user location (browser or IP)
+
+* Add other cities: Chicago, DC
+-- Seperate column in business table with a city id?
+-- Seperate table for each city's information?
+-- Facade will need a city parameter when constructing
+
+* Setup local development environments
+
+* Add GUI attribution for dataset (San Francisco is licensed CC BY SA)
+
+* Data Errors
+-- Import data from both businesses.csv and businesses_plus.csv, or figure out why
+   they are different.
+-- Figure out why some inspections don't match to businesses:
+    2731 (in businesses.csv but not businesses_plus.csv)
+    2920, 3223, 3265, 3715, 5446, 5799, 5842, 5851, 5876, 5878, 5899, 5904,
+    13062, 17754, 33321, 36494, 38146, 38314, 39054, 39606, 61766, 62661, 63958,
+    68991, 71683, 72127, 73962, 74602, 74975, 75230, 75464
+-- Figure out why some inspections match two businesses:
+    2920 (in file twice with different zip codes)
+    3566, 3543, 3566, 5301, 5830, 9463, 33467, 62053, 62797, 68390,
+-- Multiple inspections match the violation:
+    date:20130130,biz_id:37,
+    u'date': u'20120201',u'business_id': u'58'
+    u'date': u'20101004',u'business_id': u'67'
+    u'date': u'20101004',u'business_id': u'67'
+    u'date': u'20101004',u'business_id': u'67'
+    u'date': u'20101004',u'business_id': u'67'
+    u'date': u'20110927',u'business_id': u'88'
+    u'date': u'20110927',u'business_id': u'88'
+    u'date': u'20110927',u'business_id': u'88'
+    u'date': u'20110927',u'business_id': u'88'
+    u'date': u'20110927',u'business_id': u'88'
+    u'date': u'20110523',u'business_id': u'102'
+    u'date': u'20110524',u'business_id': u'102'
+    u'date': u'20110523',u'business_id': u'102'
+    u'date': u'20110523',u'business_id': u'102'
+    u'date': u'20110523',u'business_id': u'102'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20120713',u'business_id': u'114'
+    u'date': u'20111102',u'business_id': u'132'
+    u'date': u'20111102',u'business_id': u'132'
+    u'date': u'20111102',u'business_id': u'132'
+    u'date': u'20110608',u'business_id': u'192'
+    u'date': u'20110608',u'business_id': u'192'
+    u'date': u'20120312',u'business_id': u'200'
+    u'date': u'20120312',u'business_id': u'200'
+    u'date': u'20110225',u'business_id': u'208'
+-- No inspections match this violation:
+    u'date': u'20120716',u'business_id': u'33321'
+    u'date': u'20120716',u'business_id': u'33321'
+    u'date': u'20110706',u'business_id': u'33321'
+    u'date': u'20110706',u'business_id': u'33321'
+    u'date': u'20110706',u'business_id': u'33321'
+    u'date': u'20110706',u'business_id': u'33321'
+    u'date': u'20110706',u'business_id': u'33321'
+    u'date': u'20111208',u'business_id': u'33321'
+    u'date': u'20111208',u'business_id': u'33321'
+    u'date': u'20111208',u'business_id': u'33321'
+    u'date': u'20120926',u'business_id': u'68991'
+    u'date': u'20120926',u'business_id': u'68991'
+    u'date': u'20120926',u'business_id': u'68991'
+    u'date': u'20120926',u'business_id': u'68991'
+    u'date': u'20120926',u'business_id': u'68991'
+    u'date': u'20120926',u'business_id': u'68991'
+    u'date': u'20130530',u'business_id': u'68991'
+    u'date': u'20130530',u'business_id': u'68991'
+    u'date': u'20130530',u'business_id': u'68991'
+    u'date': u'20130726',u'business_id': u'75230'
+    u'date': u'20130726',u'business_id': u'75230'
+    u'date': u'20130710',u'business_id': u'75230'
+    u'date': u'20130710',u'business_id': u'75230'
+    u'date': u'20130710',u'business_id': u'75230'
+    u'date': u'20130710',u'business_id': u'75230'
+    u'date': u'20130710',u'business_id': u'75230'
+
+# Configure logging
+-- Mail correct admin based on openshift namespace
+-- When in DEBUG, display info logging messages from facade
+
+# Fix data download script
+
+* Data import as a cron job:
+-- Install django-chronograph (https://bitbucket.org/wnielson/django-chronograph/)
+-- Configure django-chronograph to kick-off admin management command to import
+-- OpenShift cron cartridge for scheduled jobs--can't use on scalable app
+++++ Kick off job from a different server using `rhc ssh "manage.py cron"`
+* Update script to download into openshift perstent data folder?
 -- Use the os.env['OPENSHIFT_DATA'](?) environment variable to find the data folder
 -- This is repo/../data not repo/data/data_dumps
-Data import as a cron job:
-* Install django-chronograph (https://bitbucket.org/wnielson/django-chronograph/)
-* Configure django-chronograph to kick-off admin management command to import
-* OpenShift cron cartridge for scheduled jobs--can't use on scalable app
--- Kick off job from a different server using `rhc ssh "manage.py cron"`
+* Or keep doing on dev machine and checking into source control?
+-- Dumps are data not code, should have a different backup strategy
 
+* Import into DB other fields from download (owner name and address)?
 
-Long term:
-* Mobile friendly
-* Initial location based on user location (browser or IP)
-* Add other cities: Chicago, DC
 * Notification if a specific restaurante fails an inspection
+
 * Foursquare checkin to alert on violation
-* Make CLEAN_DB actually clean the DB (remove unnecessary tables)
--- Probably need it to relead a DB schema with GIS stuff
-* South for migrating the database
+
 * Backup the database (psql dump over SSH)
+
 * Set admin email and debug email to a team mailing list
+
 * Blob store or shared storage for uploaded files
+
 * Use mongo for recording history of queries / what people search?
+
 * Allow ratings and comments?
+
+* Add foodcheck_app tables to admin interface for GUI management
+
+* redirect http//---/admin to https

@@ -73,3 +73,6 @@ http://postgis.net/docs/manual-1.5/
 
 Documentation for Leaflet is here:
 http://leafletjs.com/reference.html
+
+Documentation for San Francisco and New York data format (LIVES):
+http://www.yelp.com/healthscores

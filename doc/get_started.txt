@@ -30,6 +30,13 @@ rhc ssh live
 exit
 rhc tail live
 
+# Adding a new south migration
+rhc ssh openshift-dev
+source ~/python/virtenv/bin/activate
+cd app-root/repo/wsgi/foodcheck_proj/
+./manage.py schemamigration foodcheck_app --auto
+## SCP new migration script out of foodcheck_app/migrations and check into git
+
 
 # Setup Dev Environment #
 # Setup rhc
@@ -57,8 +64,11 @@ git remote add openshift-dev ssh://<Git remote URL>
 git fetch openshift-dev
 git branch --set-upstream master remotes/openshift-dev/master
 git push openshift-dev
-# Clean up
+# Initialize DB migrations
 rhc ssh foodcheck
+source ~/python/virtenv/bin/activate
+app-root/repo/wsgi/foodcheck_proj/manage.py migrate foodcheck_app --fake
+# Clean up
 rm ~/app-root/data/CLEANDB
 exit
 
@@ -90,7 +100,7 @@ git push
 ## Test
 
 # Add PostgreSQL to Dev
-rhc add-cartridge -c postgresql-8.4
+rhc add-cartridge -c postgresql-8.4 --app foodcheck
 ## Add PostGIS
 rhc ssh foodcheck
 psql --command=\"create language plpgsql\;\"
@@ -102,6 +112,8 @@ touch ~/app-root/data/CLEAN_DB
 exit
 git push openshift-dev
 rhc ssh foodcheck
+source ~/python/virtenv/bin/activate
+app-root/repo/wsgi/foodcheck_proj/manage.py migrate foodcheck_app --fake
 rm ~/app-root/data/CLEANDB
 exit
 
