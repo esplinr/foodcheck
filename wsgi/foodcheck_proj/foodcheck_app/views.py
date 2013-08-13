@@ -13,6 +13,7 @@ def search(request):
         message = 'You searched for: %s' % request.GET['q']
     else:
         message = 'You submitted an empty form.'
+    return render(request, 'home.html', {'error': True})
     return HttpResponse(message)
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
