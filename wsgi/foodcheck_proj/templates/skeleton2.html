@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/  DTD/xhtml11.dtd">
+<html xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}" version="-//W3C// DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <title>{% block title %}Foodcheck{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="public" />
+    <meta name="robots" content="follow, all" />
+    <meta name="language" content="{{ LANGUAGE_CODE }}" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+    <meta name="description" content="{% block meta-description %}Check the health inspector report for where you are eating.{% endblock %}" />
+    <meta name="keywords" content="{% block meta-keywords %}civic, health, food, restaurants{% endblock %}" />
+    <meta name="author" content="Foodcheck" />
+    {% block meta %}{% endblock %}
+    <link rel="pingback" href="/xmlrpc/" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon-food.ico" />
+   
+    <!--Original Template------->
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-migrate-1.1.1.js"></script>
+    <script src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
+    <script src="{{ STATIC_URL }}js/sForm.js"></script>
+    <script src="{{ STATIC_URL }}js/Forms.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}css/form.css" />
+	
+	<!--Bootstrap
+	<script src="{{ STATIC_URL }}js/jquery.js"></script>
+	<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+    <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap.min.css" />
+    <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap.css" >
+    <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap-responsive.css">-->
+        
+        
+        
+         <!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+         </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <link rel="stylesheet" media="screen" href="css/ie.css">
+    <![endif]-->
+    
+    {% block link %}{% endblock %}
+    {% block script %}{% endblock %}
+    </head>
+
+	<body class="{% block body-class %}{% endblock %}">
+		<div class="container">
+			<div class="main">
+<!--==============================header=================================-->
+ <header> 
+  <div class="container_12">
+    <div class="grid_12">
+    <h1><a href="#"><img src="{{ STATIC_URL }}img/logo.png" alt="EXTERIOR"></a> </h1>
+    
+         <div class="menu_block">
+           <nav  class="" >
+            <ul class="sf-menu">
+                   <li><a href="#">Home</a></li>
+                   <li><a href="#">About Us</a><ul> 
+                         <li><a href="#">Code For America</a></li>
+                            <li><a href="#">Stanford University</a></li>
+                            <li><a href="#">MS&E 238</a></li>
+                     </ul></li>
+                   <li><a href="#">Menu</a></li>
+                   <li><a href="#">Portfolio</a></li>
+                   <li><a href="#">News </a></li>
+                   <li class="current"><a href="#">Map</a></li>
+                 </ul>
+              </nav>
+           <div class="clear"></div>
+           </div>
+           <div class="clear"></div>
+      </div>
+    </div>
+</header>
+<!--=======content================================-->
+  
+      {$ block content %}
+      <p>This is where we expect the main content for this page to be.</p>
+      {$ endblock %}
+   
+<!--==============================footer=================================-->
+
+<footer>    
+  <div class="container_12">
+    <div class="grid_12">
+     Foodcheck © 2014  &nbsp;&nbsp; |&nbsp;&nbsp;  <a href="http://www.affero.org/oagf.html">Available under the terms of the AGPL</a>   &nbsp;&nbsp;|&nbsp;&nbsp;  For MS&E 238- Leading Trends in Information Technology, <a href="http://www.stanford.edu/" rel="nofollow">Stanford University</a>.
+    </div>
+    <div class="clear"></div>
+  </div>
+</footer>
+<!--======================================================================-->
+    </div>
+  </body>
+</html>
