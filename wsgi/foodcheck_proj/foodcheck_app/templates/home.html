@@ -7,26 +7,18 @@
     {% leaflet_js plugins="ALL" %}
 {% endblock %}
 {% block content %}
-<div class="content"><div class="ic"></div>
-  <div class="container_12">
-    <div class="grid_6">
-      <h2>Foodcheck Locator</h2>
-            <div class="map">
-            <figure class="img_inner">
-                	{% leaflet_map "main" %}
-						<script type="text/javascript">
-    						function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
-					}
-						</script>
-               </figure>
-          </div>
+<div class="row">
+    <div class="span8">
+        <h2>Foodcheck Locator</h2>
+        	{% leaflet_map "main" %}
+			<script type="text/javascript">
+    			function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
+			}
+			</script>
     </div>
-    <div class="grid_5 prefix_1">
-      <h2>Search Restaurant</h2>
-    {% if error %}
-        <p style="color: red;">Please submit a search term.</p>
-    {% endif %}
-      <form id="form" action="/search/" method="get">
+    <div class="span4">
+    <h2>Search Restaurant</h2>
+    <form id="form" action="/search/" method="get">
       <div class="success_wrapper">
       <div class="success">Contact form submitted!<br>
       <strong>We will be in touch soon.</strong> </div></div>
@@ -35,42 +27,11 @@
       <input type="text" name='q' value="Name:">
       <br class="clear">
 	  </label>
-      <br>
-      <h2>OR</h2>
-      <br>
-      <label class="Neighborhood">
-      <input type="text" value="E-mail:">
-      <br class="clear">
- 	  </label>
-      <div class="clear"></div>
+	  <div class="clear"></div>
       <div class="btns"><input type="submit" value="Search"><br><br><input type="reset" value="Clear">
       <div class="clear"></div>
       </div></fieldset></form>
     </div>
     <div class="clear"></div>
-    <div class="bottom_block">
-      <div class="grid_6">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li><a href="index.html">Home</a></li>
-                   <li ><a href="index-1.html">About Us</a></li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li><a href="index-3.html">Portfolio</a></li>
-                   <li><a href="index-4.html">News </a></li>
-                   <li class="current"><a href="index-5.html">Map</a></li>
-                 </ul></nav>
-      </div>
-      <div class="grid_6">
-      <br>  
-      </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
 </div>
 {% endblock %}

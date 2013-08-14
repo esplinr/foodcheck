@@ -7,44 +7,49 @@
     {% leaflet_js plugins="ALL" %}
 {% endblock %}
 {% block content %}
-<!--Content-->
 <div class="content"><div class="ic"></div>
-  <div class="container_12">    
+  <div class="container_12">
     <div class="grid_6">
       <h2>Foodcheck Locator</h2>
             <div class="map">
-				<figure class="img_inner">
-       
-				<!--Map functionality-->                   
-				<main>
-					{% leaflet_map "main" %}
+            <figure class="img_inner">
+                	{% leaflet_map "main" %}
 						<script type="text/javascript">
     						function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
 					}
 						</script>
-        		</main>
-            </div>
+               </figure>
+          </div>
     </div>
     <div class="grid_5 prefix_1">
+      <h2>Search Restaurant</h2>
+    {% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
       <form id="form" action="/search/" method="get">
+      <div class="success_wrapper">
+      <div class="success">Contact form submitted!<br>
+      <strong>We will be in touch soon.</strong> </div></div>
       <fieldset>
       <label class="name">
       <input type="text" name='q' value="Name:">
       <br class="clear">
- 	  </label>
-      <!--<label class="address">
-      <input type="text" value="Address:">
+	  </label>
+      <br>
+      <h2>OR</h2>
+      <br>
+      <label class="Neighborhood">
+      <input type="text" value="E-mail:">
       <br class="clear">
- 	  </label>-->
-      <div class="btns"><input type="reset" value="Clear"><input type="submit" value="Search"></div>
+ 	  </label>
       <div class="clear"></div>
-	  </fieldset>
-	  </form>
-	  <div class="clear"></div>
-  	</div>
-<!--Bottom block-->
- 	<div class="bottom_block">
-      <div class="grid_13">
+      <div class="btns"><input type="submit" value="Search"><br><br><input type="reset" value="Clear">
+      <div class="clear"></div>
+      </div></fieldset></form>
+    </div>
+    <div class="clear"></div>
+    <div class="bottom_block">
+      <div class="grid_6">
         <h3>Follow Us</h3>
         <div class="socials">
           <a href="#"></a>
@@ -52,49 +57,20 @@
           <a href="#"></a>
         </div>
         <nav><ul>
-                   <li><a href="#">Home</a></li>
-                   <li ><a href="#">About Us</a></li>
-                   <li><a href="#">Menu</a></li>
-                   <li><a href="#">Portfolio</a></li>
-                   <li><a href="#">News </a></li>
-                   <li class="current"><a href="#">Map</a></li>
+                   <li><a href="index.html">Home</a></li>
+                   <li ><a href="index-1.html">About Us</a></li>
+                   <li><a href="index-2.html">Menu</a></li>
+                   <li><a href="index-3.html">Portfolio</a></li>
+                   <li><a href="index-4.html">News </a></li>
+                   <li class="current"><a href="index-5.html">Map</a></li>
                  </ul></nav>
       </div>
-      <div class="grid_13">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list to stay in the loop!</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
+      <div class="grid_6">
+      <br>  
+      </div>
       </div>
       <div class="clear"></div>
     </div>
   </div>
 </div>
-
 {% endblock %}
-
-<!----Sample search 2---->
-<!--<br>
-<form action="/search/" method="get">
-	<input type="text" name="q">
-    <input type="submit" value="Search">
-</form>
-<br>-->
-<!--Original Map--->
-<!--{# leaflet_map "main" %}-->
-
-<!--<script type="text/javascript">
-    function mainInit(map, bounds) {
-        L.marker([37.7750, -122.4183]).addTo(map);
-}
-</script>-->
-
-<!--{# endblock %}-->
-<!---------------------->
