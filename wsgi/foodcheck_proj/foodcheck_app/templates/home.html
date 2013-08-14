@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="span8">
+    <div class="span9">
         <h3>Foodcheck Locator</h3>
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
@@ -16,7 +16,7 @@
 			}
 			</script>
     </div>
-    <div class="span4">
+    <div class="span3">
     <h3>Search Restaurant</h2>
     <!--<form class="form-search" id="form" action="/search/" method="get">
     <input type="text" class="input-medium search-query" name='q' value="Eatery">
@@ -28,11 +28,10 @@
     <legend>Search Eatery</legend>
     <label>Enter name:</label>
     <input type="text" name='q' placeholder="Eatery">
-    <button type="submit" class="btn" value="Search" data-loading-text="Locating...">Search</button>
+    <button type="button" class="btn" value="Search" data-loading-text="Locating...">Search</button>
     </fieldset>
     </form>
-	
-	
+	c
 	</div>
 </div>
 {% endblock %}
