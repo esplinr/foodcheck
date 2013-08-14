@@ -9,29 +9,32 @@
 {% block content %}
 <div class="row">
     <div class="span8">
-        <h2>Foodcheck Locator</h2>
+        <h3>Foodcheck Locator</h3>
+        	<img class="img-polaroid">
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
     			function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
 			}
 			</script>
+			</img>
     </div>
     <div class="span4">
-    <h2>Search Restaurant</h2>
-    <form id="form" action="/search/" method="get">
-      <div class="success_wrapper">
-      <div class="success">Contact form submitted!<br>
-      <strong>We will be in touch soon.</strong> </div></div>
-      <fieldset>
-      <label class="name">
-      <input type="text" name='q' value="Name:">
-      <br class="clear">
-	  </label>
-	  <div class="clear"></div>
-      <div class="btns"><input type="submit" value="Search"><br><br><input type="reset" value="Clear">
-      <div class="clear"></div>
-      </div></fieldset></form>
-    </div>
-    <div class="clear"></div>
+    <h3>Search Restaurant</h2>
+    <form class="form-search" id="form" action="/search/" method="get">
+    <input type="text" class="input-medium search-query" name='q' value="Eatery">
+    <button type="submit" class="btn" value="Search" data-loading-text="Locating...">Search</button>
+    </form>
+	
+	<form>
+    <fieldset>
+    <legend>Search Eatery</legend>
+    <label>Enter name:</label>
+    <input type="text" name='q' placeholder="Eatery">
+    <button type="submit" class="btn" value="Search" data-loading-text="Locating...">Search</button>
+    </fieldset>
+    </form>
+	
+	
+	</div>
 </div>
 {% endblock %}
