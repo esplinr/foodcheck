@@ -9,7 +9,6 @@ Search UI:
 Location Search:
 * Allow searching within a specific radius
 
-
 Clean-up Items:
 * Skeleton should only contain items which appear on every page in site
 -- other items should be in base
@@ -17,10 +16,10 @@ Clean-up Items:
 
 Long term
 ----------
-* Mobile friendly
--- Twitter Bootstrap?
-
 * Initial location based on user location (browser or IP)
+
+* Improve performance by not querying the inspection and violation data before a
+  specific business is selected (pass flag to business constructor?)
 
 * Add other cities: Chicago, DC
 -- Seperate column in business table with a city id?
