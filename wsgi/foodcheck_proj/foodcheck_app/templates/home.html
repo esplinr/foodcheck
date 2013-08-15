@@ -7,46 +7,9 @@
     {% leaflet_js plugins="ALL" %}
 {% endblock %}
 {% block content %}
-	
-	<!--Carousel-->
-	<!--<div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="{{ STATIC_URL }}img/slide3.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Foodcheck</h1>
-              <p class="lead">Made for restaurant connoisseurs by connoisseurs who want to see the health report for local eateries.</p>
-              <a class="btn btn-large btn-success" href="about">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="{{ STATIC_URL }}img/slide4.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Geo-location Enabled</h1>
-              <p class="lead">Use our locator to find eatery reports within your area.</p>
-              <a class="btn btn-large btn-primary" href="#"></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="{{ STATIC_URL }}img/slide2.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Know that your meal is safe.</h1>
-              <p class="lead"></p>
-              <a class="btn btn-large btn-primary" href="#"></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>--><!-- /.carousel -->
 
-<!--Map-->
+<!--Map
+==============================================-->
 <div class="row">
     <div class="span9">
         <h3>Foodcheck Locator</h3>
@@ -57,7 +20,7 @@
                  </script>            
     </div>
     <div class="span3">
-    <!--<h3>Search Restaurant</h3>-->
+    <h3>Search Restaurant</h3>
 	
 	<form>
     <fieldset>
@@ -71,9 +34,13 @@
 	</div>
 </div>
 
-<!--Results list-->
+<!--Results list
+=================================================-->
 <div class="row">
 	<div class="span12">
+	<br>
+    <hr>
+    <br>
     <!--& if businesses %}
     & for businesses %}-->
     <table class="table table-hover">
@@ -102,5 +69,6 @@
     {& else %}
     <p>No eateries match your search criteria.</p>
     & endif %}-->  
+    </div>
 </div>
 {% endblock %}

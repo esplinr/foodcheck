@@ -15,19 +15,19 @@
     <link rel="pingback" href="/xmlrpc/" />
     <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon-food.ico" />
    	
-	<!--Bootstrap css-->
+	<!--Bootstrap css
+	==================================================-->
     <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap-responsive.css"/>
     <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css"/>
     <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap.min.css" />
     <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/bootstrap.css" />
-     
-    <!--<style> 
+    
+    <!--Carousel style
+    =====================================================--> 
+    <style> 
       
-        /* CUSTOMIZE THE CAROUSEL
-    -------------------------------------------------- */
-
     /* Carousel base class */
-    /*.carousel {
+    carousel {
       margin-bottom: 60px;
     }
 
@@ -78,7 +78,7 @@
     /* RESPONSIVE CSS
     -------------------------------------------------- */
 
-    /*@media (max-width: 979px) {
+      @media (max-width: 979px) {
 
       .container.navbar-wrapper {
         margin-bottom: 0;
@@ -156,9 +156,7 @@
       }
 
     }
-    </style>-->
-   
-   
+    </style>
    
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements --> 
     <!--[if lt IE 9]>
@@ -169,7 +167,8 @@
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
 
-    <!-- Fav and touch icons (not working...icon cannot be retrieved) -->
+    <!-- Fav and touch icons (not working...icon cannot be retrieved) 
+    =====================================================================-->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}ico/apple-touch-icon-144-precomposed.png"/>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}ico/apple-touch-icon-114-precomposed.png"/>
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}ico/apple-touch-icon-72-precomposed.png"/>
@@ -177,6 +176,8 @@
                                    <link rel="shortcut icon" href="{{ STATIC_URL }}ico/favicon.png"/>
   </head>
 
+	<!--Nav bar
+	=====================================================-->
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -196,16 +197,16 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Sponsors</li>
-                  <li><a href="#">City of San Francisco</a></li>
-                  <li><a href="#">Stanford University</a></li>
-                  <li><a href="#">Code for America</a></li>
+                  <li><a href="">City of San Francisco</a></li>
+                  <li><a href="">Stanford University</a></li>
+                  <li><a href="">Code for America</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">Technologies</li>
-                  <li><a href="#">Openshift</a></li>
-                  <li><a href="#">Github</a></li>
-                  <li><a href="#">Python</a></li>
-                  <li><a href="#">Django</a></li>
-                  <li><a href="#">PostgreSQL</a></li>
+                  <li><a href="">Openshift</a></li>
+                  <li><a href="">Github</a></li>
+                  <li><a href="">Python</a></li>
+                  <li><a href="">Django</a></li>
+                  <li><a href="">PostgreSQL</a></li>
                 </ul>
               </li>
             </ul>
@@ -214,35 +215,22 @@
       </div>
     </div>
 
+	<!--Main body
+	=========================================================-->
     <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <!--<div class="hero-unit">
-        <h1>Foodcheck</h1>
-        <img src="{{ STATIC_URL }}img/logo.png">
-        <p>Made for restaurant connoisseurs who want to see the health report for local eateries by restaurant connoisseurs.</p>
-        <p><a href="#" class="btn btn-primary btn-large">Find out more &raquo;</a></p>
-      </div>-->
-
-      <!-- Example row of columns -->
       <div class="row">
         <div class="span12">
-          <!--<p><a class="btn" href="#">Find out more &raquo;</a></p>-->
-  
-    <!--Content-->
+ 	
  	{% block content %}
       <p>This is where we expect the main content for this page to be.</p>
       {% endblock %}
         
         </div>
       </div>
-
       <hr>
-
       <footer>
         <p>&copy; Foodcheck 2013</p>
       </footer>
-
     </div> <!-- /container -->
 
     <!--Bootstrap Javascript sources
