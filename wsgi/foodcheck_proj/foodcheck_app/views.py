@@ -25,7 +25,7 @@ import facade
 
 def home(request):
     # load all businesses -- poor performance!
-    businesses = facade.load_businesses_by_name('*')
+    businesses = facade.load_businesses_by_name('A')
     return render(request, 'home.html',
                   {'businesses' = businesses},
                  )
