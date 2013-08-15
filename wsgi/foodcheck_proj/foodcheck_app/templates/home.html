@@ -9,27 +9,30 @@
 {% block content %}
 
 <!--Map
-==============================================-->
+================================================-->
 <div class="row">
     <div class="span9">
-        <h3>Foodcheck Locator</h3>
+			<h2>Locator</h2>
+        	
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
-                          function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
+                    function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
 			}
-                 </script>            
+            </script>            
     </div>
+    
+<!--Search form
+================================================-->    
     <div class="span3">
-    <h3>Search Restaurant</h3>
 	
-	<form>
-    <fieldset>
-    <legend>Search Eatery</legend>
-    <label>Enter name:</label>
-    <input type="text" name="" placeholder="Eatery">
-    <button type="button" class="btn" value="">Search</button>
-    </fieldset>
-    </form>
+		<form>
+    	<fieldset>
+    	<legend>Search Eatery</legend>
+    	<label>Enter name:</label>
+    	<input type="text" name="" placeholder="Eatery">
+    	<button type="button" class="btn" value="">Search</button>
+   	 	</fieldset>
+    	</form>
 	
 	</div>
 </div>
@@ -38,9 +41,9 @@
 =================================================-->
 <div class="row">
 	<div class="span12">
-	<br>
-    <hr>
-    <br>
+		<br>
+    	<hr>
+    	<br>
     <!--& if businesses %}
     & for businesses %}-->
     <table class="table table-hover">
