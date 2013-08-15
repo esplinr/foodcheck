@@ -79,7 +79,6 @@ class Inspection():
             return
         elif orm_obj == None:
             # Look up the inspection in the DB
-            self.db_id = db_id
             inspections_match = models.Inspection.objects.filter(id=db_id)
             if len(inspections_match) != 1:
                 logger.error("Should be exactly one entry for this ID! %s" 
@@ -88,8 +87,9 @@ class Inspection():
             orm_obj = inspections_match[0]
  
         logger.info('Initializing inspection with content from db_row %s'
-                    %(self.db_id))
+                    %(orm_obj.db_id))
 
+        self.db_id = orm_obj.id
         self.score = orm_obj.score
         self.date = orm_obj.date
         self.reason = orm_obj.reason
