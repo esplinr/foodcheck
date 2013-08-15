@@ -94,7 +94,7 @@ class Inspection():
         self.date = orm_obj.date
         self.reason = orm_obj.reason
 
-        self.violations = self.load_violations()
+        self.load_violations()
 
 
     def load_violations(self):
