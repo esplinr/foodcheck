@@ -12,24 +12,15 @@
         <h3>Foodcheck Locator</h3>
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
-                       
-                        function getLocation()
-               {
-                     if (navigator.geolocation)
-                   {
-                   navigator.geolocation.getCurrentPosition(showPosition);
-                    }
-                }
-
-    			function mainInit(map, bounds) {
+    			function mainInit(map, bounds,position) {
                          L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
 			}
-                        var popup=L.popup();
-                        function onMapClick(e){
-                            popup.setLatLng(e.latlng).setContent("You click the map at "+e.LatLng.toString())
-                            .openOn(map);
-                          }
-                       map.on('click', onMapClick);
+                   if (navigator.geolocation)
+                   {
+                   navigator.geolocation.getCurrentPosition(mainInit);
+                    }
+                
+
 			</script>
     </div>
     <div class="span3">
