@@ -21,7 +21,7 @@ Django View functions for foodcheck_app
 import os
 from django.shortcuts import render
 from django.http import HttpResponse
-from facade import business
+import facade 
 
 def home(request):
     businesses = facade.load_businesses_by_name('Cafe', no_details=True)
