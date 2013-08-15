@@ -38,6 +38,21 @@ def load_businesses_by_name(name_search_term):
     return businesses_list
 
 
+#def load_businesses_by_address(address_search_term):
+#    '''
+#    Return a list of businesses that match the given address.
+#    Returns None if there are no matching businesses.
+#    '''
+
+
+#def load_businesses_by_bounding_box(lat1, long1, lat2, long2):
+#    '''
+#    Return a list of businesses that are located within the geographic
+#    bounding box.
+#    Returns None if there are no matching businesses.
+#    '''
+
+
 class Business():
     '''
     A class for accessing information about a business, including inspection
