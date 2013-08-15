@@ -51,10 +51,10 @@
           <a class="brand" href="#">Foodcheck</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Locator</a></li>
-              <li><a href="#about">About</a></li>
+              <li class="active"><a href="{{ STATIC_URL }}">Locator</a></li>
+              <li><a href="{{ STATIC_URL }}about/">About</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                <a href="{{ STATIC_URL }}resources/" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Sponsors</li>
                   <li><a href="#">City of San Francisco</a></li>
@@ -78,17 +78,16 @@
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <!--<div class="hero-unit">
+      <div class="hero-unit">
         <h1>Foodcheck</h1>
-        <p></p>
-        <p><a href="#" class="btn btn-primary btn-large">Search Now &raquo;</a></p>
-      </div>-->
+        <img src="{{ STATIC_URL }}img/logo.png">
+        <p>Made for restaurant connoisseurs who want to see the health report for local eateries by restaurant connoisseurs.</p>
+        <p><a href="#" class="btn btn-primary btn-large">Find out more &raquo;</a></p>
+      </div>
 
       <!-- Example row of columns -->
-      <div class="row">
+      <!--<div class="row">
         <div class="span12">
-          <img src="{{ STATIC_URL }}img/logo.png" class="img-polaroid">
-          <p>Made for restaurant connoisseurs who want to see the health report for local eateries by restaurant connoisseurs.</p>
           <p><a class="btn" href="#">Find out more &raquo;</a></p>-->
   
     <!--Content-->
