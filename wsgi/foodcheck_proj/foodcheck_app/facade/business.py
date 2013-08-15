@@ -38,11 +38,11 @@ def load_businesses_by_name(name_search_term, offset=0, page_limit=100,
         return []
     businesses_list = []
     for b in businesses_match:
-        businesses_list.append(Business(orm_obj=b, no_details))
+        businesses_list.append(Business(orm_obj=b, no_details=no_details))
     return businesses_list
 
 
-def load_businesses_by_address(address_search_term, offset=0, page_limit=100
+def load_businesses_by_address(address_search_term, offset=0, page_limit=100,
                                no_details=False):
     '''
     Return a list of businesses that match the given address.
@@ -56,7 +56,7 @@ def load_businesses_by_address(address_search_term, offset=0, page_limit=100
         return []
     businesses_list = []
     for b in businesses_match:
-        businesses_list.append(Business(orm_obj=b, no_details))
+        businesses_list.append(Business(orm_obj=b, no_details=no_details))
     return businesses_list
 
 
@@ -133,7 +133,7 @@ class Business():
         self.longitude = orm_obj.longitude
         self.phone = orm_obj.phone
 
-        if !no_details:
+        if no_details == False:
             self.load_inspections()
             self.load_violations_from_inspections()
 
