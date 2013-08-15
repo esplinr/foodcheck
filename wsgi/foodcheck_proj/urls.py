@@ -28,12 +28,12 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'foodcheck_app.views.home', name='home'),
     url(r'^about/$', 'foodcheck_app.views.about', name='about'),
-    url(r'^resources/$', 'foodcheck_app.views.resources', name='resources')
+	# url(r'^resources/$', 'foodcheck_app.views.resources', name='resources')
     
     
     # url(r'^search/$', 'foodcheck_app.views.search', name='search'),
     # url(r'^search-form/$', views.search_form),
-    # url(r'^$', 'foodcheck_app.views.search_form', name='search_form'),
+	# url(r'^$', 'foodcheck_app.views.search_form', name='search_form'),
     # url(r'^$', 'foodcheck_app.views.search', name='search'),
     # url(r'^foodcheck/', include('foodcheck.foo.urls')),
 

@@ -28,13 +28,9 @@ def home(request):
     return render(request, 'home.html',
                   {'businesses' : businesses},
                  )
-
 def about(request):
 	return render(request, 'about.html',)
 	
-def resources(request):
-	return render(request, 'resources.html',)
-
 def search(request):
     if 'q' in request.GET:
         message = 'You searched for: %s' % request.GET['q']
