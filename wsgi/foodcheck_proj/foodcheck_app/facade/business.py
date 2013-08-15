@@ -24,13 +24,16 @@ from inspection import load_inspections
 
 logger = logging.getLogger('foodcheck_app.facade.Business')
 
-def load_businesses_by_name(name_search_term):
+def load_businesses_by_name(name_search_term, offset=0, page_limit=100):
     '''
     Return a list of businesses that match the given name.
     Returns None if there are no matching businesses.
+    Offset and limit helps with paging.
     '''
-    businesses_match = models.Business.objects.filter(name=name_search_term)
-    if len(inspections_match) == 0:
+    businesses_match = models.Business.objects
+                             .filter(name__contains=name_search_term)\
+                                     [offset:offset+page_limit]
+    if len(businesses_match) == 0:
         return []
     businesses_list = []
     for b in businesses_match:
@@ -92,10 +95,14 @@ class Business():
             return
         elif orm_obj == None:
             # Look up the business in the DB
-            businesses_match = models.Business.objects.filter(id=db_id)
-            if len(businesses_match) != 1:
-                logger.error("Should be exactly one entry for this ID! %s" 
-                             %(db_id))
+            try:
+                businesses_match = models.Business.objects.get(id=db_id)
+            except models.Business.DoesNotExist:
+                logger.error("No business matches this db_id! %s" %(db_id))
+                return None
+            except models.Business.MultipleObjectsReturned:
+                logger.error("Should be exactly one business with ID! %s"
+                        %(db_id))
                 return None
             orm_obj = businesses_match[0]
 
