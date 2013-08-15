@@ -14,21 +14,7 @@
 			<script type="text/javascript">
                           function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
 			}
-                
-                          function getUserLocation() { 
-                          if (navigator.geolocation){
-	                      navigator.geolocation.getCurrentPosition(showmaker);
-                          }
-                            
-                         }
-                   
-    			function showmaker(position) {
-                         %L.map('map').setView([position.coords.latitude, position.coords.longitude], 13);
-                         L.marker([37.776, -122.4163]).addTo(map);
-                         
-			}
-                
-			</script>
+                 </script>            
     </div>
     <div class="span3">
     <h3>Search Restaurant</h2>
