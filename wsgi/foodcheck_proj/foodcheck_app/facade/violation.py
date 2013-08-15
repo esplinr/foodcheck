@@ -88,7 +88,7 @@ class Violation():
             orm_obj = violations_match[0]
  
         logger.info('Initializing violation with content from db_row %s'
-                    %(orm_obj.db_id))
+                    %(orm_obj.id))
 
         self.db_id = orm_obj.id
         self.date = orm_obj.date

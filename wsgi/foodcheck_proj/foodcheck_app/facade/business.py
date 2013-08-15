@@ -100,7 +100,7 @@ class Business():
             orm_obj = businesses_match[0]
 
         logger.info('Initializing business object from existing data. ID: %s'
-                    %(orm_obj.db_id))
+                    %(orm_obj.id))
 
         self.db_id = orm_obj.id
         self.city_business_id = orm_obj.city_business_id

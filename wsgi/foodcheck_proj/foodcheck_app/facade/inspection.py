@@ -87,7 +87,7 @@ class Inspection():
             orm_obj = inspections_match[0]
  
         logger.info('Initializing inspection with content from db_row %s'
-                    %(orm_obj.db_id))
+                    %(orm_obj.id))
 
         self.db_id = orm_obj.id
         self.score = orm_obj.score
