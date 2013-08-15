@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'foodcheck_app.views.home', name='home'),
     url(r'^$', 'foodcheck_app.views.about', name='about'),
-	url(r'^$', 'foodcheck_app.views.resources', name='resources')
+#	url(r'^$', 'foodcheck_app.views.resources', name='resources')
     
     
     # url(r'^search/$', 'foodcheck_app.views.search', name='search'),
