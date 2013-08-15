@@ -30,6 +30,19 @@ rhc ssh live
 exit
 rhc tail live
 
+# Disable HAProxy so that we can see errors
+rhc ssh foodcheck
+vim ~/haproxy/conf
+:%s$option httpchk GET /$#option httpchk GET /$g
+:wq
+~/haproxy/bin/control restart
+# Re-enable HAProxy
+rhc ssh foodcheck
+vim ~/haproxy/conf
+:%s|option httpchk GET /|#option httpchk GET /|g
+:wq
+~/haproxy/bin/control restart
+
 # Adding a new south migration
 rhc ssh openshift-dev
 source ~/python/virtenv/bin/activate
