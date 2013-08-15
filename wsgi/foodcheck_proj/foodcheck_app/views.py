@@ -21,7 +21,7 @@ Django View functions for foodcheck_app
 import os
 from django.shortcuts import render
 from django.http import HttpResponse
-import facade
+import facade import Business
 
 def home(request):
     businesses = facade.load_businesses_by_name('Cafe', no_details=True)
@@ -37,7 +37,7 @@ def about(request):
 	
 # def search(request):
 #    if 'q' in request.GET:
-#        message = 'You searched for: %s' % request.GET['q']
+#       message = 'You searched for: %s' % request.GET['q']
 #        # GET['q'] contains a db_id for the business
 #        businesses = facade.load_businesses_by_name(request.GET)
 #    else:

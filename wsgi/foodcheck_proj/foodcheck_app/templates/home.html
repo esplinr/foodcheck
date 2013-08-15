@@ -63,21 +63,19 @@
     <fieldset>
     <legend>Search Eatery</legend>
     <label>Enter name:</label>
-    <input type="text" name='q' placeholder="Eatery">
-    <button type="button" class="btn" value="Cafe" data-loading-text="Locating...">Search</button>
+    <input type="text" name="" placeholder="Eatery">
+    <button type="button" class="btn" value="">Search</button>
     </fieldset>
     </form>
 	
-	
-	
-	
-	
-	
 	</div>
 </div>
+
+<!--Results list-->
 <div class="row">
     
     {% if businesses %}
+    {% for business in businesses %}
     <table class="table table-hover">
     	<tr>
 			<td>{{businesses.name}}</td>
