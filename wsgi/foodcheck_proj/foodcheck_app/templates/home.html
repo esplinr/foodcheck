@@ -12,7 +12,9 @@
         <h3>Foodcheck Locator</h3>
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
-                          var maker= L.marker([37.776, -122.4163]).addTo(map);                 
+                          function mainInit(map, bounds) {L.marker([37.7750, -122.4183]).addTo(map);
+			}
+                
                           function getUserLocation() { 
                           if (navigator.geolocation){
 	                      navigator.geolocation.getCurrentPosition(showmaker);
