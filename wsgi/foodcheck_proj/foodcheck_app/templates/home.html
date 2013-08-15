@@ -7,6 +7,46 @@
     {% leaflet_js plugins="ALL" %}
 {% endblock %}
 {% block content %}
+	
+	<!--Carousel-->
+	<div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="{{ STATIC_URL }}img/slide.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Foodcheck</h1>
+              <p class="lead">Made for restaurant connoisseurs who want to see the health report for local eateries by restaurant connoisseurs.</p>
+              <a class="btn btn-large btn-primary" href="#">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{{ STATIC_URL }}img/slide1.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Foodcheck</h1>
+              <p class="lead"></p>
+              <a class="btn btn-large btn-primary" href="#"></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="{{ STATIC_URL }}img/slide2.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Foodcheck</h1>
+              <p class="lead"></p>
+              <a class="btn btn-large btn-primary" href="#"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+<!--Map-->
 <div class="row">
     <div class="span9">
         <h3>Foodcheck Locator</h3>
