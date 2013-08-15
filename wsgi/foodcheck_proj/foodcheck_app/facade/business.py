@@ -24,7 +24,8 @@ from inspection import load_inspections
 
 logger = logging.getLogger('foodcheck_app.facade.Business')
 
-def load_businesses_by_name(name_search_term, offset=0, page_limit=100):
+def load_businesses_by_name(name_search_term, offset=0, page_limit=100,
+                            no_details=False):
     '''
     Return a list of businesses that match the given name.
     Returns None if there are no matching businesses.
@@ -37,11 +38,12 @@ def load_businesses_by_name(name_search_term, offset=0, page_limit=100):
         return []
     businesses_list = []
     for b in businesses_match:
-        businesses_list.append(Business(orm_obj=b))
+        businesses_list.append(Business(orm_obj=b, no_details))
     return businesses_list
 
 
-def load_businesses_by_address(address_search_term, offset=0, page_limit=100):
+def load_businesses_by_address(address_search_term, offset=0, page_limit=100
+                               no_details=False):
     '''
     Return a list of businesses that match the given address.
     Returns None if there are no matching businesses.
@@ -54,7 +56,7 @@ def load_businesses_by_address(address_search_term, offset=0, page_limit=100):
         return []
     businesses_list = []
     for b in businesses_match:
-        businesses_list.append(Business(orm_obj=b))
+        businesses_list.append(Business(orm_obj=b, no_details))
     return businesses_list
 
 
@@ -93,13 +95,15 @@ class Business():
                 %(self.city_business_id, self.name, self.address)
 
 
-    def __init__(self, db_id=None, orm_obj=None):
+    def __init__(self, db_id=None, orm_obj=None, no_details=False):
         '''
         Populate the class with information about the business that matches
         the database id.
         If have an orm_obj, use that instead of hitting the DB again.
         If both the db_id and orm_obj are populated, ignore the db_id
         If none is provided, create an empty business.
+        If no_details is true, skip loading inspections and violations
+        This provides a performance improvement
         '''
         if db_id == None and orm_obj == None:
             return
@@ -129,8 +133,9 @@ class Business():
         self.longitude = orm_obj.longitude
         self.phone = orm_obj.phone
 
-        self.load_inspections()
-        self.load_violations_from_inspections()
+        if !no_details:
+            self.load_inspections()
+            self.load_violations_from_inspections()
 
 
     def load_inspections(self):
