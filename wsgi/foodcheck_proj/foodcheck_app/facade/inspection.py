@@ -28,7 +28,7 @@ logger = logging.getLogger('foodcheck_app.facade.Inspections')
 def load_inspections(business):
     '''
     Return a list of inspections for the given business object.
-    Returns None if there are no previous inspections.
+    Returns empty list if there are no previous inspections.
     '''
     biz_db_id = business.db_id
     logger.info('Creating a list of inspections related to business. DB ID: %s'

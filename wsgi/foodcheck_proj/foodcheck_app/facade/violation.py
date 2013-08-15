@@ -27,7 +27,7 @@ logger = logging.getLogger('foodcheck_app.facade.Violation')
 def load_violations(inspection):
     '''
     Return a list of violations for the given inspection object.
-    Returns None if there are no previous violations.
+    Returns empty list if there are no previous violations.
     '''
     inspection_db_id = inspection.db_id
     logger.info('Creating a list of violations related to inspection. DB ID: %s'
