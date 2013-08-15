@@ -27,7 +27,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'foodcheck_app.views.home', name='home'),
-    url(r'^$', 'foodcheck_app.views.about', name='about'),
+    url(r'^about/', 'foodcheck_app.views.about', name='about'),
 #	url(r'^$', 'foodcheck_app.views.resources', name='resources')
     
     
