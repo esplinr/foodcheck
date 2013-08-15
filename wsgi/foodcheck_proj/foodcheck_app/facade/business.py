@@ -41,11 +41,21 @@ def load_businesses_by_name(name_search_term, offset=0, page_limit=100):
     return businesses_list
 
 
-#def load_businesses_by_address(address_search_term):
-#    '''
-#    Return a list of businesses that match the given address.
-#    Returns None if there are no matching businesses.
-#    '''
+def load_businesses_by_address(address_search_term, offset=0, page_limit=100):
+    '''
+    Return a list of businesses that match the given address.
+    Returns None if there are no matching businesses.
+    Offset and limit helps with paging.
+    '''
+    businesses_match = models.Business.objects\
+                             .filter(address__contains=address_search_term)\
+                                     [offset:offset+page_limit]
+    if len(businesses_match) == 0:
+        return []
+    businesses_list = []
+    for b in businesses_match:
+        businesses_list.append(Business(orm_obj=b))
+    return businesses_list
 
 
 #def load_businesses_by_bounding_box(lat1, long1, lat2, long2):
