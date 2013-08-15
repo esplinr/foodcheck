@@ -13,11 +13,14 @@
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
                           function getUserLocation() { 
-                          if (navigator.geolocation)
+                          if (navigator.geolocation){
 	                      navigator.geolocation.getCurrentPosition(mainInit);
+                          }
+                            
                          }
                    
     			function mainInit(map, bounds,position) {
+                         var map= L.map('map').setView([position.coords.latitude, position.coords.longitude], 13);
                          L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
                          
 			}
