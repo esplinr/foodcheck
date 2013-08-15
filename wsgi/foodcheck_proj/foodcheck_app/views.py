@@ -35,15 +35,15 @@ def about(request):
 # def about(request):
 #	return render(request, 'resources.html',)
 	
-# def search(request):
-#    if 'q' in request.GET:
-#       message = 'You searched for: %s' % request.GET['q']
-#        # GET['q'] contains a db_id for the business
-#        businesses = facade.load_businesses_by_name(request.GET)
-#    else:
-#        message = 'You submitted an empty form.'
-#    return render(request, 'home.html', {'error': True})
-#    return HttpResponse(message)
+def search(request):
+    if 'q' in request.GET:
+       message = 'You searched for: %s' % request.GET['q']
+        # GET['q'] contains a db_id for the business
+        businesses = facade.load_businesses_by_name(request.GET)
+    else:
+        message = 'You submitted an empty form.'
+    return render(request, 'home.html', {'error': True})
+    return HttpResponse(message)
 
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
