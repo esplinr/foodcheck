@@ -19,7 +19,8 @@ Facade to expose the database objects in a more pythonic manner.
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from business import Business
+from business import load_businesses_by_name
 
-__all__ = ['Business', 'Inspection', 'Violation']
+__all__ = ['Business', 'load_business_by_name']
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4

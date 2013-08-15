@@ -24,6 +24,35 @@ from inspection import load_inspections
 
 logger = logging.getLogger('foodcheck_app.facade.Business')
 
+def load_businesses_by_name(name_search_term):
+    '''
+    Return a list of businesses that match the given name.
+    Returns None if there are no matching businesses.
+    '''
+    businesses_match = models.Business.objects.filter(name=name_search_term)
+    if len(inspections_match) == 0:
+        return []
+    businesses_list = []
+    for b in businesses_match:
+        businesses_list.append(Business(orm_obj=b))
+    return businesses_list
+
+
+#def load_businesses_by_address(address_search_term):
+#    '''
+#    Return a list of businesses that match the given address.
+#    Returns None if there are no matching businesses.
+#    '''
+
+
+#def load_businesses_by_bounding_box(lat1, long1, lat2, long2):
+#    '''
+#    Return a list of businesses that are located within the geographic
+#    bounding box.
+#    Returns None if there are no matching businesses.
+#    '''
+
+
 class Business():
     '''
     A class for accessing information about a business, including inspection
@@ -51,34 +80,38 @@ class Business():
                 %(self.city_business_id, self.name, self.address)
 
 
-    def __init__(self, db_id = None):
+    def __init__(self, db_id=None, orm_obj=None):
         '''
         Populate the class with information about the business that matches
         the database id.
+        If have an orm_obj, use that instead of hitting the DB again.
+        If both the db_id and orm_obj are populated, ignore the db_id
         If none is provided, create an empty business.
         '''
-        if db_id == None:
+        if db_id == None and orm_obj == None:
             return
+        elif orm_obj == None:
+            # Look up the business in the DB
+            businesses_match = models.Business.objects.filter(id=db_id)
+            if len(businesses_match) != 1:
+                logger.error("Should be exactly one entry for this ID! %s" 
+                             %(db_id))
+                return None
+            orm_obj = businesses_match[0]
 
         logger.info('Initializing business object from existing data. ID: %s'
-                    %(db_id))
-        business_match = models.Business.objects.filter(id=db_id)
-        if len(business_match) <> 1:
-            logger.error("Should be exactly one entry for this ID! %s" 
-                           %(db_id))
-            return None
+                    %(orm_obj.db_id))
 
-        db_business = business_match[0]
-        self.db_id = db_business.id
-        self.city_business_id = db_business.city_business_id
-        self.name = db_business.name
-        self.address = db_business.address
-        self.city = db_business.city
-        self.state = db_business.state
-        self.postal_code = db_business.postal_code
-        self.latitude = db_business.latitude
-        self.longitude = db_business.longitude
-        self.phone = db_business.phone
+        self.db_id = orm_obj.id
+        self.city_business_id = orm_obj.city_business_id
+        self.name = orm_obj.name
+        self.address = orm_obj.address
+        self.city = orm_obj.city
+        self.state = orm_obj.state
+        self.postal_code = orm_obj.postal_code
+        self.latitude = orm_obj.latitude
+        self.longitude = orm_obj.longitude
+        self.phone = orm_obj.phone
 
         self.load_inspections()
         self.load_violations_from_inspections()

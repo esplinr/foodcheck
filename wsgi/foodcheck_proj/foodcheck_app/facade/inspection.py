@@ -28,7 +28,7 @@ logger = logging.getLogger('foodcheck_app.facade.Inspections')
 def load_inspections(business):
     '''
     Return a list of inspections for the given business object.
-    Returns None if there are no previous inspections.
+    Returns empty list if there are no previous inspections.
     '''
     biz_db_id = business.db_id
     logger.info('Creating a list of inspections related to business. DB ID: %s'
@@ -79,7 +79,6 @@ class Inspection():
             return
         elif orm_obj == None:
             # Look up the inspection in the DB
-            self.db_id = db_id
             inspections_match = models.Inspection.objects.filter(id=db_id)
             if len(inspections_match) != 1:
                 logger.error("Should be exactly one entry for this ID! %s" 
@@ -88,8 +87,9 @@ class Inspection():
             orm_obj = inspections_match[0]
  
         logger.info('Initializing inspection with content from db_row %s'
-                    %(self.db_id))
+                    %(orm_obj.db_id))
 
+        self.db_id = orm_obj.id
         self.score = orm_obj.score
         self.date = orm_obj.date
         self.reason = orm_obj.reason

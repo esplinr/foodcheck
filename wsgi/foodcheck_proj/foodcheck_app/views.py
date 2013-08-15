@@ -21,19 +21,21 @@ Django View functions for foodcheck_app
 import os
 from django.shortcuts import render
 from django.http import HttpResponse
-from facade import Business
+import facade
 
-# Load home page into skeleton
 def home(request):
+    # load all businesses -- poor performance!
+    businesses = facade.load_businesses_by_name('*')
     return render(request, 'home.html',
-                  {},
+                  {'businesses' = businesses},
                  )
-    
+
+
 def search(request):
     if 'q' in request.GET:
         message = 'You searched for: %s' % request.GET['q']
-        # EXAMPLE: Won't work because it expects a DB ID
-        # business = Business(request.GET)
+        # GET['q'] contains a db_id for the business
+        business = facade.Business(request.GET)
     else:
         message = 'You submitted an empty form.'
     return render(request, 'home.html', {'error': True})

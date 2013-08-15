@@ -27,7 +27,7 @@ logger = logging.getLogger('foodcheck_app.facade.Violation')
 def load_violations(inspection):
     '''
     Return a list of violations for the given inspection object.
-    Returns None if there are no previous violations.
+    Returns empty list if there are no previous violations.
     '''
     inspection_db_id = inspection.db_id
     logger.info('Creating a list of violations related to inspection. DB ID: %s'
@@ -80,7 +80,6 @@ class Violation():
             return
         elif orm_obj == None:
             # Look up the violation in the DB
-            self.db_id = db_id
             violations_match = models.Violation.objects.filter(id=db_id)
             if len(violations_match) != 1:
                 logger.error("Should be exactly one entry for this ID! %s" 
@@ -89,8 +88,9 @@ class Violation():
             orm_obj = violations_match[0]
  
         logger.info('Initializing violation with content from db_row %s'
-                    %(self.db_id))
+                    %(orm_obj.db_id))
 
+        self.db_id = orm_obj.id
         self.date = orm_obj.date
         self.vi_type = orm_obj.vi_type
         self.severity = orm_obj.severity

@@ -1,5 +1,9 @@
-<<<<<<< HEAD
-*.py[cod]
+
+
+# OSX
+.DS_Store
+
+# Editor Backups
 *.bak
 *.orig
 *~
@@ -7,7 +11,8 @@
 # C extensions
 *.so
 
-# Packages
+# Python
+*.py[cod]
 *.egg
 *.egg-info
 dist
@@ -21,8 +26,6 @@ develop-eggs
 .installed.cfg
 lib
 lib64
-
-# Installer logs
 pip-log.txt
 
 # Unit test / coverage reports
