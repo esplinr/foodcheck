@@ -10,6 +10,16 @@ There are two zip packages:
 The _plus files contain business owner data and inspections without scores, but
 has fewer businesses.
 
+From data.SFgov.org:
+The difference between the two files is that the "Complete" file include all
+establishments that are regulated by the DPH Food Safety program, which may
+include businesses that have no food preparation on premises. The other data
+set, with the "_plus" files, are those establishments with food preparation,
+which is what YELP uses to integrate into their site. If there is an inspection
+done on a business but you do not see that business_id within the
+"business_plus.csv", it may be due to the fact that the permit status for that
+establishment is currently inactive, which may occur for several reasons.
+
 Files are encoded as ISO-8859-15
 
 Violations can fall into:
