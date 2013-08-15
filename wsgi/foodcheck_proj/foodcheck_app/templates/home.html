@@ -12,16 +12,17 @@
         <h3>Foodcheck Locator</h3>
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
+                  
                           function getUserLocation() { 
                           if (navigator.geolocation){
-	                      navigator.geolocation.getCurrentPosition(mainInit);
+	                      navigator.geolocation.getCurrentPosition(showmaker);
                           }
                             
                          }
                    
-    			function mainInit(map, bounds,position) {
+    			function showmaker(position) {
                          %L.map('map').setView([position.coords.latitude, position.coords.longitude], 13);
-                         L.marker([37.776 -122.4163]).addTo(map);
+                         L.marker([37.776, -122.4163]).addTo(map);
                          
 			}
                 
