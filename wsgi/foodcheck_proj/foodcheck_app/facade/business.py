@@ -30,7 +30,7 @@ def load_businesses_by_name(name_search_term, offset=0, page_limit=100):
     Returns None if there are no matching businesses.
     Offset and limit helps with paging.
     '''
-    businesses_match = models.Business.objects
+    businesses_match = models.Business.objects\
                              .filter(name__contains=name_search_term)\
                                      [offset:offset+page_limit]
     if len(businesses_match) == 0:
@@ -96,7 +96,7 @@ class Business():
         elif orm_obj == None:
             # Look up the business in the DB
             try:
-                businesses_match = models.Business.objects.get(id=db_id)
+               orm_obj = models.Business.objects.get(id=db_id)
             except models.Business.DoesNotExist:
                 logger.error("No business matches this db_id! %s" %(db_id))
                 return None
@@ -104,7 +104,6 @@ class Business():
                 logger.error("Should be exactly one business with ID! %s"
                         %(db_id))
                 return None
-            orm_obj = businesses_match[0]
 
         logger.info('Initializing business object from existing data. ID: %s'
                     %(orm_obj.id))
