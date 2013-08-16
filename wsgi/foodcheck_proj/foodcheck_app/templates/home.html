@@ -20,8 +20,10 @@
         	{% leaflet_map "main" %}
         	{% if business %}
 			<script type="text/javascript">
-                    function mainInit(map, bounds) {L.control.locate().addTo(map);
-                    	function mainInit(map, bounds) {L.marker([{{business.latitude}},{{business.longitude}}]).addTo(map); 
+                    function mainInit(map, bounds) {
+                    
+                    L.control.locate().addTo(map);
+                    L.marker([{{business.latitude}},{{business.longitude}}]).addTo(map); 
 			}
             </script>
             {% endif %}            
