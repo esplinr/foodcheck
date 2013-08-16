@@ -37,8 +37,8 @@ def search(request):
             # GET['q'] contains a search string for the business
             businesses = facade.load_businesses_by_name(request.GET['q'],
                                     no_details=True)
-        except e:
-            error_message = "%s" %(e)
+        except Exception as error:
+            error_message = "%s" %(error)
     else:
         error_message = 'You submitted an empty form.'
 
@@ -55,10 +55,10 @@ def search(request):
 def selected_business(request, db_id):
     try:
         business = facade.Business(request.GET['q'])
-    except e:
+    except Exception as error:
         return render(request, 'home.html',
                       {'error': True,
-                       'message': "%s" %(e)}
+                       'message': "%s" %(error)}
                      )
 
     return render(request, 'home.html',
