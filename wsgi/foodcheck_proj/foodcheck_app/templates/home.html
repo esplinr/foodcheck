@@ -23,7 +23,8 @@
                     
                     L.control.locate().addTo(map);
                     {% if business %}
-                    L.marker([{{business.latitude}},{{business.longitude}}]).addTo(map); 
+                    L.marker([{{business.latitude}},{{business.longitude}}]).addTo(map);
+                    map.setView(new L.LatLng({{business.latitude}},{{business.longitude}},20); 
                     {% endif %}   
 			}
             </script>                   
