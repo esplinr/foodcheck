@@ -1,3 +1,14 @@
+Move businesses to the right of the map under the search bar
+-- make it possible to submit the selected business
+
+Search button searches
+
+Click on business
+  Display details
+  Displays violations
+
+Click on violation gives inspection details
+
 Display data:
 * Display every restaurant in the DB on the map
 * Allow user to select a restaurant on the map
@@ -6,12 +17,26 @@ Search UI:
 * Django Form for letting the user search the database by restaurant name
 * Display returned restaurants by address on map
 
-Location Search:
+Mobile friendly UI
+
+Mapping functions:
 * Allow searching within a specific radius
+* Mark restaurants on map
+-- Leaflet Control OSM Geocoder--plot on map by address
+   Don't need because we have latitude and longitude?
+* https://github.com/smeijer/L.GeoSearch ?
+* Initial restaurant list on right is restaurants within map boundaries
 
 
 Long term
 ----------
+* AJAXify the UI
+* Make search URLs and selected business URLs SEO friendly (REST instead of GET)
+
+* Implement paging on lists in the UI
+
+* Resturants with uncorrected violations appear with visual indicator in lists
+
 * Add other cities: Chicago, DC
 -- Seperate column in business table with a city id?
 -- Seperate table for each city's information?
