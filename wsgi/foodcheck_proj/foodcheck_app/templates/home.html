@@ -45,12 +45,8 @@
     	<table class="table table-hover">
       	{% for business in businesses %}
     	<tr>
-        <td>{{business.name}}</td>
+        <td><a href="/selected/{{business.db_id}}">{{business.name}}<br>{{business.address}}</a></td>
         </tr>
-        <tr>
-        <td>{{business.db_id}}</td>
-        <td>{{business.address}}</td>
-      	</tr>
     	{% endfor %}
     	</table>
   {% else %}
