@@ -22,13 +22,13 @@
                     function mainInit(map, bounds) {L.control.locate({
     position: 'topleft',  // set the location of the control
     drawCircle: true,  // controls whether a circle is drawn that shows the uncertainty about the location
-    follow: false,  // follow the location if `watch` and `setView` are set to true in locateOptions
-    stopFollowingOnDrag: false, // stop following when the map is dragged if `follow` is set to true
+    follow: true,  // follow the location if `watch` and `setView` are set to true in locateOptions
+    stopFollowingOnDrag: true, // stop following when the map is dragged if `follow` is set to true
     circleStyle: {},  // change the style of the circle around the user's location
     markerStyle: {},
     followCircleStyle: {},  // set difference for the style of the circle around the user's location while following
     followMarkerStyle: {},
-    metric: true,  // use metric or imperial units
+    metric: false,  // use metric or imperial units
     onLocationError: function(err) {alert(err.message)},  // define an error callback function
     onLocationOutsideMapBounds:  function(context) { // called when outside map boundaries
             alert(context.options.strings.outsideMapBoundsMsg);
@@ -69,9 +69,9 @@
     <!-- if businesses %}-->
     <table class="table table-hover">
     	<tr>
-			<td>{{business.name}}</td>
-			<td>{{business.latitude}}</td>
-			<td>{{business.longitude}}</td>
+			<td>business.name</td>
+			<td>business.latitude</td>
+			<td>business.longitude</td>
 		</tr>
 		<tr>
 			<td>row 2, cell 1</td>
