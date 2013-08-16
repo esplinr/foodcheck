@@ -24,7 +24,7 @@ from django.http import HttpResponse
 import facade
 
 def home(request):
-    businesses = facade.load_businesses_by_name('Cafe', no_details=True)
+    businesses = facade.load_businesses_by_name('Z', no_details=True)
     return render(request, 'home.html',
                   {'businesses' : businesses},
                  )

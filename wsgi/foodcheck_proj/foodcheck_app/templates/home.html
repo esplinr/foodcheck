@@ -19,28 +19,7 @@
         	
         	{% leaflet_map "main" %}
 			<script type="text/javascript">
-                    function mainInit(map, bounds) {L.control.locate({
-    position: 'topleft',  // set the location of the control
-    drawCircle: true,  // controls whether a circle is drawn that shows the uncertainty about the location
-    follow: false,  // follow the location if `watch` and `setView` are set to true in locateOptions
-    stopFollowingOnDrag: false, // stop following when the map is dragged if `follow` is set to true
-    circleStyle: {},  // change the style of the circle around the user's location
-    markerStyle: {},
-    followCircleStyle: {},  // set difference for the style of the circle around the user's location while following
-    followMarkerStyle: {},
-    metric: true,  // use metric or imperial units
-    onLocationError: function(err) {alert(err.message)},  // define an error callback function
-    onLocationOutsideMapBounds:  function(context) { // called when outside map boundaries
-            alert(context.options.strings.outsideMapBoundsMsg);
-    },
-    setView: true, // automatically sets the map view to the user's location
-    strings: {
-        title: "Show me where I am",  // title of the locat control
-        popup: "You are within {distance} {unit} from this point",  // text to appear if user clicks on circle
-        outsideMapBoundsMsg: "You seem located outside the boundaries of the map" // default message for onLocationOutsideMapBounds
-    }
-    locateOptions: {}  // define location options e.g enableHighAccuracy: true
-}).addTo(map);
+                    function mainInit(map, bounds) {L.control.locate().addTo(map);
 			}
             </script>            
     </div>
