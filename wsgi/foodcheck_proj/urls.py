@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'foodcheck_app.views.home', name='home'),
     url(r'^search/$', 'foodcheck_app.views.search', name='search'),
-    url(r'^selected/$', 'foodcheck_app.views.selected_business',
+    url(r'^selected/(\d+)/$', 'foodcheck_app.views.selected_business',
         name='selected'),
     url(r'^about/$', 'foodcheck_app.views.about', name='about'),
     # url(r'^foodcheck/', include('foodcheck.foo.urls')),

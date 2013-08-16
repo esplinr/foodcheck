@@ -52,25 +52,17 @@ def search(request):
                       {'businesses': businesses,})
 
 
-def selected_business(request):
-    error_message = False
-    if 'q' in request.GET:
-        try:
-            # GET['q'] contains a db_id for the business
-            business = facade.Business(request.GET['q'])
-        except e:
-            error_message = "%s" %(e)
-    else:
-        error_message = 'You submitted an empty form, which should not be possible.'
-
-    if error_message:
+def selected_business(request, db_id):
+    try:
+        business = facade.Business(request.GET['q'])
+    except e:
         return render(request, 'home.html',
                       {'error': True,
-                       'message': message}
+                       'message': "%s" %(e)}
                      )
-    else:
-        return render(request, 'home.html',
-                      {'business': business,})
+
+    return render(request, 'home.html',
+                  {'business': business,})
 
 
 def about(request):
