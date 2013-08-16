@@ -45,12 +45,11 @@
 	<div class="span12">
 		<br>
     {% if businesses %}
-    {% for businesses %}
     <table class="table table-hover">
     	<tr>
-			<td>business.name</td>
-			<td>business.latitude</td>
-			<td>business.longitude</td>
+			<td>{{business.name}}</td>
+			<td>{{business.latitude}}</td>
+			<td>{{business.longitude}}</td>
 		</tr>
 		<tr>
 			<td>row 2, cell 1</td>
