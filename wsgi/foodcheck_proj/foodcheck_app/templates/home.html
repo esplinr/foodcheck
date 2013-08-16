@@ -66,9 +66,18 @@
 <div class="accordion-group">
 <div class="accordion-heading">
 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">	
+    <h3>{{business.name}}</h3>
+    <p>{{business.address}}</p>
+    <p>{{business.phone}}</p>
 		<h3>Inspections</h3>
 		<table>
     {% for inspection in business.inspections %}
+      <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Score</th>
+        <th>Reason</th>
+      </tr>
     	<tr>
         <td>{{inspection.db_id}}</td>
         <td>{{inspection.date}}</td>
@@ -84,6 +93,13 @@
 		<h3>Violations</h3>
 		<table>	   
     {% for violation in business.violations %}	
+      <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Severity</th>
+        <th>Description</th>
+      </tr>
     	<tr>
     	<td>{{violations.db_id}}</td>
         <td>{{violations.date}}</td>
