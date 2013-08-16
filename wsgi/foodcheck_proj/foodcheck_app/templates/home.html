@@ -44,8 +44,8 @@
 <div class="row">
 	<div class="span12">
 		<br>
-    <!--& if businesses %}
-    & for businesses %}-->
+    {% if businesses %}
+    {% for businesses %}
     <table class="table table-hover">
     	<tr>
 			<td>business.name</td>
@@ -67,11 +67,11 @@
 			<td>row 4, cell 3</td>
 		</tr>
     </table>
-    <!--& endfor %}
+    {% endfor %}
     
-    {& else %}
+    {% else %}
     <p>No eateries match your search criteria.</p>
-    & endif %}-->  
+    {% endif %}  
     </div>
 </div>
 {% endblock %}
