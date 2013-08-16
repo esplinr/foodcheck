@@ -23,27 +23,57 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import facade
 
+
 def home(request):
-    businesses = facade.load_businesses_by_name('Z', no_details=True)
     return render(request, 'home.html',
-                  {'businesses' : businesses},
+                  {},
                  )
+
+
+def search(request):
+    error_message = False
+    if 'q' in request.GET:
+        try:
+            # GET['q'] contains a search string for the business
+            businesses = facade.load_businesses_by_name(request.GET['q'],
+        except e:
+            error_message = "%s" %(e)
+    else:
+        error_message = 'You submitted an empty form.'
+
+    if error_message:
+        return render(request, 'home.html',
+                      {'error': True,
+                       'message': message}
+                     )
+    else:
+        return render(request, 'home.html',
+                      {'business': business,})
+
+
+def selected_business(request):
+    error_message = False
+    if 'q' in request.GET:
+        try:
+            # GET['q'] contains a db_id for the business
+            business = facade.Business(request.GET['q'])
+        except e:
+            error_message = "%s" %(e)
+    else:
+        error_message = 'You submitted an empty form, which should not be possible.'
+
+    if error_message:
+        return render(request, 'home.html',
+                      {'error': True,
+                       'message': message}
+                     )
+    else:
+        return render(request, 'home.html',
+                      {'business': business,})
+
 
 def about(request):
 	return render(request, 'about.html',)
 
-def search(request):
-    if 'q' in request.GET:
-        message = 'You searched for: %s' % request.GET['q']
-        # GET['q'] contains a db_id for the business
-        business = facade.Business(request.GET)
-    else:
-        message = 'You submitted an empty form.'
-    return render(request, 'home.html', {'error': True})
-    return HttpResponse(message)
-
 
 # vim:expandtab tabstop=8 shiftwidth=4 ts=8 sw=4 softtabstop=4
-
-
-	

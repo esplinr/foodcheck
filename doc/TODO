@@ -31,6 +31,7 @@ Mapping functions:
 Long term
 ----------
 * AJAXify the UI
+* Make search URLs and selected business URLs SEO friendly (REST instead of GET)
 
 * Implement paging on lists in the UI
 
