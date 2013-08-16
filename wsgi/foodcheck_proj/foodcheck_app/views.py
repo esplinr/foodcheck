@@ -54,7 +54,7 @@ def search(request):
 
 def selected_business(request, db_id):
     try:
-        business = facade.Business(request.GET['q'])
+        business = facade.Business(db_id)
     except Exception as error:
         return render(request, 'home.html',
                       {'error': True,
