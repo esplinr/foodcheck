@@ -49,7 +49,7 @@ def search(request):
                      )
     else:
         return render(request, 'home.html',
-                      {'business': business,})
+                      {'business': businesses,})
 
 
 def selected_business(request):
