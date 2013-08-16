@@ -64,13 +64,13 @@
 <div class="row">
 	<div class="span12">
 	<br>
-<div class="accordion" id="accordion2">
+<!-- <div class="accordion" id="accordion2">
 <div class="accordion-group">
-<div class="accordion-heading">
+  <div class="accordion-heading"> -->
     <h3>{{business.name}}</h3>
     <p>Address: {{business.address}}, {{business.state}}, {{business.postal_code}}</p>
     <p>Phone: {{business.phone}}</p>
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">	
+    <!-- <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">	-->
 		<h3>Inspections</h3>
 		<table>
       <tr>
@@ -88,10 +88,10 @@
       	</tr>
     {% endfor %}
     	</table>
-</a>
+      <!-- </a>
 </div>
 <div id="collapseOne" class="accordion-body collapse in">
-<div class="accordion-inner">   
+<div class="accordion-inner"> -->
 		<h3>Violations</h3>
 		<table>	   
       <tr>
@@ -111,9 +111,9 @@
         </tr>
     {% endfor %}
     	</table>
+<!-- </div>
 </div>
-</div>
-</div> 
+</div> --> 
 </div>
 </div>
 {% endif %}
