@@ -1,5 +1,7 @@
 foodcheck
 =========
+Live site: http://foodcheck.us
+Source code: https://github.com/esplinr/foodcheck
 
 Copyright
 ---------
