@@ -103,11 +103,11 @@
       </tr>
     {% for violation in business.violations %}	
     	<tr>
-    	<td>{{violations.db_id}}</td>
-        <td>{{violations.date}}</td>
-        <td>{{violations.vi_type}}</td>
-        <td>{{violations.severity}}</td>
-        <td>{{violations.description}}</td>
+    	<td>{{violation.db_id}}</td>
+        <td>{{violation.date}}</td>
+        <td>{{violation.vi_type}}</td>
+        <td>{{violation.severity}}</td>
+        <td>{{violation.description}}</td>
         </tr>
     {% endfor %}
     	</table>
