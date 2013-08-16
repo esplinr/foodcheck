@@ -36,6 +36,7 @@ def search(request):
         try:
             # GET['q'] contains a search string for the business
             businesses = facade.load_businesses_by_name(request.GET['q'],
+                                    no_details=True)
         except e:
             error_message = "%s" %(e)
     else:
