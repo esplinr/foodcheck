@@ -33,7 +33,7 @@
     	<legend>Search Eatery</legend>
     	<label>Enter restaurant name:</label>
     	<input type="text" name="q" placeholder="Eatery">
-    	<button class="btn btn-warning" type="submit"  value="Search">Search</button>
+    	<button class="btn btn-warning" type="submit" value="Search">Search</button>
    	 	</fieldset>
     	</form>
 		</div>
@@ -45,10 +45,10 @@
     	<table class="table table-hover">
       	{% for business in businesses %}
     	<tr>
-        <td>{{business.db_id}}</td>
         <td>{{business.name}}</td>
         </tr>
         <tr>
+        <td>{{business.db_id}}</td>
         <td>{{business.address}}</td>
       	</tr>
     	{% endfor %}
@@ -62,7 +62,7 @@
 
 <!--Inspection information
 =================================================-->	
-{% if businesses %}
+{% if business %}
 <div class="row">
 	<div class="span12">
 	<br>
