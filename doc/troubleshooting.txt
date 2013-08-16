@@ -1,0 +1,16 @@
+#############
+Symptoms:
+Admin site stops coming up. Error is:
+
+DoesNotExist at /admin/
+Site matching query does not exist.
+
+Cause:
+The django_site table is empty in the database. The example site was deleted.
+
+Solution:
+./manage.py shell
+
+from django.contrib.sites.models import Site
+Site.objects.create(pk=1, domain='foodcheck.us', name='foodcheck')
+##############
