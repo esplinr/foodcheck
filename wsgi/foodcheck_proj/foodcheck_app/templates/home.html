@@ -27,7 +27,7 @@
 <!--Search form
 ================================================-->    
     <div class="span3">
-	
+		<div class="row">
 		<form>
     	<fieldset>
     	<legend>Search Eatery</legend>
@@ -36,27 +36,73 @@
     	<button type="btn btn-warning" class="btn" value="">Search</button>
    	 	</fieldset>
     	</form>
-	
+		</div>
+		<br>
+<!--Results list
+=================================================-->		
+  	<div class="row" data-spy="scroll" data-target=".navbar">	
+  		{% if businesses %}
+    	<table class="table table-hover">
+      	{% for business in businesses %}
+    	<tr>
+        <td>{{business.db_id}}</td>
+        <td>{{business.name}}</td>
+        </tr>
+        <tr>
+        <td>{{business.address}}</td>
+      	</tr>
+    	{% endfor %}
+    	</table>
+  {% else %}
+    <p>No eateries match your search criteria.</p>
+  {% endif %}
+  		</div>	
 	</div>
 </div>
 
-<!--Results list
-=================================================-->
+<!--Inspection information
+=================================================-->	
 <div class="row">
 	<div class="span12">
 		<br>
   {% if businesses %}
-    <table class="table table-hover">
-      {% for business in businesses %}
+<div class="accordion" id="accordion2">
+<div class="accordion-group">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+		<table>
+    {% for inspection in business.inspections %}
     	<tr>
-        <td>{{business.name}}</td>
-        <td>{{business.latitude}}</td>
-        <td>{{business.longitude}}</td>
-      </tr>
+        <td>{{inspection.db_id}}</td>
+        <td>{{inspection.date}}</td>
+        <td>{{inspection.score}}</td>
+        <td>{{inspection.reason}}</td>
+      	</tr>
     {% endfor %}
-    </table>
+    	</table>
+</a>
+</div>
+<div id="collapseOne" class="accordion-body collapse in">
+<div class="accordion-inner">   
+		<table>	   
+    {% for violation in business.violations %}	
+    	<tr>
+    	<td>{{violations.db_id}}</td>
+        <td>{{violations.date}}</td>
+        <td>{{violations.vi_type}}</td>
+        <td>{{violations.severity}}</td>
+        <td>{{violations.description}}</td>
+        </tr>
+    {% endfor %}
+    	</table>
+    {% else %}
+    <p>No violations match your search criteria.</p>
+    {% endif %}
+</div>
+</div>
+</div> 
   {% else %}
-    <p>No eateries match your search criteria.</p>
+    <p>No inspections match your search criteria.</p>
   {% endif %}
     </div>
 </div>
