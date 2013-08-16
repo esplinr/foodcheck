@@ -4791,15 +4791,15 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-inverse .navbar-inner {
-  background-color: #004B00;
-  background-image: -moz-linear-gradient(top, #07B900, #004E15);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#07B900), to(#004E15));
-  background-image: -webkit-linear-gradient(top, #07B900, #004E15);
-  background-image: -o-linear-gradient(top, #07B900, #004E15);
+  background-color: #1b1b1b;
+  background-image: -moz-linear-gradient(top, #222222, #111111);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+  background-image: -webkit-linear-gradient(top, #222222, #111111);
+  background-image: -o-linear-gradient(top, #222222, #111111);
   background-image: linear-gradient(to bottom, #07B900, #004E15);
   background-repeat: repeat-x;
-  border-color: #004B00;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff009B00', endColorstr='#ff004B00', GradientType=0);
+  border-color: #252525;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
 }
 
 .navbar-inverse .brand,
@@ -4812,7 +4812,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .nav > li > a:hover,
 .navbar-inverse .brand:focus,
 .navbar-inverse .nav > li > a:focus {
-  color: #004B00;
+  color: #ffffff;
 }
 
 .navbar-inverse .brand {
@@ -4826,14 +4826,14 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-inverse .nav > li > a:focus,
 .navbar-inverse .nav > li > a:hover {
-  color: #004B00;
+  color: #ffffff;
   background-color: transparent;
 }
 
 .navbar-inverse .nav .active > a,
 .navbar-inverse .nav .active > a:hover,
 .navbar-inverse .nav .active > a:focus {
-  color: #004B00;
+  color: #ffffff;
   background-color: #004B00;
 }
 
@@ -4843,18 +4843,18 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-inverse .navbar-link:hover,
 .navbar-inverse .navbar-link:focus {
-  color: #004B00;
+  color: #ffffff;
 }
 
 .navbar-inverse .divider-vertical {
-  border-right-color: #ffffff;
-  border-left-color: #ffffff;
+  border-right-color: #222222;
+  border-left-color: #111111;
 }
 
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
-  color: #004B00;
+  color: #ffffff;
   background-color: #004B00;
 }
 
@@ -4919,11 +4919,11 @@ input[type="submit"].btn.btn-mini {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #0e0e0e;
   *background-color: #040404;
-  background-image: -moz-linear-gradient(top, #07B900, #004E15);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#07B900), to(#004E15));
-  background-image: -webkit-linear-gradient(top, #07B900, #004E15);
-  background-image: -o-linear-gradient(top, #07B900, #004E15);
-  background-image: linear-gradient(to bottom, #07B900, #004E15);
+  background-image: -moz-linear-gradient(top, #151515, #040404);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#040404));
+  background-image: -webkit-linear-gradient(top, #151515, #040404);
+  background-image: -o-linear-gradient(top, #151515, #040404);
+  background-image: linear-gradient(to bottom, #151515, #040404);
   background-repeat: repeat-x;
   border-color: #040404 #040404 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -4937,14 +4937,14 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .btn-navbar.active,
 .navbar-inverse .btn-navbar.disabled,
 .navbar-inverse .btn-navbar[disabled] {
-  color: #004B00;
-  background-color: #004B00;
-  *background-color: #004B00;
+  color: #ffffff;
+  background-color: #040404;
+  *background-color: #000000;
 }
 
 .navbar-inverse .btn-navbar:active,
 .navbar-inverse .btn-navbar.active {
-  background-color: #004B00 \9;
+  background-color: #000000 \9;
 }
 
 .breadcrumb {
@@ -5184,7 +5184,7 @@ input[type="submit"].btn.btn-mini {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #004B00;
+  background-color: #000000;
 }
 
 .modal-backdrop.fade {
@@ -5249,7 +5249,7 @@ input[type="submit"].btn.btn-mini {
 .modal-body {
   position: relative;
   max-height: 400px;
-  padding: 40px;
+  padding: 15px;
   overflow-y: auto;
 }
 
@@ -5338,7 +5338,7 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
   text-align: center;
   text-decoration: none;
-  background-color: #004B00;
+  background-color: #000000;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -5356,7 +5356,7 @@ input[type="submit"].btn.btn-mini {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
-  border-top-color: #004B00;
+  border-top-color: #000000;
   border-width: 5px 5px 0;
 }
 
@@ -5364,7 +5364,7 @@ input[type="submit"].btn.btn-mini {
   top: 50%;
   left: 0;
   margin-top: -5px;
-  border-right-color: #004B00;
+  border-right-color: #000000;
   border-width: 5px 5px 5px 0;
 }
 
@@ -5372,7 +5372,7 @@ input[type="submit"].btn.btn-mini {
   top: 50%;
   right: 0;
   margin-top: -5px;
-  border-left-color: #004B00;
+  border-left-color: #000000;
   border-width: 5px 0 5px 5px;
 }
 
@@ -5380,7 +5380,7 @@ input[type="submit"].btn.btn-mini {
   top: 0;
   left: 50%;
   margin-left: -5px;
-  border-bottom-color: #004B00;
+  border-bottom-color: #000000;
   border-width: 0 5px 5px;
 }
 
@@ -5575,7 +5575,7 @@ input[type="submit"].btn.btn-mini {
 a.thumbnail:hover,
 a.thumbnail:focus {
   border-color: #0088cc;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);f
+  -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
      -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
           box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
 }
