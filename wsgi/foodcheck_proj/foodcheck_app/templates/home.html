@@ -64,22 +64,22 @@
 <div class="row">
 	<div class="span12">
 	<br>
-<div class="accordion" id="accordion2">
+<!-- <div class="accordion" id="accordion2">
 <div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">	
+  <div class="accordion-heading"> -->
     <h3>{{business.name}}</h3>
-    <p>{{business.address}}</p>
-    <p>{{business.phone}}</p>
+    <p>Address: {{business.address}}, {{business.state}}, {{business.postal_code}}</p>
+    <p>Phone: {{business.phone}}</p>
+    <!-- <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">	-->
 		<h3>Inspections</h3>
 		<table>
-    {% for inspection in business.inspections %}
       <tr>
         <th></th>
         <th>Date</th>
         <th>Score</th>
         <th>Reason</th>
       </tr>
+    {% for inspection in business.inspections %}
     	<tr>
         <td>{{inspection.db_id}}</td>
         <td>{{inspection.date}}</td>
@@ -88,13 +88,12 @@
       	</tr>
     {% endfor %}
     	</table>
-</a>
+      <!-- </a>
 </div>
 <div id="collapseOne" class="accordion-body collapse in">
-<div class="accordion-inner">   
+<div class="accordion-inner"> -->
 		<h3>Violations</h3>
 		<table>	   
-    {% for violation in business.violations %}	
       <tr>
         <th></th>
         <th>Date</th>
@@ -102,18 +101,19 @@
         <th>Severity</th>
         <th>Description</th>
       </tr>
+    {% for violation in business.violations %}	
     	<tr>
-    	<td>{{violations.db_id}}</td>
-        <td>{{violations.date}}</td>
-        <td>{{violations.vi_type}}</td>
-        <td>{{violations.severity}}</td>
-        <td>{{violations.description}}</td>
+    	<td>{{violation.db_id}}</td>
+        <td>{{violation.date}}</td>
+        <td>{{violation.vi_type}}</td>
+        <td>{{violation.severity}}</td>
+        <td>{{violation.description}}</td>
         </tr>
     {% endfor %}
     	</table>
+<!-- </div>
 </div>
-</div>
-</div> 
+</div> --> 
 </div>
 </div>
 {% endif %}

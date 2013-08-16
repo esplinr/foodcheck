@@ -1,26 +1,16 @@
-Move businesses to the right of the map under the search bar
--- make it possible to submit the selected business
-
-Search button searches
-
-Click on business
-  Display details
-  Displays violations
-
 Click on violation gives inspection details
+Hide inspection and violation db_id
 
-Display data:
-* Display every restaurant in the DB on the map
+Mobile friendly responsive UI
+
+Display data on map:
+* Display every restaurant in the DB for the map area
 * Allow user to select a restaurant on the map
-
-Search UI:
-* Django Form for letting the user search the database by restaurant name
-* Display returned restaurants by address on map
-
-Mobile friendly UI
+* Display list of searched restaurants on map
 
 Mapping functions:
 * Allow searching within a specific radius
+* Search results limited by map
 * Mark restaurants on map
 -- Leaflet Control OSM Geocoder--plot on map by address
    Don't need because we have latitude and longitude?
@@ -31,7 +21,7 @@ Mapping functions:
 Long term
 ----------
 * AJAXify the UI
-* Make search URLs and selected business URLs SEO friendly (REST instead of GET)
+-- Clicking on a business should not get rid of the search list
 
 * Implement paging on lists in the UI
 
