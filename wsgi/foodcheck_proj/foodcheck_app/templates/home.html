@@ -18,15 +18,15 @@
 			<h2>Locator</h2>
         	
         	{% leaflet_map "main" %}
-        	{% if business %}
-			<script type="text/javascript">
+        	<script type="text/javascript">
                     function mainInit(map, bounds) {
                     
                     L.control.locate().addTo(map);
+                    {% if business %}
                     L.marker([{{business.latitude}},{{business.longitude}}]).addTo(map); 
+                    {% endif %}   
 			}
-            </script>
-            {% endif %}            
+            </script>                   
     </div>
     
 <!--Search form
