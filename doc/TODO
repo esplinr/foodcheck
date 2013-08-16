@@ -130,3 +130,5 @@ Long term
 * Add foodcheck_app tables to admin interface for GUI management
 
 * redirect http//---/admin to https
+
+* IFTTT integration?
