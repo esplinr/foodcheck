@@ -1,6 +1,6 @@
 Display data:
 * Display every restaurant in the DB on the map
-* Allow user to select one, and display the inspection data
+* Allow user to select a restaurant on the map
 
 Search UI:
 * Django Form for letting the user search the database by restaurant name
@@ -9,15 +9,9 @@ Search UI:
 Location Search:
 * Allow searching within a specific radius
 
-Clean-up Items:
-* Skeleton should only contain items which appear on every page in site
--- other items should be in base
-
 
 Long term
 ----------
-* Initial location based on user location (browser or IP)
-
 * Add other cities: Chicago, DC
 -- Seperate column in business table with a city id?
 -- Seperate table for each city's information?
