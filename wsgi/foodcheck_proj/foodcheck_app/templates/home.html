@@ -62,14 +62,15 @@
 
 <!--Inspection information
 =================================================-->	
+{% if business %}
 <div class="row">
 	<div class="span12">
-		<br>
-  {% if businesses %}
+	<br>
 <div class="accordion" id="accordion2">
 <div class="accordion-group">
 <div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">	
+		<h3>Inspections</h3>
 		<table>
     {% for inspection in business.inspections %}
     	<tr>
@@ -84,6 +85,7 @@
 </div>
 <div id="collapseOne" class="accordion-body collapse in">
 <div class="accordion-inner">   
+		<h3>Violations</h3>
 		<table>	   
     {% for violation in business.violations %}	
     	<tr>
@@ -95,15 +97,10 @@
         </tr>
     {% endfor %}
     	</table>
-    {% else %}
-    <p>No violations match your search criteria.</p>
-    {% endif %}
 </div>
 </div>
 </div> 
-  {% else %}
-    <p>No inspections match your search criteria.</p>
-  {% endif %}
-    </div>
 </div>
+</div>
+{% endif %}
 {% endblock %}
