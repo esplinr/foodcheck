@@ -27,11 +27,18 @@ if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
 
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
+<<<<<<< HEAD:wsgi/foodcheck_proj/settings.py
 
 # turn off debug when on production
 if (os.environ['OPENSHIFT_NAMESPACE'] == 'foodcheck' and
         os.environ['OPENSHIFT_APP_NAME'] == 'live'):
     DEBUG = False
+=======
+if ON_OPENSHIFT:
+    DEBUG = bool(os.environ.get('DEBUG', False))
+    if DEBUG:
+        print("WARNING: The DEBUG environment is set to True.")
+>>>>>>> django-example/master:wsgi/openshift/settings.py
 else:
     DEBUG = True
 TEMPLATE_DEBUG = DEBUG
